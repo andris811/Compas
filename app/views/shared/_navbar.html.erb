@@ -1,22 +1,22 @@
-<nav class="px-8 py-4 flex flex-wrap items-center bg-gray-50 shadow-sm">
-  <div class="text-center text-xl font-semibold mb-0">
-    <%= Rails.application.class.module_parent_name %>
+<nav class="px-8 py-4 flex flex-wrap items-center shared_navbar shadow-sm">
+  <div class="flex text-center text-xl font-semibold items-center w-full justify-between">
+    <%= link_to root_path do %>
+      <h1>Compas</h1>
+    <% end %>
+    <div>
+
+      <table class="fixed">
+        <tbody>
+          <tr class="expandable text-base">
+          </tr>
+          <tr class="expandable text-base">
+          </tr>
+          <tr class="expandable text-base">
+            <td><%= link_to 'Log out', destroy_user_session_path %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
-  <ul class="ml-auto flex space-x-4">
-    <li>
-      <%= link_to "Home",
-                  root_path,
-                  class: "text-gray-600 hover:text-sky-600 font-medium #{current_page?(root_path) ? 'text-sky-600' : nil }"
-      %>
-    </li>
-    <li>
-      <a href="#" class="text-gray-600 hover:text-sky-600 font-medium">About us</a>
-    </li>
-    <li>
-      <a href="#" class="text-gray-600 hover:text-sky-600 font-medium">Blog</a>
-    </li>
-    <li>
-      <a href="#" class="text-gray-600 hover:text-sky-600 font-medium">Contact</a>
-    </li>
-  </ul>
 </nav>
