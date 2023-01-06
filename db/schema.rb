@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_140031) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_06_090048) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,81 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_140031) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "answers", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "attendees", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_attendees_on_trip_id"
+    t.index ["user_id"], name: "index_attendees_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.string "name"
+    t.text "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_locations_on_trip_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.bigint "user_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_messages_on_trip_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_quizzes_on_user_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "trip_name"
+    t.integer "max_people"
+    t.text "description"
+    t.boolean "pets"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
+
+  create_table "user_answers", force: :cascade do |t|
+    t.bigint "answer_id", null: false
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_user_answers_on_answer_id"
+    t.index ["quiz_id"], name: "index_user_answers_on_quiz_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -52,10 +127,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_140031) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "users"
+    t.string "phone_number"
+    t.date "dob"
+    t.string "emergency_contact_name"
+    t.string "emergency_contact_phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "attendees", "trips"
+  add_foreign_key "attendees", "users"
+  add_foreign_key "locations", "trips"
+  add_foreign_key "messages", "trips"
+  add_foreign_key "messages", "users"
+  add_foreign_key "quizzes", "users"
+  add_foreign_key "trips", "users"
+  add_foreign_key "user_answers", "answers"
+  add_foreign_key "user_answers", "quizzes"
 end
