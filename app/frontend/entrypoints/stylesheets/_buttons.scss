@@ -2,7 +2,7 @@
   @apply rounded-lg py-3 px-5 inline-block font-medium cursor-pointer transition-all duration-300 ease-in-out;
 
   &.btn-primary {
-    @apply bg-blue-400 hover:bg-blue-600 text-white;
+    @apply bg-darkblue hover:bg-blue-600 text-white;
   }
 
   &.btn-secondary {
