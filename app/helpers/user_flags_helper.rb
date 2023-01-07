@@ -1,0 +1,2 @@
+module UserFlagsHelper
+end
