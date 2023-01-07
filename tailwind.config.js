@@ -7,7 +7,14 @@ module.exports = {
     './app/**/*.{vue,js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        darkblue: "#091d36"
+      },
+      backgroundImage: {
+        "hero-banner": "url('app/assets/images/landing.png')"
+      }
+    }
   },
-  plugins: [],
-}
+  plugins: []
+};
