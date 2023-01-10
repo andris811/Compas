@@ -12,7 +12,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f9faa6a861.js" crossorigin="anonymous"></script>
-
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
+    <script src="https://unpkg.com/flowbite@1.6.0/dist/datepicker.js"></script>
     <!--
       If using a TypeScript entrypoint file:
         vite_typescript_tag 'application'
@@ -23,6 +26,18 @@
       Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
     -->
     <link href="/dist/output.css" rel="stylesheet">
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
+
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
   </head>
 
   <body>
