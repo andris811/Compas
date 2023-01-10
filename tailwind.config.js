@@ -9,7 +9,6 @@ module.exports = {
     "./node_modules/tw-elements/dist/js/**/*.js"
   ],
   theme: {
-
     extend: {
       colors: {
         darkblue: "#091d36"
@@ -19,10 +18,5 @@ module.exports = {
       }
     }
   },
-  plugins: []
-
-    extend: {}
-  },
   plugins: [require("tw-elements/dist/plugin")]
-
-};
+}
