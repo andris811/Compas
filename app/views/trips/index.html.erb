@@ -4,7 +4,7 @@
     <div class="mt-10">
       <%= link_to trip_path(trip) do %>
         <div>
-          <h5><%= trip.trip_name %></h5>
+          <h5>Trip to <%= trip.trip_name %></h5>
           <p>Maximum people:<%= trip.max_people %></p>
           <p>Pets:
             <% if trip.max_people == 1 %>
