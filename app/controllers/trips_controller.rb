@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trips, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!
 
   def index
     @trips = Trip.all
@@ -7,7 +8,7 @@ class TripsController < ApplicationController
     @search = params["search"].present? ? params[:search][:search] : nil
     if @search.present?
       puts "@search present ? #{@search}"
-      @trips = Trip.where("name ILIKE ? OR details ILIKE ?", "%#{@search}%", "%#{@search}%")
+      @trips = Trip.where("trip_name ILIKE ? OR description ILIKE ?", "%#{@search}%", "%#{@search}%")
     end
   end
 
