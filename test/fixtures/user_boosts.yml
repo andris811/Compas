@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  reciever: one
+  receiver: one
   sender: one
 
 two:
-  reciever: two
+  receiver: two
   sender: two
