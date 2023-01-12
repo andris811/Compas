@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_06_090048) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_12_123331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -117,6 +117,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_090048) do
     t.index ["quiz_id"], name: "index_user_answers_on_quiz_id"
   end
 
+  create_table "user_boosts", force: :cascade do |t|
+    t.bigint "receiver_id", null: false
+    t.bigint "sender_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_user_boosts_on_receiver_id"
+    t.index ["sender_id"], name: "index_user_boosts_on_sender_id"
+  end
+
+  create_table "user_flags", force: :cascade do |t|
+    t.bigint "receiver_id", null: false
+    t.bigint "sender_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_user_flags_on_receiver_id"
+    t.index ["sender_id"], name: "index_user_flags_on_sender_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -148,4 +167,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_090048) do
   add_foreign_key "trips", "users"
   add_foreign_key "user_answers", "answers"
   add_foreign_key "user_answers", "quizzes"
+  add_foreign_key "user_boosts", "users", column: "receiver_id"
+  add_foreign_key "user_boosts", "users", column: "sender_id"
+  add_foreign_key "user_flags", "users", column: "receiver_id"
+  add_foreign_key "user_flags", "users", column: "sender_id"
 end

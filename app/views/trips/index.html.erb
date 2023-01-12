@@ -1,5 +1,29 @@
-<%# <section class="text-gray-600 body-font"> %>
-<div class="mb-24">
+
+<%# displaying the trips from DB %>
+<div>
+  <% @trips.each do |trip| %>
+    <div class="mt-10">
+      <%= link_to trip_path(trip) do %>
+        <div>
+          <h5>Trip to <%= trip.trip_name %></h5>
+          <p>Maximum people:<%= trip.max_people %></p>
+          <p>Pets:
+            <% if trip.max_people == 1 %>
+              Yes
+            <% else %>
+              No
+            <% end %>
+          </p>
+          <%= trip.description %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<section class="text-gray-600 body-font">
+  <div class=" px-10 py-20 mx-auto relative">
+
   <%# banner and search %>
     <div class=" bg-blue-800 rounded-xl h-96 bg-cover bg-center relative p-48 " style="background-image: url(https://chopra.brightspotcdn.com/dims4/default/5a343c1/2147483647/strip/true/crop/533x300+55+0/resize/1200x675!/quality/90/?url=http%3A%2F%2Fchopra-brightspot.s3.amazonaws.com%2F61%2Fcc%2F9b0ff8c8aaba0ff21eafee50293c%2F6reasonswhytravelingisgoodforyou.jpg)">
 
@@ -126,6 +150,7 @@
 
 
     </div>
+
 </div>
 
 
