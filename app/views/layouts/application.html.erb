@@ -14,6 +14,14 @@
     <script src="https://kit.fontawesome.com/f9faa6a861.js" crossorigin="anonymous"></script>
     <%= vite_stylesheet_tag 'main.scss' %>
 
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
+    <script src="https://unpkg.com/flowbite@1.6.0/dist/datepicker.js"></script>
+
+    <%= vite_stylesheet_tag 'main.scss' %>
+
+
     <!--
       If using a TypeScript entrypoint file:
         vite_typescript_tag 'application'
@@ -24,6 +32,18 @@
       Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
     -->
     <link href="/dist/output.css" rel="stylesheet">
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
+
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
   </head>
 
   <body>
