@@ -1,3 +1,25 @@
+<%# displaying the trips from DB %>
+<div>
+  <% @trips.each do |trip| %>
+    <div class="mt-10">
+      <%= link_to trip_path(trip) do %>
+        <div>
+          <h5><%= trip.trip_name %></h5>
+          <p>Maximum people:<%= trip.max_people %></p>
+          <p>Pets:
+            <% if trip.max_people == 1 %>
+              Yes
+            <% else %>
+              No
+            <% end %>
+          </p>
+          <%= trip.description %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 <section class="text-gray-600 body-font">
   <div class=" px-10 py-20 mx-auto relative">
   <%# banner and search %>
@@ -112,6 +134,9 @@
       </div>
       <%# card end %>
     </div>
+
+
+
   </div>
 
 
