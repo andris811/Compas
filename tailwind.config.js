@@ -19,6 +19,11 @@ module.exports = {
       }
     }
   },
+<<<<<<< HEAD
 
   plugins: [require("tw-elements/dist/plugin"), require("flowbite/plugin")]
 };
+=======
+  plugins: [require("tw-elements/dist/plugin")]
+}
+>>>>>>> 96f78067c35ad9c1e623ecb9fe1a65b690679cb6
