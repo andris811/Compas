@@ -1,0 +1,5 @@
+<%= simple_form_for(@trip) do |f| %>
+  <p>Trip's name:</p>
+  <%= f.input :trip_name, label: false, input_html: {class:"w-96 h-68"} %>
+  <%= f.submit "Submit", class: "" %>
+<% end %>
