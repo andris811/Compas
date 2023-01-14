@@ -7,26 +7,20 @@
     <%= csp_meta_tag %>
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'application' %>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto:wght@500&display=swap" rel="stylesheet">
-
     <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f9faa6a861.js" crossorigin="anonymous"></script>
     <%= vite_stylesheet_tag 'main.scss' %>
-
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.css" />
     <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
     <script src="https://unpkg.com/flowbite@1.6.0/dist/datepicker.js"></script>
-
     <%= vite_stylesheet_tag 'main.scss' %>
-
-
     <!--
       If using a TypeScript entrypoint file:
         vite_typescript_tag 'application'
@@ -39,28 +33,18 @@
     <link href="/dist/output.css" rel="stylesheet">
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'application' %>
-    <!--
-      If using a TypeScript entrypoint file:
-        vite_typescript_tag 'application'
-
-      If using a .jsx or .tsx entrypoint, add the extension:
-        vite_javascript_tag 'application.jsx'
-
-      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
-    -->
-
   </head>
 
   <body>
     <%= render "shared/flashes" %>
-
-    <div class="flex flex-col">
-      <% if (user_signed_in?) then %>
-        <%= render "shared/navbar" %>
-      <% end %>
-      <%# <%= render "shared/navbar" unless @disable_nav %>
+    <% if (user_signed_in?) then %>
+      <%= render "shared/navbar" %>
+    <% end %>
+    <div class="flex flex-col h-screen">
       <%= yield %>
-      <%= render "shared/footer" unless @disable_nav %>
     </div>
+    <% if (user_signed_in?) then %>
+      <%= render "shared/footer" %>
+    <% end %>
   </body>
 </html>
