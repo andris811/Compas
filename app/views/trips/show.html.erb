@@ -9,7 +9,7 @@
         </h2>
         <%# <h2 class=""> %>
           <%# <%= link_to "Apply" %>
-          <a href="#" class="py-2 px-8 ml-4 text-2xl px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" id="gold">Apply</a>
+          <a href="#" class="py-2 px-8 ml-4 text-2xl px-6 py-2.5 text-blue-900 font-medium text-lg leading-tight uppercase rounded shadow-md active:shadow-lg transition duration-150 ease-in-out" id="gold">Apply</a>
         <%# </h2> %>
       </div>
       <%# <div> %>
@@ -34,24 +34,57 @@
   <div class="border-2 rounded-2xl border-black mt-10 shadow-lg ">
     <h3 class="ml-4 text-slate-400 text-base">Date</h3>
     <div class="flex pb-8 ml-4 ">
+    <%# left %>
       <div class="mr-48 w-1/2">
+
+      <%# tabs %>
+        <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+            <ul class="flex flex-wrap -mb-px">
+                <li class="mr-2">
+                    <a href="1" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">About</a>
+                </li>
+                <li class="mr-2">
+                    <a href="2" class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">Comment</a>
+                </li>
+            </ul>
+        </div>
+
+
+<%# tab one %>
+      <div id="1">
         <h2 class><%= @trip.trip_name %></h2>
         <h3 class="text-sm"><%= @trip.description %></h3>
+
       </div>
-      <div class="ml-96 mb-4">
+
+
+<%# tab 2 %>
+      <div id="2">
+        <h2 class>Hello</h2>
+        <h3 class="text-sm">Hello</h3>
+
+      </div>
+
+
+
+
+      </div>
+
+    <%# right %>
+      <div class="ml-48 mb-4">
         <h3 class="text-base">Organized by:</h3>
         <div class="flex mb-14 mt-4">
-          <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+          <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; border-color: #eeba0b; border-width: medium;" alt="" loading="lazy"  />
           <h3 class="ml-2 mt-3 text-lg">Joey MacJoejoe</h3>
         </div>
 
         <div>
           <h2 class="text-base mt-4">people going.each:</h2>
           <div class="flex mt-4 gap-x-4">
-            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
-            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
-            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
-            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
           </div>
         </div>
 
