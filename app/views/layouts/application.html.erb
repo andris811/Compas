@@ -52,12 +52,13 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= render "shared/flashes" %>
 
     <div class="flex flex-col">
-      <%= render "shared/navbar" unless @disable_nav %>
+      <% if (user_signed_in?) then %>
+        <%= render "shared/navbar" %>
+      <% end %>
+      <%# <%= render "shared/navbar" unless @disable_nav %>
       <%= yield %>
       <%= render "shared/footer" unless @disable_nav %>
     </div>
