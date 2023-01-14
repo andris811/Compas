@@ -34,17 +34,12 @@
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'application' %>
   </head>
-
   <body>
     <%= render "shared/flashes" %>
-    <% if (user_signed_in?) then %>
-      <%= render "shared/navbar" %>
-    <% end %>
+    <%= render "shared/navbar" %>
     <div class="flex flex-col h-screen">
       <%= yield %>
     </div>
-    <% if (user_signed_in?) then %>
-      <%= render "shared/footer" %>
-    <% end %>
+    <%= render "shared/footer" %>
   </body>
 </html>

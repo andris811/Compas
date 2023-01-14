@@ -3,8 +3,11 @@
   <div class="h-14 flex text-center text-xl font-semibold items-center w-full justify-between bg-transparent">
     <%= link_to root_path do %>
       <div class="flex items-center">
-        <div class="m-3 flex h-16 w-16 items-center justify-center rounded-full logo">
-          <h1 class="logo"><strong> Compas </strong></h1>
+        <div class="m-3 flex h-16 w-16 items-center">
+          <img src="/assets/logo.png" alt="">
+          <div class="m-3">
+            <h1 class="logo text-yellow text-6xl">Compas</h1>
+          </div>
         </div>
       </div>
     <% end %>
@@ -12,42 +15,59 @@
     <div class="flex justify-center">
       <%= render 'trips/search' %>
     </div>
-
     <%# dropdown and avatar %>
     <div class="dropdown relative">
-      <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 ring-4 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
-        <span class="sr-only"></span>
-        <img class="w-12 h-12 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
-      </button>
-
+      <% if (user_signed_in?) then %>
+        <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 ring-4 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
+          <span class="sr-only"></span>
+          <img class="w-12 h-12 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+        </button>
+      <% else %>
+        <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="" type="button">
+          <span class="sr-only"></span>
+          <img class="w-14 h-12" src="/assets/bars.png" alt="menu">
+        </button>
+      <% end %>
       <!-- Dropdown menu -->
       <div id="dropdownAvatar" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-          <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+          <% if (user_signed_in?) then %>
             <div><%= current_user.first_name %> <%= current_user.last_name %></div>
             <div class="font-medium truncate"><%= current_user.email %></div>
-          </div>
-          <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
-            <li>
+          <% else %>
+            <div class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white text-yellow bg-darkblue rounded-md"><%= link_to 'Sign Up', new_user_registration_path %></div>
+          <% end %>
+        </div>
+        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
+          <li>
+            <% if (user_signed_in?) then %>
               <%= link_to pages_profile_path do %>
                 <p class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">View Profile</p>
               <% end %>
-            </li>
-            <li>
-              <%= link_to edit_user_registration_path do %>
-                <p class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit profile</p>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to trips_path do %>
-                <p class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Trips</p>
-              <% end %>
-            </li>
-          </ul>
-          <div class="py-1">
+            <% end %>
+          </li>
+          <li>
+            <%= link_to trips_path do %>
+              <p class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Trips</p>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_quiz_path do %>
+              <p class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Quiz</p>
+            <% end %>
+          </li>
+        </ul>
+        <div class="py-1">
+          <% if (user_signed_in?) then %>
             <%= button_to destroy_user_session_path, method: :delete do %>
               <p class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</p>
             <% end %>
-          </div>
+          <% else %>
+            <%= link_to user_session_path do %>
+              <p class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log in</p>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
