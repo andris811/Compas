@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/profile'
 
+  resources :quizzes
   resources :trips do
     resources :attendees, only: [:new, :create, :update, :destroy]
     resources :messages, only: [:new, :create, :update, :destroy]
