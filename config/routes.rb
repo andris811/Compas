@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'pages/home'
+  get 'pages/profile'
 
   resources :trips do
     resources :attendees, only: [:new, :create, :update, :destroy]

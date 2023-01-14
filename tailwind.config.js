@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkblue: "#091d36"
+        darkblue: "#091d36",
+        yellow: "#FFD302"
       },
       backgroundImage: {
         "hero-banner": "url('app/assets/images/landing.png')"
@@ -19,4 +20,4 @@ module.exports = {
     }
   },
   plugins: [require("tw-elements/dist/plugin")]
-}
+};
