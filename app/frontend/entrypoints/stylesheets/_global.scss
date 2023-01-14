@@ -94,3 +94,27 @@ img, svg {
   font-size: 22px;
   background-color: #D8B60C;
 }
+
+.swiper-button-next:after {
+  font-size: 1rem !important;
+  color: rgba(255, 255, 255, 0.739) !important;
+}
+
+.swiper-button-next {
+  background-color: #ffffff49;
+  border-radius: 50%;
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.swiper-button-prev:after {
+  font-size: 1rem !important;
+  color: rgba(255, 255, 255, 0.739) !important;
+}
+
+.swiper-button-prev {
+  background-color: #ffffff49;
+  border-radius: 50%;
+  width: 30px !important;
+  height: 30px !important;
+}
