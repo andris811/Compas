@@ -125,6 +125,20 @@
 
             </a>
 
+            <table class="fixed">
+              <tbody>
+                <tr class="expandable text-base">
+                  <td><%= link_to "View Profile", pages_profile_path %></td>
+                </tr>
+                <tr class="expandable text-base">
+                  <td><%= link_to 'Edit profile', edit_user_registration_path %></td>
+                </tr>
+                <tr class="expandable text-base">
+                  <td><%= button_to 'Log out', destroy_user_session_path, method: :delete %></td>
+                </tr>
+              </tbody>
+            </table>
+
           </div>
         </div>
       </div>
