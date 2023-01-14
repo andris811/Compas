@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Compas</title>
+    <title>COMPAS</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,8 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/f9faa6a861.js" crossorigin="anonymous"></script>
-    <%= vite_stylesheet_tag 'main.scss' %>
+        <script src="https://kit.fontawesome.com/f9faa6a861.js" crossorigin="anonymous"></script>
 
     <!--
       If using a TypeScript entrypoint file:
@@ -30,12 +29,14 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render "shared/flashes" %>
-    <%# <div class="flex flex-col h-screen"> %>
-      <%= render "shared/navbar" %>
-      <main class="flex-1 flex flex-col">
+
+
+    <div class="flex flex-col">
+      <%= render "shared/navbar" unless @disable_nav %>
+      <div id="vue">
         <%= yield %>
-      </main>
-      <%# <%= render "shared/footer" %>
-    <%# </div> %>
+      </div>
+      <%= render "shared/footer" unless @disable_nav %>
+    </div>
   </body>
 </html>
