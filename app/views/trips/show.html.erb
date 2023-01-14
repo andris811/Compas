@@ -1,5 +1,66 @@
-<h1>Trip to
-  <%= @trip.trip_name %>
-</h1>
-<%= @trip.description %>
-<%= @trip.id %>
+<div class="container">
+  <div class="grid grid-cols-2">
+    <div class="mr-12 rounded relative" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg'); background-size: cover; ">
+      <div class="content-end mb-4">
+        <h2 class="w-1/4 h-96">
+        Trip to
+          <%= @trip.trip_name %>
+          <%# <img class="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt=""> %>
+        </h2>
+        <%# <h2 class=""> %>
+          <%# <%= link_to "Apply" %>
+          <a href="#" class="py-2 px-8 ml-4 text-2xl px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" id="gold">Apply</a>
+        <%# </h2> %>
+      </div>
+      <%# <div> %>
+
+          <div class="absolute right-2 bottom-2">
+              <div id="gold" class="bg-blue-500 rounded-full px-3 text-center py-2 mb-3 mt-3 gap-2"><h3 class="text-sm">tag.1st</h3></div>
+
+          </div>
+
+      <%# </div> %>
+
+    </div>
+    <div class="grid grid-cols-2 ml-4 gap-4">
+      <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
+      <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
+      <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
+      <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
+    </div>
+  </div>
+
+
+  <div class="border-2 rounded-2xl border-black mt-10 shadow-lg ">
+    <h3 class="ml-4 text-slate-400 text-base">Date</h3>
+    <div class="flex pb-8 ml-4 ">
+      <div class="mr-48 w-1/2">
+        <h2 class><%= @trip.trip_name %></h2>
+        <h3 class="text-sm"><%= @trip.description %></h3>
+      </div>
+      <div class="ml-96 mb-4">
+        <h3 class="text-base">Organized by:</h3>
+        <div class="flex mb-14 mt-4">
+          <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+          <h3 class="ml-2 mt-3 text-lg">Joey MacJoejoe</h3>
+        </div>
+
+        <div>
+          <h2 class="text-base mt-4">people going.each:</h2>
+          <div class="flex mt-4 gap-x-4">
+            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+</div>
