@@ -1,29 +1,52 @@
 <%# <section class="text-gray-600 body-font"> %>
-<div class="mb-24">
+<div class="mb-64">
   <%# banner and search %>
-    <div class=" bg-blue-800 rounded-xl h-96 bg-cover bg-center relative p-48 " style="background-image: url(https://chopra.brightspotcdn.com/dims4/default/5a343c1/2147483647/strip/true/crop/533x300+55+0/resize/1200x675!/quality/90/?url=http%3A%2F%2Fchopra-brightspot.s3.amazonaws.com%2F61%2Fcc%2F9b0ff8c8aaba0ff21eafee50293c%2F6reasonswhytravelingisgoodforyou.jpg)">
+    <div class=" bg-blue-800 rounded-xl h-96 bg-cover bg-center relative p-48 mb-64" style="background-image: url(https://chopra.brightspotcdn.com/dims4/default/5a343c1/2147483647/strip/true/crop/533x300+55+0/resize/1200x675!/quality/90/?url=http%3A%2F%2Fchopra-brightspot.s3.amazonaws.com%2F61%2Fcc%2F9b0ff8c8aaba0ff21eafee50293c%2F6reasonswhytravelingisgoodforyou.jpg)">
 
-      <div class="flex justify-center mt-8">
-        <div class="p-8 rounded-xl bg-white shadow-xl absolute bottom-4 inset-x-0">
-          <div class="border-slate-800 border-2 rounded-full flex bg-blue">
+      <div class="flex justify-center absolute w-full " style="bottom: -50px;">
+        <div class="p-8 rounded-xl bg-white shadow-xl ">
+          <form action="">
+          <div class="gap-4 flex bg-blue">
             <%= simple_form_for(:location) do |f|%>
-              <%=  f.input :search, label: false, input_html: {value: "", class:"pl-1 border-1 border-slate-800 rounded-l-full"}, class: "text-black", style: 'width:500px', placeholder: "search a place"  %>
-            <% end  %>
+              <%=  f.input :search, label: false, input_html: {value: "", class:"pl-1 border-1 border-slate-800 rounded-xl"}, class: "text-black pl-2", style: 'width:500px', placeholder: " search a place"  %>
 
-            <%= simple_form_for(:date) do |f| %>
-             <%= f.input :date, as: :date, label: false, input_html: {} %>
-            <%end  %>
-            <%= simple_form_for(:activity) do |f|%>
-              <%=  f.input :search, label: false, input_html: {value: "", class:"pl-1 border-1 border-slate-800 rounded-r-full"}, class: "text-black", style: 'width:500px', placeholder: "search an acitivty"  %>
-            <%end  %>
+            <%# <div class="pl-1 border-1 border-slate-800 rounded-full"> %>
+              <%# <%= simple_form_for(:start_date) do |f| %>
+              <%# <%= f.input :date, as: :date, label: false, input_html: {} %>
+              <%# <% end  %>
+            <%# </div> %>
+            <%# <div class="pl-1 border-1 border-slate-800 rounded-full"> %>
+              <%# <%= simple_form_for(:end_date) do |f| %>
+              <%# <%= f.input :date, as: :date, label: false, input_html: {} %>
+              <%# <% end  %>
+            <%# </div> %>
+            <div date-rangepicker class=" flex items-center">
+              <div class="relative">
+                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                </div>
+                <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+              </div>
+              <span class="mx-4 text-gray-500">to</span>
+              <div class="relative">
+                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                </div>
+                <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+              </div>
+              <%= f.submit "Search", class: "btn ml-10 inline-block px-6 py-2.5 bg-pink-700 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-teal-500 hover:shadow-lg focus:bg-teal-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" %>
+              <% end  %>
+
+
             <%# End search bar %>
           </div>
+        </form>
         </div>
       </div>
     </div>
-
+</div>
     <%# end banner and search %>
-    <div class="flex flex-wrap sm:m-4 -mx-4 mb-36 mt-4 h-96">
+    <div class="flex flex-wrap sm:m-4 -mx-4 mb-36 mt-4 h-96" style="margin-top: 120px;">
 
 
       <div class="text-center w-full"><h2> FOUND THESE PLACES JUST FOR <em><u><strong>YOU</u></em></strong> ! </h2></div>
