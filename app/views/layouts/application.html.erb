@@ -17,18 +17,20 @@
       If using a TypeScript entrypoint file:
         vite_typescript_tag 'application'
 
+
       If using a .jsx or .tsx entrypoint, add the extension:
         vite_javascript_tag 'application.jsx'
 
       Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
     -->
-    <%# <link href="/dist/output.css" rel="stylesheet"> %>
-  </head>
 
+    <%# <link href="/dist/output.css" rel="stylesheet"> %>
+
+  </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
+
 
 
     <div class="flex flex-col">
@@ -37,6 +39,8 @@
         <%= yield %>
       </div>
       <%= render "shared/footer" unless @disable_nav %>
+
     </div>
+    <%= render "shared/footer" %>
   </body>
 </html>
