@@ -1,0 +1,75 @@
+<div class="h-96 bg-transparent">
+  <%# Banner %>
+  <div class="relative">
+    <div class="px-2 flex-wrap">
+      <div class="flex justify-between bg-no-repeat bg-cover bg-center h-40 rounded-t-lg my-10 mx-10" style="background-position: 50%; background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/146.webp');">
+    </div>
+  </div>
+  <%# Avatar/ User details %>
+  <div class="absolute top-0 left-16">
+    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-full outline outline-yellow w-28 mt-28"/>
+    <div class="pl-32">
+      <h1 class="text-xl text-white -mt-24"><%= current_user.first_name%> <%= current_user.last_name%></h1>
+      <p class="text-base mt-2 break-words">I'm a 29 year old guy from Iberian peninsula looking for adventure in China</p>
+      <h3 class="text-sm"><small>Hiking, Kitesurfing, Industrial Climbing</small></h3>
+    </div>
+  </div>
+  <%# Icons %>
+  <div class="absolute bottom-8 left-48 text-white">
+      <a href=""><i class="fa-solid fa-thumbs-up hover:text-yellow text-2xl mr-2"></i></a>
+      <a href=""><i class="fa-solid fa-flag hover:text-red-700 text-xl mr-2"></i></a>
+      <%= link_to edit_user_registration_path do %>
+        <i class="fa-solid fa-user-pen hover:text-yellow text-xl"></i>
+      <% end %>
+  </div>
+  <%# Button %>
+  <div class="absolute top-0 right-12">
+    <%= link_to new_trip_path do %>
+      <button type="button" class="mt-28 mr-4 inline-block h-10 px-4 py-2.5 bg-yellow text-darkblue font-bold text-xs leading-tight rounded-lg">
+        Create A New Trip
+      </button>
+    <% end %>
+  </div>
+</div>
+</div>
+
+<%# Photos %>
+<div class="container grid grid-cols-2 gap-y-10 gap-x-10 px-10 -mt-36">
+  <div>
+    <p class="text-xl font-bold -mb-8">Photos</p>
+    <div class="container">
+      <profile-photos-swiper :images="<%= @images.to_json %>" />
+      <profile-photos-swiper :text/>
+    </div>
+  </div>
+
+<%# My Trips %>
+  <div>
+    <p class="text-xl font-bold -mb-8">My Trips</p>
+    <div class="container">
+      <a href="">
+        <profile-photos-swiper :images="<%= @images.to_json %>" />
+      </a>
+    </div>
+  </div>
+
+<%# Previous Trips cards %>
+  <div>
+    <p class="text-xl font-bold -mb-8">Previous Trips</p>
+    <div class="container">
+      <a href="">
+        <profile-photos-swiper :images="<%= @images.to_json %>" />
+      </a>
+    </div>
+  </div>
+
+<%# Upcoming Trips %>
+  <div>
+    <p class="text-xl font-bold -mb-8">Upcoming Trips</p>
+    <div class="container">
+      <a href="">
+        <profile-photos-swiper :images="<%= @images.to_json %>" />
+      </a>
+    </div>
+  </div>
+</div>
