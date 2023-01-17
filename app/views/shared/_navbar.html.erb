@@ -4,7 +4,7 @@
     <%= link_to root_path do %>
       <div class="flex items-center">
         <div class="m-3 flex h-16 w-16 items-center">
-          <img src="/assets/logo.png" alt="">
+          <%= image_tag "logo.png" %>
           <div class="m-3">
             <h1 class="logo text-yellow text-6xl">Compas</h1>
           </div>
@@ -25,7 +25,7 @@
       <% else %>
         <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="" type="button">
           <span class="sr-only"></span>
-          <img class="w-14 h-12" src="/assets/bars.png" alt="menu">
+          <%= image_tag "bars.png", class: "w-14 h-12" %>
         </button>
       <% end %>
       <!-- Dropdown menu -->
