@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>COMPAS</title>
+    <title>Compas</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'application' %>
-    <%# <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script> %>
+    <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -23,23 +23,15 @@
 
       Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
     -->
-
     <%# <link href="/dist/output.css" rel="stylesheet"> %>
-
   </head>
   <body>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-
-
-
-    <div class="flex flex-col">
-      <%= render "shared/navbar" unless @disable_nav %>
+    <div class="flex flex-col h-screen">
       <div id="vue">
         <%= yield %>
       </div>
-      <%= render "shared/footer" unless @disable_nav %>
-
     </div>
     <%= render "shared/footer" %>
   </body>
