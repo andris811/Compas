@@ -1,4 +1,5 @@
 import "./main.scss";
+import "tw-elements";
 
 // import { createApp } from "vue";
 // // import Home from "../components/views/Home.vue";
