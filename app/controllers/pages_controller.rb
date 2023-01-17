@@ -15,4 +15,5 @@ class PagesController < ApplicationController
     @images = []
     5.times { @images << image }
   end
+
 end
