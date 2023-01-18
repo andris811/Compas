@@ -1,54 +1,59 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
+
+<h2 class="text-darkblue uppercase">Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
   data: {turbo: false}) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.input_field :first_name, autofocus: true, autocomplete: "first-name" %>
+  <div class="field mt-4">
+    <%= f.label :first_name, class: "text-base text-gray-600"%><br />
+    <%= f.input_field :first_name, autofocus: true, autocomplete: "first-name", class: "rounded-md border-transparent	drop-shadow"%>
   </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.input_field :last_name, autofocus: true, autocomplete: "last-name" %>
+  <div class="field mt-4">
+    <%= f.label :last_name, class: "text-base text-gray-600" %><br />
+    <%= f.input_field :last_name, autofocus: true, autocomplete: "last-name", class: "rounded-md border-transparent	drop-shadow" %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field mt-4">
+    <%= f.label :email, class: "text-base text-gray-600" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded-md border-transparent	drop-shadow" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="field mt-4">
+    <%= f.label :password, class: "text-base text-gray-600" %> <i class="text-sm text-gray-500">(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "rounded-md border-transparent	drop-shadow" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em class="text-sm"><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field mt-2">
+    <%= f.label :password_confirmation, class: "text-base text-gray-600" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "rounded-md border-transparent	drop-shadow" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <div class="field mt-4">
+    <%= f.label :current_password, class: "text-base text-gray-600" %><br><i class="text-sm text-gray-500">(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "rounded-md border-transparent	drop-shadow" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: "mt-6 btn w-48 px-6 py-2.5 bg-yellow text-darkblue font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<div>
+<h3 class="mt-10 text-2xl">Cancel Account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p class="text-base">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,  class: "mt-2 btn w-52 px-6 py-2.5 bg-yellow text-darkblue text-sm leading-tight uppercase rounded shadow-md"%></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class: "btn bg-white border border-yellow text-darkblue text-sm font-bold leading-tight rounded shadow-md" %>
+
+</div>
