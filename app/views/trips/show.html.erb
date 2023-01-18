@@ -1,6 +1,6 @@
 <div class="container">
   <div class="grid grid-cols-2">
-    <div class="mr-12 rounded relative" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg'); background-size: cover; ">
+    <div class="mr-12 rounded relative -z-10" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg'); background-size: cover; ">
       <div class="content-end mb-4">
         <h2 class="w-1/4 h-96">
         Trip to
@@ -31,47 +31,33 @@
   </div>
 
 
-  <div class="border-2 rounded-2xl border-black mt-10 shadow-lg ">
+  <div class="rounded-2xl  mt-10 ">
     <h3 class="ml-4 text-slate-400 text-base">Date</h3>
     <div class="flex pb-8 ml-4 ">
     <%# left %>
-      <div class="mr-48 w-1/2">
+      <div class="mr-24 w-1/2">
 
       <%# tabs %>
-        <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
-            <ul class="flex flex-wrap -mb-px">
-                <li class="mr-2">
-                    <a href="1" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">About</a>
-                </li>
-                <li class="mr-2">
-                    <a href="2" class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">Comment</a>
-                </li>
-            </ul>
+
+        <div class="tabs">
+          <input type="radio" class="tabs__radio" name="tab-" id="tab1" checked>
+          <label for="tab1" class="tabs__label">About</label>
+          <div class="tabs__content">
+            <h2 class><%= @trip.trip_name %></h2>
+            <h3 class="text-sm"><%= @trip.description %></h3>
+          </div>
+
+         <input type="radio" class="tabs__radio" name="tab-" id="tab2" >
+          <label for="tab2" class="tabs__label">Comment</label>
+          <div class="tabs__content">
+            <h2 class>Hello</h2>
+            <h3 class="text-sm">Hello</h3>
+          </div>
         </div>
-
-
-<%# tab one %>
-      <div id="1">
-        <h2 class><%= @trip.trip_name %></h2>
-        <h3 class="text-sm"><%= @trip.description %></h3>
-
-      </div>
-
-
-<%# tab 2 %>
-      <div id="2">
-        <h2 class>Hello</h2>
-        <h3 class="text-sm">Hello</h3>
-
-      </div>
-
-
-
-
       </div>
 
     <%# right %>
-      <div class="ml-48 mb-4">
+      <div class="ml-24 mb-4">
         <h3 class="text-base">Organized by:</h3>
         <div class="flex mb-14 mt-4">
           <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; border-color: #eeba0b; border-width: medium;" alt="" loading="lazy"  />
