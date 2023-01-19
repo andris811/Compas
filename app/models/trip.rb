@@ -21,6 +21,7 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
+#
 class Trip < ApplicationRecord
 
   belongs_to :user

@@ -3,21 +3,23 @@
 <div class="container">
   <div class="grid grid-cols-2">
     <div class="mr-12 rounded relative -z-10" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg'); background-size: cover; ">
-      <div class="content-end mb-4">
-        <h2 class="w-1/4 h-96">
+      <div class="content-end mb-4 ml-2 ">
+        <h2 class="w-1/4 h-96 text-white">
         Trip to
           <%= @trip.trip_name %>
           <%# <img class="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt=""> %>
         </h2>
         <%# <h2 class=""> %>
           <%# <%= link_to "Apply" %>
-          <a href="#" class="bg-yellow py-2 px-8 ml-4 rounded shadow-md active:shadow-lg transition duration-150 ease-in-out" ><h3 class="uppercase text-darkblue text-md ml-2">Apply</h3></a>
+          <div class="absolute left-2 bottom-6 mb-2 ">
+            <a href="#" class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Apply</strong></a>
+          </div>
         <%# </h2> %>
       </div>
       <%# <div> %>
 
-      <div class="absolute right-2 bottom-2">
-          <div class="rounded-full px-3 text-center py-2 mb-3 mt-3 gap-2"><h3 class="text-sm text-white">tag.1st</h3></div>
+      <div class="absolute right-4 bottom-6">
+          <div class="rounded-full px-3 text-center bg-yellow py-2 mt-3 gap-2"><h3 class="text-sm text-white">tag.1st</h3></div>
       </div>
 
       <%# </div> %>
@@ -51,11 +53,11 @@
          <input type="radio" class="tabs__radio" name="tab-" id="tab2" >
           <label for="tab2" class="tabs__label">Comment</label>
           <div class="tabs__content">
-            <h2 class>User.name</h2>
+            <h2 class="text-2xl"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h2>
             <form action="" class="w-full">
               <label for="Comment">Write your comment here</label><br>
               <input type="text" id="Comment" name="Comment" class="w-full h-40"><br>
-                <input type="submit" value="Submit" class="p-2 mt-4 ml-2 bg-yellow rounded-xl ">
+                <input type="submit" value="Submit" class="p-2 mt-4 ml-2 bg-yellow rounded-xl cursor-pointer">
             </form>
           comments.all show here
           </div>
@@ -67,7 +69,7 @@
         <h3 class="text-base">Organized by:</h3>
         <div class="flex mb-14 mt-4">
           <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; border-color: #eeba0b; border-width: medium;" alt="" loading="lazy"  />
-          <h3 class="ml-2 mt-3 text-lg"><%= @trip.organizer.first_name %> <%= @trip.organizer.last_name %></h3>
+          <h3 class="ml-2 mt-3 text-lg"><%= @trip.organizer.first_name.capitalize %> <%= @trip.organizer.last_name.capitalize %></h3>
         </div>
         <h3>Attendees</h3>
 
@@ -79,7 +81,7 @@
                     <% if current_user.id == @trip.organizer.id then %>
         <%# tabs %>
 
-        <div class="tabs shadow-lg rounded-xl">
+        <div class="tabs shadow-lg rounded-xl mt-6 mb-4">
           <input type="radio" class="tabs__radio" name="tab-2" id="tab3" checked>
           <label for="tab3" class="tabs__label mb-2">Requests</label>
           <div class="ml-2 tabs__content">
@@ -108,7 +110,7 @@
           <div class="ml-2 tabs__content">
           <%# list all confirmed %>
             <div>
-                    Attendees.each. do
+                    Attendees.each do
                       <br>
                       <div class="grid grid-cols-3">
                         <div>
@@ -118,7 +120,7 @@
                           Attendee.name_first Attendee.name_last
                         </div>
                         <div>
-                          <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">remove</a>
+                          <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Remove</a>
                         </div>
                       </div>
                     </div>
@@ -127,32 +129,17 @@
 
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <%# if not the organizer %>
-        <% else %>
-          <div>
-            <h2 class="text-base mt-4">people going.each:</h2>
-            <div class="flex mt-4 gap-x-4">
-              <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-              <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-              <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-              <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-            </div>
+      <% else %>
+        <div>
+          <h2 class="text-base mt-4">people going.each:</h2>
+          <div class="flex mt-4 gap-x-4">
+            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
           </div>
+        </div>
         <% end %>
 
       </div>
