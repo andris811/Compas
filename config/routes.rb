@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'pages/profile'
 
   resources :quizzes
+  resources :questions, only: [:index], defaults: { format: :json }
   resources :trips do
     resources :attendees, only: [:new, :create, :update, :destroy]
     resources :messages, only: [:new, :create, :update, :destroy]
