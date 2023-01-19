@@ -1,3 +1,5 @@
+<%@foot = false %>
+
 <div class="container">
   <div class="grid grid-cols-2">
     <div class="mr-12 rounded relative -z-10" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg'); background-size: cover; ">
@@ -9,14 +11,13 @@
         </h2>
         <%# <h2 class=""> %>
           <%# <%= link_to "Apply" %>
-          <a href="#" class="py-2 px-8 ml-4 text-2xl px-6 py-2.5 text-blue-900 font-medium text-lg leading-tight uppercase rounded shadow-md active:shadow-lg transition duration-150 ease-in-out" id="gold">Apply</a>
+          <a href="#" class="bg-yellow py-2 px-8 ml-4 rounded shadow-md active:shadow-lg transition duration-150 ease-in-out" ><h3 class="uppercase text-darkblue text-md ml-2">Apply</h3></a>
         <%# </h2> %>
       </div>
       <%# <div> %>
 
       <div class="absolute right-2 bottom-2">
-          <div id="gold" class="bg-blue-500 rounded-full px-3 text-center py-2 mb-3 mt-3 gap-2"><h3 class="text-sm">tag.1st</h3></div>
-
+          <div class="rounded-full px-3 text-center py-2 mb-3 mt-3 gap-2"><h3 class="text-sm text-white">tag.1st</h3></div>
       </div>
 
       <%# </div> %>
@@ -31,7 +32,7 @@
   </div>
 
 
-  <div class="rounded-2xl  mt-10 ">
+  <div class="rounded-2xl mt-10 ">
     <h3 class="ml-4 text-slate-400 text-base">Date</h3>
     <div class="flex pb-8 ml-4 ">
       <%# left %>
@@ -66,18 +67,93 @@
         <h3 class="text-base">Organized by:</h3>
         <div class="flex mb-14 mt-4">
           <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; border-color: #eeba0b; border-width: medium;" alt="" loading="lazy"  />
-          <h3 class="ml-2 mt-3 text-lg">Joey MacJoejoe</h3>
+          <h3 class="ml-2 mt-3 text-lg"><%= @trip.organizer.first_name %> <%= @trip.organizer.last_name %></h3>
         </div>
+        <h3>Attendees</h3>
 
-        <div>
-          <h2 class="text-base mt-4">people going.each:</h2>
-          <div class="flex mt-4 gap-x-4">
-            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-            <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+
+
+
+
+            <%# If organizer %>
+                    <% if current_user.id == @trip.organizer.id then %>
+        <%# tabs %>
+
+        <div class="tabs shadow-lg rounded-xl">
+          <input type="radio" class="tabs__radio" name="tab-2" id="tab3" checked>
+          <label for="tab3" class="tabs__label mb-2">Requests</label>
+          <div class="ml-2 tabs__content">
+                    <%# List attendees requesting %>
+                    <div>
+                    Attendees.each. do
+                      <br>
+                      <div class="grid grid-cols-3">
+                        <div>
+                          <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full mb-2"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+                        </div>
+                        <div>
+                          Attendee.name_first Attendee.name_last
+                        </div>
+                        <div>
+                          <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a>
+                        </div>
+                      </div>
+                    </div>
+
+
+          </div>
+<%# list attendees confirmed %>
+         <input type="radio" class="tabs__radio" name="tab-2" id="tab4" >
+          <label for="tab4" class="tabs__label mb-2">Confirmed</label>
+          <div class="ml-2 tabs__content">
+          <%# list all confirmed %>
+            <div>
+                    Attendees.each. do
+                      <br>
+                      <div class="grid grid-cols-3">
+                        <div>
+                          <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full mb-2"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+                        </div>
+                        <div>
+                          Attendee.name_first Attendee.name_last
+                        </div>
+                        <div>
+                          <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">remove</a>
+                        </div>
+                      </div>
+                    </div>
+
+
+
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%# if not the organizer %>
+        <% else %>
+          <div>
+            <h2 class="text-base mt-4">people going.each:</h2>
+            <div class="flex mt-4 gap-x-4">
+              <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+              <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+              <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+              <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+            </div>
+          </div>
+        <% end %>
 
       </div>
     </div>

@@ -23,5 +23,7 @@
 #
 class Trip < ApplicationRecord
     belongs_to :user
-
+  def organizer
+    return self.user
+  end
 end
