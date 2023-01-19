@@ -24,9 +24,14 @@
     </div>
 
 
-     <div class="rounded">
-      Photos
+    <div>
+    <%# <button @click="openUploadModal">Upload files</button> %>
+      <%= simple_form_for (@trip) do |f| %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true }, label_html: { class: "upload"} %>
+      <% end %>
+      <output> </output>
+        <%# <% @trip.photos.each do |photo| %>
+          <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <%# <% end %>
     </div>
-
-
 </div>

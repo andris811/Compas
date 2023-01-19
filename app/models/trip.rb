@@ -22,8 +22,13 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Trip < ApplicationRecord
+
+  belongs_to :user
+  has_many_attached :photos
+  
     belongs_to :user
   def organizer
     return self.user
   end
+
 end
