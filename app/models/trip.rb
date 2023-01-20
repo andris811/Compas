@@ -3,11 +3,15 @@
 # Table name: trips
 #
 #  id          :bigint           not null, primary key
+#  activities  :string
+#  country     :string
 #  description :text
 #  end_date    :date
+#  location    :string
 #  max_people  :integer
 #  pets        :boolean
 #  start_date  :date
+#  trip_img    :string           default([]), is an Array
 #  trip_name   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -21,13 +25,11 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-#
 class Trip < ApplicationRecord
 
   belongs_to :user
   has_many_attached :photos
-  
-    belongs_to :user
+
   def organizer
     return self.user
   end

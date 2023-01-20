@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_12_123331) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_20_154007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,6 +105,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_123331) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "activities"
+    t.string "trip_img", default: [], array: true
+    t.string "location"
+    t.string "country"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
@@ -146,11 +150,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_123331) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "users"
     t.string "phone_number"
     t.date "dob"
     t.string "emergency_contact_name"
     t.string "emergency_contact_phone_number"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

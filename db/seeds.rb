@@ -275,16 +275,42 @@ puts 'Cleaning database...'
 Trip.destroy_all
 Answer.destroy_all
 Question.destroy_all
+User.destroy_all
 
+puts "Creating users"
+users = []
+50.times do
+  user = User.create!(
+    email: Faker::Internet.email,
+    password: "12345678",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    phone_number: Faker::PhoneNumber.phone_number,
+    avatar: Faker::LoremFlickr.colorized_image(size: "50x60", search_terms: ['people']),
+  )
+  users << user
+end
 puts 'Creating trips'
 
+
+
 100.times do
+  cnt = countries.sample
+  lct = locations.sample
   Trip.create!(
     trip_name: Faker::Dessert.topping,
     max_people: Faker::Number.between(from: 1, to: 30),
     description: Faker::Quote.matz,
     pets: Faker::Number.between(from: 0, to: 1),
-    user_id: 1
+    user_id: users.sample.id,
+    activities: activities.sample,
+    country: cnt,
+    location: lct,
+    trip_img:[
+      5.times do
+        Faker::LoremFlickr.image(size: "240x360", search_terms: ["#{cnt}, #{lct}"])
+      end
+      ]
   )
 end
 puts 'writing questions...'
