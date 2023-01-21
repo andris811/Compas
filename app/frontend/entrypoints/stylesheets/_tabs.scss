@@ -1,0 +1,35 @@
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  // max-width: 400px;
+}
+
+.tabs__label {
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+.tabs__radio {
+  display: none;
+}
+
+.tabs__content {
+  order: 1;
+  // border-bottom: 3px solid #dddd;
+  line-height: 1.5;
+  display: none;
+  width: 100%;
+}
+
+
+.tabs__radio:checked+.tabs__label {
+  font-weight: bold;
+  border-bottom: 2px solid #091d36;
+  color: #091d36;
+  // transition-duration: .5s;
+}
+
+.tabs__radio:checked+.tabs__label+.tabs__content {
+  display: block;
+
+}

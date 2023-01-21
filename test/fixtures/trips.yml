@@ -3,11 +3,15 @@
 # Table name: trips
 #
 #  id          :bigint           not null, primary key
+#  activities  :string           default([]), is an Array
+#  country     :string
 #  description :text
 #  end_date    :date
+#  location    :string
 #  max_people  :integer
 #  pets        :boolean
 #  start_date  :date
+#  trip_img    :string           default("{}")
 #  trip_name   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

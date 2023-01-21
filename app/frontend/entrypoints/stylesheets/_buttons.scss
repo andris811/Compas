@@ -13,3 +13,13 @@
     @apply bg-red-400 hover:bg-red-600 text-white;
   }
 }
+
+
+.swiper-button-next:after {
+  @apply text-white;
+}
+
+.yellow {
+  background-color: FFD302;
+  color: 091d36;
+}

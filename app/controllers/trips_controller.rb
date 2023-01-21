@@ -6,9 +6,10 @@ class TripsController < ApplicationController
     @trips = Trip.all
 
     @search = params["search"].present? ? params[:search] : nil
+
     if @search.present?
       puts "@search present ? #{@search}"
-      @trips = Trip.where("trip_name ILIKE ? OR description ILIKE ?", "%#{@search}%", "%#{@search}%")
+      @trips = Trip.where("trip_name ILIKE ? OR country ILIKE ?", "%#{@search}%", "%#{@search}%")
     end
   end
 
@@ -50,6 +51,6 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:trip_name, :max_people, :description, :pets, :start_date, :end_date)
+    params.require(:trip).permit(:trip_name, :max_people, :description, :pets, :start_date, :end_date, photos: [])
   end
 end

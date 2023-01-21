@@ -1,1 +1,33 @@
-<%= render 'trips/form' %>
+<div class="container grid grid-cols-2 h-screen">
+    <div class="border-r">
+        <h1 class="uppercase text-4xl mt-8 ml-8 tracking-wide">
+          Create a trip
+        </h1>
+      <div>
+        <%= simple_form_for(@trip) do |f| %>
+          <%= f.input :trip_name, wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: {class:"w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
+          <%= f.input :trip_name, wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: {class:"w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
+          <%= f.input :description, wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: { class: "text-darkblue border outline-darkblue w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
+          <div class="ml-8">
+            <h1 class="uppercase text-2xl mt-8 tracking-wide border-b-2 border-yellow w-96">Categories</h1>
+              <div class="flex flex-wrap w-96">
+                <% 9.times do %>
+                  <button class="btn w-fit mr-2 px-4 py-1.5 bg-yellow rounded-lg mt-2">hiking</button>
+                <% end %>
+              </div>
+          </div>
+          <%= f.submit "CREATE", class: "mt-8 ml-8 btn item-center w-48 bg-yellow text-darkblue font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
+          <% end %>
+      </div>
+
+
+    </div>
+
+
+    <div>
+      <%= simple_form_for (@trip) do |f| %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true, class: "flex flex-col ml-8 mb-4 mt-2"}, label_html: { class: "font-bold upload uppercase text-4xl ml-8 tracking-wide"} %>
+      <% end %>
+      <output></output>
+    </div>
+</div>
