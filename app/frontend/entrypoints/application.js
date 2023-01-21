@@ -45,7 +45,7 @@ function displayImages() {
   let images = "";
   imagesArray.forEach((image, index) => {
     images += `<div class="image">
-                <img src="${URL.createObjectURL(image)}" alt="image" class="grid grid-cols-2 gap-2 w-56 h-56">
+                <img src="${URL.createObjectURL(image)}" alt="image" class="ml-8 w-48 h-48">
                 <span class="deleteImage"
                 >&times;</span>
               </div>`;

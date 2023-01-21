@@ -4,10 +4,12 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.all
-    @search = params["search"].present? ? params[:search][:search] : nil
+
+    @search = params["search"].present? ? params[:search] : nil
+
     if @search.present?
       puts "@search present ? #{@search}"
-      @trips = Trip.where("trip_name ILIKE ? OR description ILIKE ?", "%#{@search}%", "%#{@search}%")
+      @trips = Trip.where("trip_name ILIKE ? OR country ILIKE ?", "%#{@search}%", "%#{@search}%")
     end
   end
 
@@ -22,6 +24,7 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
+    @trip.trip_img = @trip.photos.first.url
     if @trip.save
       redirect_to trip_path(@trip)
     else
