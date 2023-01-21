@@ -48,31 +48,4 @@
   </body>
   <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
 
-  <script>
-  const upload = document.querySelector("#trip_photos")
-  console.log(upload)
-  const output = document.querySelector("output")
-  console.log(output)
-  let imagesArray = []
-  upload.addEventListener("click", (e) => {
-    console.log(e.target.value)
-    e.target.value = null
-  })
-  upload.addEventListener("change", () => {
-    const file = upload.files
-    console.log(file)
-    imagesArray.push(file[0])
-    displayImages()
-  })
-  function displayImages() {
-  let images = ""
-  imagesArray.forEach((image, index) => {
-    images += `<div class="image">
-                <img src="${URL.createObjectURL(image)}" alt="image">
-                <span onclick="deleteImage(${index})">&times;</span>
-              </div>`
-  })
-  output.innerHTML = images
-}
-  </script>
 </html>
