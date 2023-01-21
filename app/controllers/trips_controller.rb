@@ -5,7 +5,7 @@ class TripsController < ApplicationController
   def index
     @trips = Trip.all
 
-    @search = params["search"].present? ? params[:search][:search] : nil
+    @search = params["search"].present? ? params[:search] : nil
     if @search.present?
       puts "@search present ? #{@search}"
       @trips = Trip.where("trip_name ILIKE ? OR description ILIKE ?", "%#{@search}%", "%#{@search}%")
