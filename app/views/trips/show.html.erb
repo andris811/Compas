@@ -3,17 +3,16 @@
 
 <div class="container">
   <div class="grid grid-cols-2">
-    <div class="mr-12 rounded relative -z-10" style="background-image: url(<%= @trip.trip_img %>); background-size: cover; ">
+    <div class="mr-12 rounded relative" style="background-image: url(<%= @trip.trip_img %>); background-size: cover; ">
       <div class="content-end mb-4 ml-2 ">
         <h2 class="w-1/4 h-96 text-white">
-          Trip to
-          <%= @trip.trip_name %>
+          <%= @trip.trip_name %> in <%= @trip.country %>
           <%# <img class="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt=""> %>
         </h2>
-        <%# <h2 class=""> %>
-        <%# <%= link_to "Apply" %>
         <div class="absolute left-2 bottom-6 mb-2 ">
-          <a href="#" class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Apply</strong></a>
+          <%= button_to [@trip, :attendees] do %>
+            <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Apply</strong></p>
+          <% end %>
         </div>
         <%# </h2> %>
       </div>
@@ -26,6 +25,7 @@
       <%# </div> %>
     </div>
     <div class="grid grid-cols-2 ml-4 gap-4">
+
       <% @trip.photos.each do |photo| %>
         <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
       <% end %>
@@ -53,12 +53,28 @@
           <div class="tabs__content">
             <% if (user_signed_in?) then %>
               <h2 class="text-2xl"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h2>
-              <form action="" class="w-full">
-                <label for="Comment">Write your comment here</label><br>
-                <input type="text" id="Comment" name="Comment" class="w-full h-40"><br>
-                <input type="submit" value="Submit" class="p-2 mt-4 ml-2 bg-yellow rounded-xl cursor-pointer">
-              </form>
-              comments.all show here
+              <%# <form action="<%=@trip.id/messages" method="POST" class="w-full">
+                <%# <label for="Comment">Write your comment here</label><br> %>
+                <%# <input type="text" id="Comment" name="Comment" class="w-full h-40"><br> %>
+                <%# <input type="submit" value="Submit" class="p-2 mt-4 ml-2 bg-yellow rounded-xl cursor-pointer"> %>
+              <%# </form> %>
+
+
+              <%= simple_form_for [@trip, @message] do |f| %>
+                <div>
+                  <%= f.input :comment, :as => :text, label: false, input_html: { class:"w-full h-40" } %>
+                </div>
+                <div>
+                <%= f.button :submit, :value => "Send", input_html: { class:"ml-24 bg-yellow py-8 px-12 border-2" } %>
+                </div>
+              <% end %>
+              <div class= "shadow-lg border-2 rounded-xl">
+                <% @trip.messages.each do |message| %>
+                  <h3 class="text-sm mx-4 my-4"><%= message.user.first_name %></h3>
+                  <h3 class="text-xs mx-6  my-4" ><%= message.comment %></h3>
+              <% end %>
+              </div>
+
             <% else %>
               You need to log in to see the comments
             <% end %>
@@ -69,7 +85,7 @@
       <div class="ml-24 mb-4">
         <h3 class="text-base">Organized by:</h3>
         <div class="flex mb-14 mt-4">
-          <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; border-color: #eeba0b; border-width: medium;" alt="" loading="lazy"  />
+          <img src= <%= @trip.organizer.avatar %> class="rounded-full"  style="height: 64px; width: 64px; border-color: #eeba0b; border-width: medium;" alt="" loading="lazy"  />
           <h3 class="ml-2 mt-3 text-lg"><%= @trip.organizer.first_name.capitalize %> <%= @trip.organizer.last_name.capitalize %></h3>
         </div>
         <h3>Attendees</h3>
@@ -127,12 +143,11 @@
             <%# if not the organizer %>
           <% else %>
             <div>
-              <h2 class="text-base mt-4">people going.each:</h2>
+              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> person are going </h2>
               <div class="flex mt-4 gap-x-4">
-                <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-                <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-                <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
-                <a href=""><img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+                <% @trip.attendees.each do |attendee| %>
+                  <a href=""><img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+                <% end %>
               </div>
             </div>
           <% end %>
