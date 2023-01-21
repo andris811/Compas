@@ -15,21 +15,45 @@ class TripsController < ApplicationController
 
   def show
     @message = Message.new
+
   end
 
   def new
     @trip = Trip.new
+    @activities = [
+      ['surfing'],
+      ['hiking'],
+      ['kayaking'],
+      ['diving'],
+      ['racing'],
+      ['climbing'],
+      ['skydiving'],
+      ['partying'],
+      ['meditation'],
+      ['volunteering'],
+      ['wine tasting'],
+      ['fishing'],
+      ['hunting'],
+      ['other']
+    ]
   end
 
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
     @trip.trip_img = @trip.photos.first.url
+    if @trip.photos.length < 5
+      render :new, status: 422
+      return
+    end
+
     if @trip.save
       redirect_to trip_path(@trip)
     else
       render :new, status: 422
     end
+
+
   end
 
   def edit; end
@@ -54,6 +78,6 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:trip_name, :max_people, :description, :pets, :start_date, :end_date, photos: [])
+    params.require(:trip).permit(:trip_name, :max_people, :description, :pets, :location, :start_date, :end_date, photos: [], activities: [])
   end
 end

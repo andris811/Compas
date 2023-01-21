@@ -10,8 +10,8 @@
       <img class="rounded-full outline outline-yellow w-28 mt-28 bg-white" src=<%= current_user.avatar %> >
       <div class="pl-32">
         <h1 class="text-xl text-white -mt-24"><%= current_user.first_name %> <%= current_user.last_name %></h1>
-        <p class="text-base mt-2 break-words">I am a 29 year old guy from Iberian peninsula looking for adventure in China</p>
-        <h3 class="text-sm"><small>Hiking, Kitesurfing, Industrial Climbing</small></h3>
+        <p class="text-base mt-2 break-words"> <%= current_user.email %></p>
+        <h3 class="text-sm"><small><%= current_user.phone_number %></small></h3>
       </div>
     </div>
     <%# Icons %>
