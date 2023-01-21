@@ -1,7 +1,6 @@
-<%@foot = false %>
 <div class="container">
   <div class="grid grid-cols-2">
-    <div class="mr-12 rounded relative -z-10" style="background-image: url('<%= @trip.trip_img.first %>'); background-size: cover; ">
+    <div class="mr-12 rounded relative -z-10" style="background-image: url(<%= @trip.trip_img %>); background-size: cover; ">
       <div class="content-end mb-4 ml-2 ">
         <h2 class="w-1/4 h-96 text-white">
           Trip to
