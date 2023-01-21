@@ -1,5 +1,5 @@
 <%# banner and search %>
-<div class="flex justify-center bg-blue-800 h-96 bg-cover bg-center p-48" style="background-image: url(https://chopra.brightspotcdn.com/dims4/default/5a343c1/2147483647/strip/true/crop/533x300+55+0/resize/1200x675!/quality/90/?url=http%3A%2F%2Fchopra-brightspot.s3.amazonaws.com%2F61%2Fcc%2F9b0ff8c8aaba0ff21eafee50293c%2F6reasonswhytravelingisgoodforyou.jpg)">
+<div class="flex justify-center bg-blue-800 h-96 bg-cover bg-center p-48" style="background-image: url(https://images.unsplash.com/photo-1521292270410-a8c4d716d518?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)">
   <div class="relative">
     <div class="flex justify-center w-full">
       <div class="p-8 rounded-xl bg-white shadow-xl absolute top-32 w-max">
@@ -55,9 +55,11 @@
         </div>
       <% end %>
       <div class="grid grid-cols-4">
-        <div class="bg-blue-500 rounded-full px-3 text-center py-2 mb-3 mt-3 gap-2">
-          <h3 class="text-sm">tag.1st</h3>
-        </div>
+        <% trip.activities.each do |activity| %>
+          <div class="bg-blue-500 rounded-full px-3 text-center py-2 mb-3 mt-3 gap-2 ">
+            <h4 class="text-sm font-bold"><%= activity %></h4>
+          </div>
+        <% end %>
       </div>
       <p class="text-base leading-relaxed mt-2"><%= trip.description %></p>
     </div>
