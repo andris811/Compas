@@ -302,7 +302,7 @@ puts 'Creating trips'
     description: Faker::Quote.matz,
     pets: Faker::Number.between(from: 0, to: 1),
     user_id: users.sample.id,
-    activities: activities.sample,
+    activities: activities.sample(2),
     country: cnt,
     location: lct,
     trip_img: Faker::LoremFlickr.image(size: "475x475", search_terms: [cnt.split[0..2].join('')])

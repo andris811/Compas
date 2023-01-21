@@ -3,7 +3,7 @@
 # Table name: trips
 #
 #  id          :bigint           not null, primary key
-#  activities  :string
+#  activities  :string           default([]), is an Array
 #  country     :string
 #  description :text
 #  end_date    :date

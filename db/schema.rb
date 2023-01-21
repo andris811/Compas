@@ -109,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_021151) do
     t.string "trip_img", default: "{}"
     t.string "location"
     t.string "country"
+    t.string "activities", default: [], array: true
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
