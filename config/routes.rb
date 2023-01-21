@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :questions, only: [:index], defaults: { format: :json }
   resources :trips do
     resources :attendees, only: [:new, :create, :update, :destroy]
-    resources :messages, only: [:new, :create, :update, :destroy]
+    resources :messages, only: [ :create, :update, :destroy]
   end
 
   # resources :users do

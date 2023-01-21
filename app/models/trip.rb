@@ -28,6 +28,7 @@
 class Trip < ApplicationRecord
 
   belongs_to :user
+  has_many :messages
   has_many_attached :photos
 
   def organizer
