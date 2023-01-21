@@ -301,11 +301,15 @@ puts 'Creating trips'
     max_people: Faker::Number.between(from: 1, to: 30),
     description: Faker::Quote.matz,
     pets: Faker::Number.between(from: 0, to: 1),
+    start_date: Faker::Date.forward(days: 7),
+    end_date: Faker::Date.forward(days: 20),
     user_id: users.sample.id,
-    activities: activities.sample(2),
+    activities: activities.sample(rand(1..4)),
     country: cnt,
     location: lct,
-    trip_img: Faker::LoremFlickr.image(size: "475x475", search_terms: [cnt.split[0..2].join('')])
+    trip_img: Faker::LoremFlickr.image(size: "475x475", search_terms: [cnt.split[0..2].join('')]),
+    start_date: Faker::Date.forward(days: 7),
+    end_date: Faker::Date.forward(days: 20)
   )
 end
 puts 'writing questions...'
