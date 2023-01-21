@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="grid grid-cols-2">
-    <div class="mr-12 rounded relative -z-10" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg'); background-size: cover; ">
+    <div class="mr-12 rounded relative -z-10" style="background-image: url('<%= @trip.trip_img.first %>'); background-size: cover; ">
       <div class="content-end mb-4 ml-2 ">
         <h2 class="w-1/4 h-96 text-white">
         Trip to
@@ -19,7 +19,9 @@
       <%# <div> %>
 
       <div class="absolute right-4 bottom-6">
-          <div class="rounded-full px-3 text-center bg-yellow py-2 mt-3 gap-2"><h3 class="text-sm text-white">tag.1st</h3></div>
+        <% @trip.activities.each do |tag|  %>
+          <div class="rounded-full px-3 text-center bg-yellow py-2 mt-3 gap-2"><h3 class="text-sm text-white"> <%= tag %> </h3></div>
+        <% end %>
       </div>
 
       <%# </div> %>
@@ -35,7 +37,7 @@
 
 
   <div class="rounded-2xl mt-10 ">
-    <h3 class="ml-4 text-slate-400 text-base">Date</h3>
+    <h3 class="ml-4 text-slate-400 text-base"> <%= @trip.start_date %> - <%= @trip.end_date %>  </h3>
     <div class="flex pb-8 ml-4 ">
       <%# left %>
       <div class="mr-24 w-1/2">

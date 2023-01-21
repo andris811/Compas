@@ -303,9 +303,11 @@ puts 'Creating trips'
     description: Faker::Quote.matz,
     pets: Faker::Number.between(from: 0, to: 1),
     user_id: users.sample.id,
-    activities: activities.sample,
+    activities: activities.sample(2),
     country: cnt,
     location: lct,
+    start_date: Faker::Date.forward(days: 7),
+    end_date: Faker::Date.forward(days: 20),
     trip_img:[
       5.times do
         Faker::LoremFlickr.image(size: "240x360", search_terms: ["#{cnt}, #{lct}"])
