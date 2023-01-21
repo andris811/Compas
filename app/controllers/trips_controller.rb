@@ -7,7 +7,7 @@ class TripsController < ApplicationController
     @search = params["search"].present? ? params[:search][:search] : nil
     if @search.present?
       puts "@search present ? #{@search}"
-      @trips = Trip.where("trip_name ILIKE ? OR description ILIKE ?", "%#{@search}%", "%#{@search}%")
+      @trips = Trip.where("trip_name ILIKE ? OR country ILIKE ?", "%#{@search}%", "%#{@search}%")
     end
   end
 
