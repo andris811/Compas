@@ -1,5 +1,5 @@
 <div class="container grid grid-cols-2 h-screen">
-    <div class="rounded border-r">
+    <div class="border-r">
         <h1 class="uppercase text-4xl mt-8 ml-8 tracking-wide">
           Create a trip
         </h1>
@@ -25,13 +25,9 @@
 
 
     <div>
-    <%# <button @click="openUploadModal">Upload files</button> %>
       <%= simple_form_for (@trip) do |f| %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true }, label_html: { class: "upload"} %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true, class: "flex flex-col ml-8 mb-4 mt-2"}, label_html: { class: "font-bold upload uppercase text-4xl ml-8 tracking-wide"} %>
       <% end %>
-      <output> </output>
-        <%# <% @trip.photos.each do |photo| %>
-          <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <%# <% end %>
+      <output></output>
     </div>
 </div>

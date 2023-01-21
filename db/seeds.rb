@@ -301,6 +301,8 @@ puts 'Creating trips'
     max_people: Faker::Number.between(from: 1, to: 30),
     description: Faker::Quote.matz,
     pets: Faker::Number.between(from: 0, to: 1),
+    start_date: Faker::Date.forward(days: 7),
+    end_date: Faker::Date.forward(days: 20),
     user_id: users.sample.id,
     activities: activities.sample(rand(1..4)),
     country: cnt,
