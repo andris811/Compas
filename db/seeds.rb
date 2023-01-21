@@ -269,6 +269,8 @@ activities = [
 ]
 
 puts 'Cleaning database...'
+Attendee.destroy_all
+Message.destroy_all
 Trip.destroy_all
 Answer.destroy_all
 Question.destroy_all
@@ -276,6 +278,15 @@ User.destroy_all
 
 puts "Creating users"
 users = []
+default_user = User.create!(
+  email: "vargan89@gmail.com",
+  password: "12345678",
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  phone_number: 13646667150,
+  avatar: Faker::Avatar.image
+)
+users << default_user
 50.times do
   user = User.create!(
     email: Faker::Internet.email,
@@ -288,10 +299,8 @@ users = []
   )
   users << user
 end
+
 puts 'Creating trips'
-
-
-
 100.times do
   cnt = countries.sample
   lct = locations.sample
