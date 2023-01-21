@@ -30,6 +30,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   has_many :messages
   has_many_attached :photos
+  has_many :attendees
 
   def organizer
     return self.user
