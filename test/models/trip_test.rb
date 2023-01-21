@@ -11,7 +11,7 @@
 #  max_people  :integer
 #  pets        :boolean
 #  start_date  :date
-#  trip_img    :string           default([]), is an Array
+#  trip_img    :string           default("{}")
 #  trip_name   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

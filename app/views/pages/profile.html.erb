@@ -7,10 +7,10 @@
   </div>
   <%# Avatar/ User details %>
     <div class="absolute top-0 left-16">
-      <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-full outline outline-yellow w-28 mt-28"/>
+      <img class="rounded-full outline outline-yellow w-28 mt-28 bg-white" src=<%= current_user.avatar %> >
       <div class="pl-32">
-        <h1 class="text-xl text-white -mt-24"><%= current_user.first_name%> <%= current_user.last_name%></h1>
-        <p class="text-base mt-2 break-words">I'm a 29 year old guy from Iberian peninsula looking for adventure in China</p>
+        <h1 class="text-xl text-white -mt-24"><%= current_user.first_name %> <%= current_user.last_name %></h1>
+        <p class="text-base mt-2 break-words">I am a 29 year old guy from Iberian peninsula looking for adventure in China</p>
         <h3 class="text-sm"><small>Hiking, Kitesurfing, Industrial Climbing</small></h3>
       </div>
     </div>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="modal-body relative p-4">
-                  <p class="text-darkblue text-center text-lg">Thank you for looking out for yourself and our community by reporting users who break our rules. <br> Let us know what’s happening and we’ll look into it.</p>
+                  <p class="text-darkblue text-center text-lg">Thank you for looking out for yourself and our community by reporting users who break our rules. <br> Let us know what is happening and we will look into it.</p>
                   <%#= simple_form_for [@user, @user_flag] do |f| %>
                   <%= simple_form_for UserFlag.new do |f| %>
                     <%= f.input :comment, placeholder: "Tell us why you think this user is violating our community guidelines.", required: true, wrapper_html: { class: "mt-10 px-8 w-full" }, input_html: { class: "text-darkblue border outline-darkblue w-full"} %>
