@@ -286,7 +286,8 @@ users = []
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     phone_number: Faker::PhoneNumber.phone_number,
-    avatar: Faker::LoremFlickr.colorized_image(size: "50x60", search_terms: ['people']),
+    avatar: Faker::Avatar.image
+    # avatar: Faker::LoremFlickr.image(size: "300x300", search_terms: ['people', 'avatar']),
   )
   users << user
 end
