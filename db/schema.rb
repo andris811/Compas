@@ -105,7 +105,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_021151) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "activities"
     t.string "trip_img", default: "{}"
     t.string "location"
     t.string "country"
