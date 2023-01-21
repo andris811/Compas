@@ -11,7 +11,9 @@ class TripsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @message = Message.new
+  end
 
   def new
     @trip = Trip.new
