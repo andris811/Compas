@@ -1,6 +1,4 @@
-
 <%@foot = true %>
-
 <div class="container">
   <div class="grid grid-cols-2">
     <div class="mr-12 rounded relative" style="background-image: url(<%= @trip.trip_img %>); background-size: cover; ">
@@ -19,17 +17,18 @@
       <%# <div> %>
       <div class="absolute right-4 bottom-6">
         <% @trip.activities.each do |tag|  %>
-          <div class="rounded-full px-3 text-center bg-yellow py-2 mt-3 gap-2"><h3 class="text-sm text-white"> <%= tag %> </h3></div>
+          <div class="rounded-full px-3 text-center bg-yellow py-2 mt-3 gap-2">
+            <h3 class="text-sm text-white"> <%= tag %> </h3>
+          </div>
         <% end %>
       </div>
       <%# </div> %>
     </div>
     <div class="grid grid-cols-2 ml-4 gap-4">
-
       <% @trip.photos.each do |photo| %>
         <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
       <% end %>
-        <%# # <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
+      <%# # <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
         # <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
         # <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
         # <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt=""> %>
@@ -55,26 +54,23 @@
               <h2 class="text-2xl"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h2>
               <%# <form action="<%=@trip.id/messages" method="POST" class="w-full">
                 <%# <label for="Comment">Write your comment here</label><br> %>
-                <%# <input type="text" id="Comment" name="Comment" class="w-full h-40"><br> %>
-                <%# <input type="submit" value="Submit" class="p-2 mt-4 ml-2 bg-yellow rounded-xl cursor-pointer"> %>
+              <%# <input type="text" id="Comment" name="Comment" class="w-full h-40"><br> %>
+              <%# <input type="submit" value="Submit" class="p-2 mt-4 ml-2 bg-yellow rounded-xl cursor-pointer"> %>
               <%# </form> %>
-
-
               <%= simple_form_for [@trip, @message] do |f| %>
                 <div>
                   <%= f.input :comment, :as => :text, label: false, input_html: { class:"w-full h-40" } %>
                 </div>
                 <div>
-                <%= f.button :submit, :value => "Send", input_html: { class:"ml-24 bg-yellow py-8 px-12 border-2" } %>
+                  <%= f.button :submit, :value => "Send", input_html: { class:"ml-24 bg-yellow py-8 px-12 border-2" } %>
                 </div>
               <% end %>
               <div class= "shadow-lg border-2 rounded-xl">
                 <% @trip.messages.each do |message| %>
                   <h3 class="text-sm mx-4 my-4"><%= message.user.first_name %></h3>
                   <h3 class="text-xs mx-6  my-4" ><%= message.comment %></h3>
-              <% end %>
+                <% end %>
               </div>
-
             <% else %>
               You need to log in to see the comments
             <% end %>
@@ -85,8 +81,10 @@
       <div class="ml-24 mb-4">
         <h3 class="text-base">Organized by:</h3>
         <div class="flex mb-14 mt-4">
-          <img src= <%= @trip.organizer.avatar %> class="rounded-full"  style="height: 64px; width: 64px; border-color: #eeba0b; border-width: medium;" alt="" loading="lazy"  />
-          <h3 class="ml-2 mt-3 text-lg"><%= @trip.organizer.first_name.capitalize %> <%= @trip.organizer.last_name.capitalize %></h3>
+          <%= link_to user_path(@trip.organizer.id) do %>
+            <img src= <%= @trip.organizer.avatar %> class="rounded-full"  style="height: 64px; width: 64px; border-color: #eeba0b; border-width: medium;" alt="" loading="lazy"  />
+            <h3 class="ml-2 mt-3 text-lg"><%= @trip.organizer.first_name.capitalize %> <%= @trip.organizer.last_name.capitalize %></h3>
+          <% end %>
         </div>
         <h3>Attendees</h3>
         <%# If signed in %>
@@ -99,23 +97,23 @@
               <label for="tab3" class="tabs__label mb-2">Requests</label>
               <div class="ml-2 tabs__content">
                 <%# List attendees requesting %>
-                <div>
-                  Attendees.each. do
-                  <%#
-
-                     %>
-                  <br>
-                  <div class="grid grid-cols-3">
-                    <div>
-                      <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full mb-2"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
-                    </div>
-                    <div>
-                      Attendee.name_first Attendee.name_last
-                    </div>
-                    <div>
-                      <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a>
-                    </div>
-                  </div>
+                <div class="p-2">
+                  <% @trip.attendees.each do |attendee| %>
+                    <% if attendee.approved == false %>
+                      <div class="flex">
+                        <%= link_to user_path(attendee.user.id) do %>
+                          <div>
+                            <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+                            <%= attendee.user.first_name %>
+                            <%= attendee.user.last_name %>
+                          </div>
+                        <% end %>
+                        <div>
+                          <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
               <%# list attendees confirmed %>
@@ -123,20 +121,21 @@
               <label for="tab4" class="tabs__label mb-2">Confirmed</label>
               <div class="ml-2 tabs__content">
                 <%# list all confirmed %>
-                <div>
-                  Attendees.each do
-                  <br>
-                  <div class="grid grid-cols-3">
-                    <div>
-                      <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full mb-2"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
-                    </div>
-                    <div>
-                      Attendee.name_first Attendee.name_last
-                    </div>
-                    <div>
-                      <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Remove</a>
-                    </div>
-                  </div>
+                <div class="grid grid-cols-3 p-2">
+                  <% @trip.attendees.each do |attendee| %>
+                    <% if attendee.approved == true %>
+                      <div class="align-middle">
+                        <a href=""><img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+                      </div>
+                      <div class="align-middle">
+                        <%= attendee.user.first_name %>
+                        <%= attendee.user.last_name %>
+                      </div>
+                      <div class="align-middle">
+                        <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Remove</a>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -146,12 +145,17 @@
               <h2 class="text-base mt-4"> <%= @trip.attendees.count %> person are going </h2>
               <div class="flex mt-4 gap-x-4">
                 <% @trip.attendees.each do |attendee| %>
-                  <a href=""><img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+                  <%= link_to user_path(attendee.user.id) do %>
+                    <div>
+                      <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+                      <%= attendee.user.first_name %>
+                    </div>
+                  <% end %>
                 <% end %>
               </div>
             </div>
           <% end %>
-        <%# If not signed in %>
+          <%# If not signed in %>
         <% else %>
           attendees.count people are going
         <% end %>

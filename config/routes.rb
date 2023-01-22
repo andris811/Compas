@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show]
 
   root to: 'pages#home'
   get 'pages/home'
@@ -12,11 +13,10 @@ Rails.application.routes.draw do
     resources :messages, only: [ :create, :update, :destroy]
   end
 
-  # resources :users do
-    resources :user_flags, only: :create
-  # end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :user_flags, only: :create
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  match 'users/:id' => 'users#show', via: :get
+  # or
+  get 'users/:id' => 'users#show'
+  # or
 end
