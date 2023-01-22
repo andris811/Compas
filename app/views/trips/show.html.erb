@@ -157,7 +157,9 @@
           <% end %>
           <%# If not signed in %>
         <% else %>
-          attendees.count people are going
+          <div>
+              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> people are going </h2>
+            </div>
         <% end %>
       </div>
     </div>
