@@ -15,8 +15,14 @@
           <% end %>
           <%# check if already attending %>
           <% if (user_signed_in?) then %>
+            <% current_user_attendee_id = "" %>
             <% if list.include?(current_user.id) %>
-              <%= button_to [@trip, :attendees], :confirm => "Are you sure?", method: :delete do %>
+              <% @trip.attendees.each do |attendee| %>
+                <% if attendee.user_id == current_user.id %>
+                  <% current_user_attendee_id = attendee.id %>
+                <% end %>
+              <% end %>
+              <%= button_to "/trips/#{@trip.id}/attendees/#{current_user_attendee_id}", confirm: "Are you sure?", method: :delete do %>
                 <%# raise %>
                 <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Cancel</strong></p>
               <% end %>
