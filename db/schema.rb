@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_21_032619) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_23_035756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -100,7 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_032619) do
     t.string "trip_name"
     t.integer "max_people"
     t.text "description"
-    t.boolean "pets"
+    t.boolean "pets", default: true
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false
