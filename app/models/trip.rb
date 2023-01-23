@@ -26,6 +26,15 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Trip < ApplicationRecord
+  validates :trip_name, presence: true
+  validates :description, presence: true
+  validates :max_people,  presence: true
+  validates :activities, presence: true
+  validates :pets, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :photos, presence: true
+  validates :country, presence: true
 
   belongs_to :user
   has_many :messages
