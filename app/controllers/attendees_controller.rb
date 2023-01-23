@@ -15,6 +15,11 @@ class AttendeesController < ApplicationController
     @attendees = Attendee.all
   end
 
+  def destroy
+    @attendee.destroy
+    redirect_to trip_path(@attendee.trip)
+  end
+
   private
 
   def set_attendees
