@@ -8,7 +8,6 @@
           <%# <img class="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt=""> %>
         </h2>
         <div class="absolute left-2 bottom-6 mb-2 ">
-
           <%# make a list of attendees by id %>
           <% list = [] %>
           <% @trip.attendees.each do |attendee| %>
@@ -17,6 +16,7 @@
           <%# check if already attending %>
           <% if (user_signed_in?) then %>
             <% current_user_attendee_id = "" %>
+            <%# cancel attendance button %>
             <% if list.include?(current_user.id) %>
               <% @trip.attendees.each do |attendee| %>
                 <% if attendee.user_id == current_user.id %>
@@ -24,20 +24,19 @@
                 <% end %>
               <% end %>
               <%= button_to "/trips/#{@trip.id}/attendees/#{current_user_attendee_id}", confirm: "Are you sure?", method: :delete do %>
-                <%# raise %>
                 <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Cancel</strong></p>
               <% end %>
+              <%# if you're organizer, doesn't show the apply button %>
+            <% elsif current_user.id == @trip.organizer.id %>
+              <%# apply button for attendees %>
             <% else %>
               <%= button_to [@trip, :attendees] do %>
                 <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Apply</strong></p>
               <% end %>
-
             <% end %>
           <% end %>
         </div>
-        <%# </h2> %>
       </div>
-      <%# <div> %>
       <div class="absolute right-4 bottom-6">
         <% @trip.activities.each do |tag|  %>
           <div class="rounded-full px-3 text-center bg-yellow py-2 mt-3 gap-2">
@@ -45,16 +44,11 @@
           </div>
         <% end %>
       </div>
-      <%# </div> %>
     </div>
     <div class="grid grid-cols-2 ml-4 gap-4">
       <% @trip.photos.each do |photo| %>
         <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
       <% end %>
-      <%# # <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
-        # <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
-        # <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt="">
-        # <img class="rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt=""> %>
     </div>
   </div>
   <div class="rounded-2xl mt-10 ">
