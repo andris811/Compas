@@ -9,7 +9,7 @@
 #  end_date    :date
 #  location    :string
 #  max_people  :integer
-#  pets        :boolean
+#  pets        :boolean          default(TRUE)
 #  start_date  :date
 #  trip_img    :string           default("{}")
 #  trip_name   :string
