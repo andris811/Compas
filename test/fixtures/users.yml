@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                             :bigint           not null, primary key
-#  avatar                         :string
+#  avatar                         :string           default("https://png.pngtree.com/png-clipart/20210915/ourlarge/pngtree-user-avatar-placeholder-png-image_3918418.jpg")
 #  dob                            :date
 #  email                          :string           default(""), not null
 #  emergency_contact_name         :string
