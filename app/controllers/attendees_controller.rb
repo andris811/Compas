@@ -16,8 +16,14 @@ class AttendeesController < ApplicationController
   end
 
   def destroy
+    @attendee.user = current_user
     @attendee.destroy
     redirect_to trip_path(@attendee.trip)
+    # @trip = Trip.find(params[:trip_id])
+    # @attendee = Attendee.find(params[:id])
+    # @attendee.destroy
+
+    # redirect_to trip_path(@attendee.trip)
   end
 
   private

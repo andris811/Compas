@@ -8,22 +8,24 @@
           <%# <img class="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt=""> %>
         </h2>
         <div class="absolute left-2 bottom-6 mb-2 ">
-        <%# make a list of attendees by id %>
-        <% list = [] %>
-        <% @trip.attendees.each do |attendee| %>
-          <% list << attendee.user_id %>
-        <% end %>
-        <%# check if already attending %>
-        <% if list.include?(current_user.id) %>
-          <% button_to @attendees, action: "destroy"  %>
-            <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Cancel</strong></p>
-
-        <% else %>
-
-          <%= button_to [@trip, :attendees] do %>
-            <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Apply</strong></p>
+          <%# make a list of attendees by id %>
+          <% list = [] %>
+          <% @trip.attendees.each do |attendee| %>
+            <% list << attendee.user_id %>
           <% end %>
-        <% end %>
+          <%# check if already attending %>
+          <% if (user_signed_in?) then %>
+            <% if list.include?(current_user.id) %>
+              <%= button_to [@trip, :attendees], :confirm => "Are you sure?", method: :delete do %>
+                <%# raise %>
+                <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Cancel</strong></p>
+              <% end %>
+            <% else %>
+              <%= button_to [@trip, :attendees] do %>
+                <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Apply</strong></p>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
         <%# </h2> %>
       </div>
@@ -52,9 +54,9 @@
       <h3 class="ml-4 text-slate-400 text-base mr-10"> <%= @trip.start_date %> - <%= @trip.end_date %>  </h3>
       <h6 class= "text-sm mr-4  ">Are pets allowed?   </h6>
       <% if @trip.pets == true  %>
-      <i class="fa-solid fa-dog"></i>
+        <i class="fa-solid fa-dog"></i>
       <% else %>
-      <i class="fa-sharp fa-solid fa-ban"></i>
+        <i class="fa-sharp fa-solid fa-ban"></i>
       <% end %>
     </div>
     <div class="flex pb-8 ml-4 ">
@@ -73,11 +75,6 @@
           <div class="tabs__content">
             <% if (user_signed_in?) then %>
               <h2 class="text-2xl"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h2>
-              <%# <form action="<%=@trip.id/messages" method="POST" class="w-full">
-                <%# <label for="Comment">Write your comment here</label><br> %>
-              <%# <input type="text" id="Comment" name="Comment" class="w-full h-40"><br> %>
-              <%# <input type="submit" value="Submit" class="p-2 mt-4 ml-2 bg-yellow rounded-xl cursor-pointer"> %>
-              <%# </form> %>
               <%= simple_form_for [@trip, @message] do |f| %>
                 <div>
                   <%= f.input :comment, :as => :text, label: false, input_html: { class:"w-full h-40" } %>
@@ -179,8 +176,8 @@
           <%# If not signed in %>
         <% else %>
           <div>
-              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> people are going </h2>
-            </div>
+            <h2 class="text-base mt-4"> <%= @trip.attendees.count %> people are going </h2>
+          </div>
         <% end %>
       </div>
     </div>
