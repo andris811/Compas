@@ -10,18 +10,38 @@
         <div class="absolute left-2 bottom-6 mb-2 ">
         <%# make a list of attendees by id %>
         <% list = [] %>
+        <% current =  %>
         <% @trip.attendees.each do |attendee| %>
           <% list << attendee.user_id %>
+          <% if attendee.user_id == current_user.id %>
+             <% current = attendee %>
+          <% end %>
         <% end %>
         <%# check if already attending %>
-        <% if list.include?(current_user.id) %>
-          <% button_to @attendees, action: "destroy"  %>
-            <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Cancel</strong></p>
 
-        <% else %>
+        <% if (user_signed_in?) then %>
+          <% if list.include?(current_user.id) %>
 
-          <%= button_to [@trip, :attendees] do %>
-            <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Apply</strong></p>
+          <%# <%= link_to "Destroy", trip_attendees_path[`trips/#{@trip.id}/attendees/#{current}`], data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+            <%# <%= button_to [@trip, :atteneeds], :method => :delete do %>
+            <%# <%= link_to "Cancel", `trips/#{@trip.id}/attendees/#{current}`, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+            <%# <%= button_to "Hello", "/trips/#{@trip.id}/attendees/#{@attendee.id}", :method => :delete %>
+
+            <%# <%= simple_form_for [@trip, :attendee] do |f| %>
+                <%# <%= f.button :submit, :value => "Cancel", input_html: { class:"ml-24 bg-yellow py-8 px-12 border-2" } %>
+            <%# <%= button_to [@trip, :attendees] do %>
+      <%= button_to "delete", {:controller => :attendees, :action => 'destroy', :id => current.id }, :method => :delete do %>
+              <%# <% end %>
+              <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Cancel</strong></p>
+            <% end %>
+          <% else %>
+
+            <%= button_to [@trip, :attendees] do %>
+              <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Apply</strong></p>
+            <% end %>
           <% end %>
         <% end %>
         </div>
