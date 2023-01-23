@@ -1,10 +1,11 @@
 <%@foot = false %>
 <div class="container">
   <div class="grid grid-cols-2">
-    <div class="mr-12 rounded relative" style="background-image: url(<%= @trip.trip_img %>); background-size: cover; ">
-      <div class="content-end mb-4 ml-2 ">
-        <h2 class="w-1/4 h-96 text-white">
-          <%= @trip.trip_name %> in <%= @trip.location %>
+    <div class="mr-12 rounded relative " style="background-image: url(<%= @trip.trip_img %>); background-size: cover;">
+      <div class="content-end " style="background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,.5));">
+        <h2 class="w-1/4 h-96 text-white ml-2">
+          <%= @trip.trip_name.capitalize %> in <%= @trip.country.capitalize %>
+
           <%# <img class="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Shanghai_-_Pudong_-_Lujiazui.jpg/800px-Shanghai_-_Pudong_-_Lujiazui.jpg" alt=""> %>
         </h2>
         <div class="absolute left-2 bottom-6 mb-2 ">
@@ -69,8 +70,8 @@
           <input type="radio" class="tabs__radio" name="tab-" id="tab1" checked>
           <label for="tab1" class="tabs__label">About</label>
           <div class="tabs__content">
-            <h2 class><%= @trip.trip_name %></h2>
-            <h3 class="text-sm"><%= @trip.description %></h3>
+            <h2 class><%= @trip.trip_name.capitalize %></h2>
+            <h3 class="text-sm"><%= @trip.description.capitalize %></h3>
           </div>
           <input type="radio" class="tabs__radio" name="tab-" id="tab2" >
           <label for="tab2" class="tabs__label">Comment</label>
@@ -162,7 +163,17 @@
             <%# if not the organizer %>
           <% else %>
             <div>
-              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> person are going </h2>
+              <% if @trip.attendees.count == 0 %>
+                <h2 class="text-base mt-4"> Be the first to sign-up! </h2>
+
+              <% elsif @trip.attendees.count == 1  %>
+                <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other person is going </h2>
+
+              <% elsif @trip.attendees.count >= 2 %>
+                <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other people are going </h2>
+              <% end %>
+            </div>
+
               <div class="flex mt-4 gap-x-4">
                 <% @trip.attendees.each do |attendee| %>
                   <%= link_to user_path(attendee.user.id) do %>
@@ -178,8 +189,18 @@
           <%# If not signed in %>
         <% else %>
           <div>
-            <h2 class="text-base mt-4"> <%= @trip.attendees.count %> people are going </h2>
-          </div>
+
+            <% if @trip.attendees.count-1 == 0  %>
+              <h2 class="text-base mt-4"> Be the first to sign-up! </h2>
+
+            <% elsif @trip.attendees.count == 1  %>
+              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other person is going </h2>
+
+            <% elsif @trip.attendees.count >= 2 %>
+              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other people are going </h2>
+            <% end %>
+            </div>
+
         <% end %>
       </div>
     </div>
