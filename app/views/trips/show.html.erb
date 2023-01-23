@@ -1,4 +1,4 @@
-<%@foot = true %>
+<%@foot = false %>
 <div class="container">
   <div class="grid grid-cols-2">
     <div class="mr-12 rounded relative" style="background-image: url(<%= @trip.trip_img %>); background-size: cover; ">
@@ -35,7 +35,15 @@
     </div>
   </div>
   <div class="rounded-2xl mt-10 ">
-    <h3 class="ml-4 text-slate-400 text-base"> <%= @trip.start_date %> - <%= @trip.end_date %>  </h3>
+    <div class="flex">
+      <h3 class="ml-4 text-slate-400 text-base mr-10"> <%= @trip.start_date %> - <%= @trip.end_date %>  </h3>
+      <h6 class= "text-sm mr-4  ">Are pets allowed?   </h6>
+      <% if @trip.pets == true  %>
+      <i class="fa-solid fa-dog"></i>
+      <% else %>
+      <i class="fa-sharp fa-solid fa-ban"></i>
+      <% end %>
+    </div>
     <div class="flex pb-8 ml-4 ">
       <%# left %>
       <div class="mr-24 w-1/2">
