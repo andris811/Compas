@@ -1,16 +1,29 @@
-<h2>Forgot your password?</h2>
+<% @nav = false  %>
+<% @foot = false  %>
+<% @scrollbutton = false %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="flex">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="flex w-1/2 h-screen">
+    <img src="https://images.unsplash.com/photo-1500049242364-5f500807cdd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHRyYXZlbCUyMHdpdGglMjBmcmllbmRzfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=800&q=60">
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+  <div class="grid grid-rows place-content-center ml-48">
+
+    <h2 class="text-darkblue uppercase items-center mb-4 -ml-8 text-2xl">Forgot your password?</h2>
+
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :email, class: "text-base text-gray-600" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded-md border-transparent	drop-shadow" %>
+        </div>
+
+        <div class="actions mt-2">
+          <%= f.submit "Send me reset password instructions", class: "underline text-gray-600 -ml-8 mb-6" %>
+        </div>
+      <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
