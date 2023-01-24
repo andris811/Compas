@@ -98,7 +98,7 @@
         </div>
       </div>
       <%# right %>
-      <div class="ml-24 mb-4">
+      <div class="ml-24 mb-4 w-full h-full">
         <h3 class="text-base">Organized by:</h3>
         <div class="flex mb-14 mt-4">
           <%= link_to user_path(@trip.organizer.id) do %>
@@ -116,6 +116,7 @@
               <input type="radio" class="tabs__radio" name="tab-2" id="tab3" checked>
               <label for="tab3" class="tabs__label mb-2">Requests</label>
               <div class="ml-2 tabs__content">
+
                 <%# List attendees requesting %>
                 <div class="p-2">
                   <% @trip.attendees.each do |attendee| %>
@@ -166,7 +167,7 @@
                 <h2 class="text-base mt-4"> Be the first to sign-up! </h2>
 
               <% elsif @trip.attendees.count == 1  %>
-                <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other person is going </h2>
+                <h2 class="text-base mt-4"> <%= @trip.attendees.count %> person is going </h2>
 
               <% elsif @trip.attendees.count >= 2 %>
                 <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other people are going </h2>
@@ -193,7 +194,7 @@
               <h2 class="text-base mt-4"> Be the first to sign-up! </h2>
 
             <% elsif @trip.attendees.count == 1  %>
-              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other person is going </h2>
+              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> person is going </h2>
 
             <% elsif @trip.attendees.count >= 2 %>
               <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other people are going </h2>
@@ -203,5 +204,6 @@
         <% end %>
       </div>
     </div>
+
   </div>
 </div>
