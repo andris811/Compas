@@ -1,98 +1,109 @@
-<%# Current user profile %>
 <% if current_user.id == @user.id then %>
-  <div class="h-96 bg-transparent">
-    <%# Banner %>
-    <div class="relative">
-      <div class="px-2 flex-wrap">
-        <div class="bg-no-repeat bg-cover bg-center h-40 rounded-t-lg my-10 mx-10" style="background-position: 50%; background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/146.webp');">
+<div class="h-96 bg-transparent">
+  <%# Banner %>
+  <div class="relative">
+    <div class="px-2 flex-wrap">
+      <div class="bg-no-repeat bg-cover bg-center h-40 rounded-t-lg my-10 mx-10" style="background-position: 50%; background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/146.webp');">
+    </div>
+  </div>
+  <%# Avatar/ User details %>
+    <div class="absolute top-0 left-16">
+      <img class="rounded-full outline outline-yellow w-28 mt-28 bg-white" src=<%= current_user.avatar %> >
+      <div class="pl-32">
+        <h1 class="text-xl text-white -mt-24"><%= current_user.first_name %> <%= current_user.last_name %></h1>
+        <p class="text-base mt-2 break-words"> <%= current_user.email %></p>
+        <h3 class="text-sm"><small><%= current_user.phone_number %></small></h3>
       </div>
     </div>
-    <%# Avatar/ User details %>
-      <div class="absolute top-0 left-16">
-        <img class="rounded-full outline outline-yellow w-28 mt-28 bg-white" src=<%= current_user.avatar %> >
-        <div class="pl-32">
-          <h1 class="text-xl text-white -mt-24"><%= current_user.first_name %> <%= current_user.last_name %></h1>
-          <p class="text-base mt-2 break-words"> <%= current_user.email %></p>
-          <h3 class="text-sm"><small><%= current_user.phone_number %></small></h3>
-        </div>
-      </div>
-      <%# Icons %>
-      <div class="absolute bottom-8 left-48 text-white">
+    <%# Icons %>
+    <div class="absolute bottom-8 left-48 text-white">
 
-          <%= link_to edit_user_registration_path do %>
-            <i class="fa-solid fa-user-pen hover:text-yellow text-xl"></i>
-          <% end %>
-      </div>
-      <%# Button %>
-      <div class="absolute top-0 right-12">
-        <%= link_to new_trip_path do %>
-          <button type="button" class="mt-28 mr-4 inline-block h-10 px-4 py-2.5 bg-yellow text-darkblue font-bold text-xs leading-tight rounded-lg">
-            Create A New Trip
-          </button>
+        <%= link_to edit_user_registration_path do %>
+          <i class="fa-solid fa-user-pen hover:text-yellow text-xl"></i>
         <% end %>
-      </div>
+    </div>
+    <%# Button %>
+    <div class="absolute top-0 right-12">
+      <%= link_to new_trip_path do %>
+        <button type="button" class="mt-28 mr-4 inline-block h-10 px-4 py-2.5 bg-yellow text-darkblue font-bold text-xs leading-tight rounded-lg">
+          Create A New Trip
+        </button>
+      <% end %>
+    </div>
   </div>
+</div>
+<%# Photos %>
+<div class="container grid grid-cols-2 gap-y-10 gap-x-10 px-10 -mt-36">
+  <div>
+    <div class="flex justify-between">
+      <p class="text-xl font-bold">Photos</p>
+      <p class="text-base font-bold underline">Upload</p>
+      <%#= simple_form_for current_user do |f| %>
+        <%#= f.input :photos, as: :file, label: false %>
+        <%#= f.submit "SUBMIT" %>
+      <%# end %>
+    </div>
+    <div class="">
+      <profile-photos-swiper :images="<%= @images.to_json %>" />
+    </div>
   </div>
 
-  <%# Photos %>
-  <div class="container grid grid-cols-2 gap-y-10 gap-x-10 px-10 -mt-36">
+<%# My Trips %>
+  <div>
     <div>
-      <p class="text-xl font-bold -mb-8">Photos</p>
-      <div class="container">
+      <p class="text-xl font-bold">My Trips</p>
+    </div>
+    <div class="mt-2">
+      <profile-photos-swiper :images="<%= @images.to_json %>" />
+    </div>
+  </div>
+
+<%# Previous Trips cards %>
+  <div>
+  <div>
+    <p class="text-xl font-bold">Previous Trips</p>
+  </div>
+    <div class="mt-2">
+      <a href="">
         <profile-photos-swiper :images="<%= @images.to_json %>" />
-      </div>
-    </div>
-
-  <%# My Trips %>
-    <div>
-      <p class="text-xl font-bold -mb-8">My Trips</p>
-      <div class="container">
-        <a href="">
-          <profile-photos-swiper :images="<%= @images.to_json %>" />
-        </a>
-      </div>
-    </div>
-
-  <%# Previous Trips cards %>
-    <div>
-      <p class="text-xl font-bold -mb-8">Previous Trips</p>
-      <div class="container">
-        <a href="">
-          <profile-photos-swiper :images="<%= @images.to_json %>" />
-        </a>
-      </div>
-    </div>
-
-  <%# Upcoming Trips %>
-    <div>
-      <p class="text-xl font-bold -mb-8">Upcoming Trips</p>
-      <div class="container">
-        <a href="">
-          <profile-photos-swiper :images="<%= @images.to_json %>" />
-        </a>
-      </div>
+      </a>
     </div>
   </div>
-<%# Other users profile %>
+
+<%# Upcoming Trips %>
+  <div>
+  <div>
+    <p class="text-xl font-bold">Upcoming Trips</p>
+  </div>
+    <div class="mt-2">
+      <a href="">
+        <profile-photos-swiper :images="<%= @images.to_json %>" />
+      </a>
+    </div>
+  </div>
+</div>
+
 <% else %>
+<%# Current user profile %>
+  <%# Other users profile %>
   <div class="h-96 bg-transparent">
-    <%# Banner %>
-    <div class="relative">
-      <div class="px-2 flex-wrap">
-        <div class="bg-no-repeat bg-cover bg-center h-40 rounded-t-lg my-10 mx-10" style="background-position: 50%; background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/146.webp');">
+  <%# Banner %>
+  <div class="relative">
+    <div class="px-2 flex-wrap">
+      <div class="bg-no-repeat bg-cover bg-center h-40 rounded-t-lg my-10 mx-10" style="background-position: 50%; background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/146.webp');">
+    </div>
+  </div>
+  <%# Avatar/ User details %>
+    <div class="absolute top-0 left-16">
+        <img class="rounded-full outline outline-yellow w-28 mt-28 bg-white" src=<%= @user.avatar %> >
+      <div class="pl-32">
+        <h1 class="text-xl text-white -mt-24"><%= @user.first_name %> <%= @user.last_name %></h1>
+        <p class="text-base mt-2 break-words"> <%= @user.email %></p>
+        <h3 class="text-sm"><small><%= @user.phone_number %></small></h3>
       </div>
     </div>
-    <%# Avatar/ User details %>
-      <div class="absolute top-0 left-16">
-        <img class="rounded-full outline outline-yellow w-28 mt-28 bg-white" src=<%= @user.avatar %> >
-        <div class="pl-32">
-          <h1 class="text-xl text-white -mt-24"><%= @user.first_name %> <%= @user.last_name %></h1>
-          <p class="text-base mt-2 break-words"> <%= @user.email %></p>
-          <h3 class="text-sm"><small><%= @user.phone_number %></small></h3>
-        </div>
-      </div>
-      <%# Icons %>
-      <div class="absolute bottom-8 left-48 text-white">
+    <%# Icons %>
+    <div class="absolute bottom-8 left-48 text-white">
         <i class="fa-solid fa-thumbs-up hover:text-yellow text-2xl mr-2 -z-10"></i>
           <%# Red Flag Icon %>
           <button type="button" class="text-white font-medium text-xs -z-10" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">
@@ -128,54 +139,56 @@
               </div>
             </div>
       </div>
-      <%# Button %>
-      <div class="absolute top-0 right-12">
-        <%= link_to new_trip_path do %>
-          <button type="button" class="mt-28 mr-4 inline-block h-10 px-4 py-2.5 bg-yellow text-darkblue font-bold text-xs leading-tight rounded-lg">
-            Create A New Trip
-          </button>
-        <% end %>
-      </div>
+    <%# Button %>
+    <div class="absolute top-0 right-12">
+      <%= link_to new_trip_path do %>
+        <button type="button" class="mt-28 mr-4 inline-block h-10 px-4 py-2.5 bg-yellow text-darkblue font-bold text-xs leading-tight rounded-lg">
+          Create A New Trip
+        </button>
+      <% end %>
+    </div>
   </div>
+</div>
+
+ <%# Photos %>
+<div class="container grid grid-cols-2 gap-y-10 gap-x-10 px-10 -mt-36">
+  <div>
+  <div class="flex flex-row">
+    <p class="text-xl font-bold -mb-8">Photos</p>
+  </div>
+    <div class="container">
+      <profile-photos-swiper :images="<%= @images.to_json %>" />
+    </div>
   </div>
 
-  <%# Photos %>
-  <div class="container grid grid-cols-2 gap-y-10 gap-x-10 px-10 -mt-36">
-    <div>
-      <p class="text-xl font-bold -mb-8">Photos</p>
-      <div class="container">
+<%# My Trips %>
+  <div>
+    <p class="text-xl font-bold -mb-8">My Trips</p>
+    <div class="container">
+      <a href="">
         <profile-photos-swiper :images="<%= @images.to_json %>" />
-      </div>
-    </div>
-
-  <%# My Trips %>
-    <div>
-      <p class="text-xl font-bold -mb-8">My Trips</p>
-      <div class="container">
-        <a href="">
-          <profile-photos-swiper :images="<%= @images.to_json %>" />
-        </a>
-      </div>
-    </div>
-
-  <%# Previous Trips cards %>
-    <div>
-      <p class="text-xl font-bold -mb-8">Previous Trips</p>
-      <div class="container">
-        <a href="">
-          <profile-photos-swiper :images="<%= @images.to_json %>" />
-        </a>
-      </div>
-    </div>
-
-  <%# Upcoming Trips %>
-    <div>
-      <p class="text-xl font-bold -mb-8">Upcoming Trips</p>
-      <div class="container">
-        <a href="">
-          <profile-photos-swiper :images="<%= @images.to_json %>" />
-        </a>
-      </div>
+      </a>
     </div>
   </div>
+
+<%# Previous Trips cards %>
+  <div>
+    <p class="text-xl font-bold -mb-8">Previous Trips</p>
+    <div class="container">
+      <a href="">
+        <profile-photos-swiper :images="<%= @images.to_json %>" />
+      </a>
+    </div>
+  </div>
+
+<%# Upcoming Trips %>
+  <div>
+    <p class="text-xl font-bold -mb-8">Upcoming Trips</p>
+    <div class="container">
+      <a href="">
+        <profile-photos-swiper :images="<%= @images.to_json %>" />
+      </a>
+    </div>
+  </div>
+</div>
 <% end %>
