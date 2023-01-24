@@ -15,7 +15,6 @@ class TripsController < ApplicationController
 
   def show
     @message = Message.new
-
   end
 
   def new
@@ -322,6 +321,6 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:trip_name, :max_people, :description, :pets, :start_date, :end_date, photos: [], activities: [], country: [])
+    params.require(:trip).permit(:trip_name, :max_people, :country, :description, :pets, :start_date, :end_date, photos: [], activities: [])
   end
 end
