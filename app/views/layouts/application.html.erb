@@ -32,24 +32,24 @@
     -->
     <%# <link href="/dist/output.css" rel="stylesheet"> %>
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">
     <% unless @nav == false %>
       <%= render "shared/navbar" %>
     <% end %>
 
     <%= render "shared/flashes" %>
 
-    <div class="flex flex-col h-screen">
+    <%# <div class="flex flex-col h-screen"> %>
       <div id="vue">
+      <div class="flex-grow">
         <%= yield %>
+      </div>
           <% unless @scrollbutton == false %>
             <%= render "shared/scroll_up" %>
           <% end %>
       </div>
-    </div>
-    <% unless @foot == false %>
+    <%# </div> %>
       <%= render "shared/footer" %>
-    <% end %>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
 
