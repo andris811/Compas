@@ -29,7 +29,7 @@ class Trip < ApplicationRecord
   validates :trip_name, presence: true
   validates :description, presence: true
   validates :max_people,  presence: true
-  validates :activities, presence: true
+  validates :activities, presence: true, length: { maximum: 4 }
   validates :pets, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
