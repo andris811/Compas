@@ -36,12 +36,15 @@
     <% unless @nav == false %>
       <%= render "shared/navbar" %>
     <% end %>
+
     <%= render "shared/flashes" %>
+
     <div class="flex flex-col h-screen">
       <div id="vue">
         <%= yield %>
-      <%= render "shared/scroll_up" %>
-
+          <% unless @scrollbutton == false %>
+            <%= render "shared/scroll_up" %>
+          <% end %>
       </div>
     </div>
     <% unless @foot == false %>
