@@ -92,13 +92,13 @@
                 <div>
                   <%= f.input :comment, :as => :text, label: false, input_html: { class:"w-full h-40 border-transparent drop-shadow" } %>
                 </div>
-                <div>
-                  <%= f.button :submit, :value => "Send", class: "ml-96 mt-px btn px-4 py-2 bg-yellow text-darkblue font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
+                <div class="relative mb-12">
+                  <%= f.button :submit, :value => "Send", class: "absolute -bottom-10 right-0 mt-px btn px-4 py-2 bg-yellow text-darkblue font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
                 </div>
               <% end %>
-              <div class= "shadow-lg border-2 rounded-xl mt-2">
+              <div class= "shadow-lg border-t rounded-xl mt-2">
                 <% @trip.messages.each do |message| %>
-                  <h3 class="text-sm mx-4 "><%= message.user.first_name.capitalize %></h3>
+                  <h3 class="text-sm mx-4 mt-2"><%= message.user.first_name.capitalize %></h3>
                   <div class="flex">
                     <img class="ml-4 mt-1 h-10 w-10" src="<%= message.user.avatar %> " alt="">
                     <h3 class="text-xs mx-6  my-4" ><%= message.comment %></h3>
@@ -124,8 +124,8 @@
           </div>
           <%# attendee box %>
         <div class="flex">
-        <h3 class="text-base mt-4 mr-4">Attendees:</h3>
-        <h3 class="text-base mt-4 ml-4"> <%= @trip.attendees.count +1 %> / <%= @trip.max_people %></h3>
+        <h3 class="text-base mt-4 mr-3">Attendees:</h3>
+        <h3 class="text-base mt-4 ml-3"> <%= @trip.attendees.count +1 %> / <%= @trip.max_people %></h3>
         </div>
         <%# If signed in %>
         <% if (user_signed_in?) then %>
@@ -141,12 +141,16 @@
                 <div class="p-2">
                   <% @trip.attendees.each do |attendee| %>
                     <% if attendee.approved == false %>
-                      <div class="grid grid-cols-3  ">
+                      <div class="flex justify-between p-2 mx-10">
                         <%= link_to user_path(attendee.user.id) do %>
-                          <div>
-                            <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
-                            <%= attendee.user.first_name %>
-                            <%= attendee.user.last_name %>
+                          <div class=" grid grid-cols-1 w-32">
+                            <div class="mx-auto">
+                              <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+                            </div>
+                            <div class="mx-auto">
+                              <%= attendee.user.first_name %>
+                              <%= attendee.user.last_name %>
+                            </div>
                           </div>
                         <% end %>
                         <div>
@@ -166,29 +170,32 @@
                   <% end %>
                 </div>
               </div>
-              <%# list attendees confirmed %>
+              <%# confirmed tab %>
               <input type="radio" class="tabs__radio" name="tab-2" id="tab4" >
               <label for="tab4" class="tabs__label m-2 text-gray-500 hover:text-darkblue">Confirmed</label>
-              <div class="ml-2 tabs__content">
+              <div class="ml-2 tabs__content ">
                 <%# list all confirmed %>
-                <div class="grid grid-cols-3 p-2">
+                <div>
                   <% @trip.attendees.each do |attendee| %>
                     <% if attendee.approved == true %>
+                    <div class="flex justify-between p-2 mx-10">
                       <div class="">
-                        <a href=""><img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+                        <a href="" class=""><img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
                       </div>
-                      <div class="">
+                      <div class="mt-4 text-xl"><strong>
                         <%= attendee.user.first_name %>
                         <%= attendee.user.last_name %>
+                        </strong>
                       </div>
-                      <div class="align-middle">
+                      <div class="mt-2">
                         <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Remove</a> %>
                           <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
                             <p class="bg-yellow py-2 px-8 rounded-2xl  cursor-pointer" ><strong>Remove</strong></p>
-                          <% end %>
+                          <% end %> <%# button %>
                       </div>
-                    <% end %>
-                  <% end %>
+                    </div>
+                    <% end %> <%# if %>
+                  <% end %> <%# each %>
                 </div>
               </div>
             </div>
@@ -196,40 +203,52 @@
           <% else %>
             <div>
               <% if @trip.attendees.count == 0 %>
-                <h2 class="text-base mt-4"> Be the first to sign-up! </h2>
+                <h2 class="text-base mt-4 text-gray-500"> Be the first to sign-up! </h2>
 
               <% elsif @trip.attendees.count == 1  %>
-                <h2 class="text-base mt-4"> <%= @trip.attendees.count %> person is going </h2>
+                <h2 class="text-base mt-4 text-gray-500"> <%= @trip.attendees.count %> person is going </h2>
 
               <% elsif @trip.attendees.count >= 2 %>
-                <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other people are going </h2>
+                <h2 class="text-base mt-4 text-gray-500"> <%= @trip.attendees.count %> other people are going </h2>
               <% end %>
             </div>
 
-              <div class="flex mt-4 gap-x-4">
+              <div class="flex mt-4 gap-x-2"> <%# grid grid-cols-6 %>
                 <% @trip.attendees.each do |attendee| %>
+                  <%# <%= link_to user_path(attendee.user.id) do %>
+                    <%# <div class=""> %>
+                      <%# <img src=<%= attendee.user.avatar  class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /> %>
+                      <%# <div class="mx-auto"> %>
+                        <%# <%= attendee.user.first_name %>
+                      <%# </div> %>
+                    <%# </div> %>
+                  <%# <% end %>
                   <%= link_to user_path(attendee.user.id) do %>
-                    <div>
-                      <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
-                      <%= attendee.user.first_name %>
-                    </div>
-                  <% end %>
-                <% end %>
+                          <div class=" grid grid-cols-1 w-24">
+                            <div class="mx-auto">
+                              <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+                            </div>
+                            <div class="mx-auto">
+                              <%= attendee.user.first_name %>
+                            </div>
+                          </div>
+                        <% end %><%# button%>
+                <% end %><%# each%>
               </div>
             </div>
-          <% end %>
+          <% end %><%# else %>
           <%# If not signed in %>
         <% else %>
           <div>
 
             <% if @trip.attendees.count-1 == 0  %>
-              <h2 class="text-base mt-4"> Be the first to sign-up! </h2>
+              <h2 class="text-base mt-4 text-gray-500"> Be the first to sign-up! </h2>
 
             <% elsif @trip.attendees.count == 1  %>
-              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> person is going </h2>
+              <h2 class="text-base mt-4 text-gray-500"> <%= @trip.attendees.count %> person is going </h2>
 
             <% elsif @trip.attendees.count >= 2 %>
-              <h2 class="text-base mt-4"> <%= @trip.attendees.count %> other people are going </h2>
+              <h2 class="text-base mt-4 text-gray-500"> <%= @trip.attendees.count %> other people are going </h2>
             <% end %>
             </div>
 
