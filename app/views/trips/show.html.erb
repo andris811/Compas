@@ -80,7 +80,6 @@
           <input type="radio" class="tabs__radio" name="tab-" id="tab1" checked>
           <label for="tab1" class="tabs__label mt-2 mr-8 text-base text-gray-500 hover:text-darkblue">About</label>
           <div class="tabs__content">
-            <%# <h2 class="mt-2 text-3xl"><%= @trip.trip_name.capitalize %></h2>
             <h3 class="mt-2 text-base text-darkblue font-md"><%= @trip.description.capitalize %></h3>
           </div>
           <input type="radio" class="tabs__radio" name="tab-" id="tab2" >
@@ -157,13 +156,11 @@
                           <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
                             <p class="bg-yellow py-2 px-5 rounded-2xl cursor-pointer" ><strong>Approve</strong></p>
                           <% end %>
-                          <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a> %>
                         </div>
                         <div>
                           <%= button_to trip_attendee_path(attendee.id), method: :delete do %>
                             <p class="bg-yellow py-2 px-8 rounded-2xl  cursor-pointer" ><strong>Reject</strong></p>
                           <% end %>
-                          <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a> %>
                         </div>
                       </div>
                     <% end %>
@@ -188,7 +185,6 @@
                         </strong>
                       </div>
                       <div class="mt-2">
-                        <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Remove</a> %>
                           <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
                             <p class="bg-yellow py-2 px-8 rounded-2xl  cursor-pointer" ><strong>Remove</strong></p>
                           <% end %> <%# button %>
@@ -215,14 +211,6 @@
 
               <div class="flex mt-4 gap-x-2"> <%# grid grid-cols-6 %>
                 <% @trip.attendees.each do |attendee| %>
-                  <%# <%= link_to user_path(attendee.user.id) do %>
-                    <%# <div class=""> %>
-                      <%# <img src=<%= attendee.user.avatar  class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /> %>
-                      <%# <div class="mx-auto"> %>
-                        <%# <%= attendee.user.first_name %>
-                      <%# </div> %>
-                    <%# </div> %>
-                  <%# <% end %>
                   <%= link_to user_path(attendee.user.id) do %>
                           <div class=" grid grid-cols-1 w-24">
                             <div class="mx-auto">
