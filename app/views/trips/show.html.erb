@@ -75,7 +75,7 @@
     <div class="flex pb-8 ml-4">
       <%# left %>
       <div class="mr-24 w-1/2">
-        <%# tabs %>
+        <%# description and comment tabs %>
         <div class="tabs">
           <input type="radio" class="tabs__radio" name="tab-" id="tab1" checked>
           <label for="tab1" class="tabs__label mt-2 mr-8 text-base text-gray-500 hover:text-darkblue">About</label>
@@ -98,8 +98,11 @@
               <% end %>
               <div class= "shadow-lg border-2 rounded-xl mt-2">
                 <% @trip.messages.each do |message| %>
-                  <h3 class="text-sm mx-4 my-4"><%= message.user.first_name %></h3>
-                  <h3 class="text-xs mx-6  my-4" ><%= message.comment %></h3>
+                  <h3 class="text-sm mx-4 "><%= message.user.first_name.capitalize %></h3>
+                  <div class="flex">
+                    <img class="ml-4 mt-1 h-10 w-10" src="<%= message.user.avatar %> " alt="">
+                    <h3 class="text-xs mx-6  my-4" ><%= message.comment %></h3>
+                  </div>
                 <% end %>
               </div>
             <% else %>
@@ -108,7 +111,7 @@
           </div>
         </div>
       </div>
-      <%# right %>
+      <%# right side of page%>
       <div class="ml-24 mb-2 w-1/2 h-full">
         <h3 class="text-base">Organized by:</h3>
           <div class="flex mb-14 mt-4">
@@ -119,8 +122,11 @@
               </div>
             <% end %>
           </div>
-
-        <h3 class="text-base -mt-4">Attendees</h3>
+          <%# attendee box %>
+        <div class="flex">
+        <h3 class="text-base mt-4 mr-4">Attendees:</h3>
+        <h3 class="text-base mt-4 ml-4"> <%= @trip.attendees.count +1 %> / <%= @trip.max_people %></h3>
+        </div>
         <%# If signed in %>
         <% if (user_signed_in?) then %>
           <%# If organizer %>
@@ -135,7 +141,7 @@
                 <div class="p-2">
                   <% @trip.attendees.each do |attendee| %>
                     <% if attendee.approved == false %>
-                      <div class="flex  ">
+                      <div class="grid grid-cols-3  ">
                         <%= link_to user_path(attendee.user.id) do %>
                           <div>
                             <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
@@ -145,13 +151,13 @@
                         <% end %>
                         <div>
                           <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
-                            <p class="bg-yellow py-2 px-4 rounded-2xl cursor-pointer" ><strong>Approve</strong></p>
+                            <p class="bg-yellow py-2 px-5 rounded-2xl cursor-pointer" ><strong>Approve</strong></p>
                           <% end %>
                           <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a> %>
                         </div>
                         <div>
                           <%= button_to trip_attendee_path(attendee.id), method: :delete do %>
-                            <p class="bg-yellow py-2 px-4 rounded-2xl  cursor-pointer" ><strong>Reject</strong></p>
+                            <p class="bg-yellow py-2 px-8 rounded-2xl  cursor-pointer" ><strong>Reject</strong></p>
                           <% end %>
                           <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a> %>
                         </div>
@@ -168,17 +174,17 @@
                 <div class="grid grid-cols-3 p-2">
                   <% @trip.attendees.each do |attendee| %>
                     <% if attendee.approved == true %>
-                      <div class="align-middle">
+                      <div class="">
                         <a href=""><img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
                       </div>
-                      <div class="align-middle">
+                      <div class="">
                         <%= attendee.user.first_name %>
                         <%= attendee.user.last_name %>
                       </div>
                       <div class="align-middle">
                         <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Remove</a> %>
                           <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
-                              <p class="bg-yellow py-2 px-4 rounded-2xl  cursor-pointer"><strong>Remove</strong></p>
+                            <p class="bg-yellow py-2 px-8 rounded-2xl  cursor-pointer" ><strong>Remove</strong></p>
                           <% end %>
                       </div>
                     <% end %>
