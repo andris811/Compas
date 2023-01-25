@@ -307,9 +307,9 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
 
     if @trip.update(trip_params)
-      redirect_to trip_path(@trip)
+      redirect_to trip_path(@trip.id)
     else
-      render :new, status: 422
+      render :edit, status: 422
     end
   end
 
