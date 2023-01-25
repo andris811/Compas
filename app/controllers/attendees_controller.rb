@@ -34,6 +34,12 @@ class AttendeesController < ApplicationController
     #   redirect_to trip_path(@attendee.trip)
   end
 
+  def update
+    # change boolean value of attendee
+
+  end
+
+
   private
 
   def set_attendees
