@@ -20,7 +20,7 @@
       <% if (user_signed_in?) then %>
         <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 ring-4 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
           <span class="sr-only"></span>
-          <img class="w-12 h-12 rounded-full" src=<%= current_user.avatar %> alt="user photo">
+          <img class="lg: w-12 h-12 rounded-full" src=<%= current_user.avatar %> alt="user photo">
         </button>
       <% else %>
         <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="" type="button">
