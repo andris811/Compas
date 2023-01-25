@@ -1,5 +1,5 @@
 class AttendeesController < ApplicationController
-  before_action :set_attendees, only: [:show, :edit, :destroy]
+  before_action :set_attendees, only: [:show, :edit]
 
   def create
     @attendee = Attendee.new
@@ -16,8 +16,8 @@ class AttendeesController < ApplicationController
   end
 
   def destroy
-    @trip = Trip.find(params[:trip_id])
-    @attendee = Attendee.find(params[:id])
+    @trip = Trip.find(params[:id])
+    @attendee = Attendee.find(params[:trip_id])
     name = @attendee.user.first_name
     if @attendee.destroy
       flash[:notice] = "#{name} has canceled their trip successfully."
