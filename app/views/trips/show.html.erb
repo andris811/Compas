@@ -130,7 +130,10 @@
                           </div>
                         <% end %>
                         <div>
-                          <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a>
+                          <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
+                            <p class="bg-yellow py-2 px-4 rounded-2xl  cursor-pointer" ><strong>Approve</strong></p>
+                          <% end %>
+                          <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a> %>
                         </div>
                       </div>
                     <% end %>
@@ -153,7 +156,10 @@
                         <%= attendee.user.last_name %>
                       </div>
                       <div class="align-middle">
-                        <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Remove</a>
+                        <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Remove</a> %>
+                          <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
+                              <p class="bg-yellow py-2 px-4 rounded-2xl  cursor-pointer"><strong>Remove</strong></p>
+                          <% end %>
                       </div>
                     <% end %>
                   <% end %>
