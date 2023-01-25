@@ -113,8 +113,8 @@
       </div>
       <%# right side of page%>
       <div class="ml-24 mb-2 w-1/2 h-full">
-        <h3 class="text-base">Organized by:</h3>
-          <div class="flex mb-14 mt-4">
+        <h3 class="text-base"><strong> Organized by: </strong></h3>
+          <div class="flex mb-2 mt-4">
             <%= link_to user_path(@trip.organizer.id) do %>
               <div class="flex flex-row">
                 <img src= <%= @trip.organizer.avatar %> class="rounded-full"  style="height: 64px; width: 64px; border-color: #eeba0b; border-width: medium;" alt="" loading="lazy"  />
