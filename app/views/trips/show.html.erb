@@ -125,7 +125,7 @@
           <%# attendee box %>
         <div class="flex">
         <h3 class="text-base mt-4 mr-3">Attendees:</h3>
-        <h3 class="text-base mt-4 ml-3"> <%= @trip.attendees.count +1 %> / <%= @trip.max_people %></h3>
+        <h3 class="text-base mt-4 ml-3"> <%= @trip.attendees.count + 1 %> / <%= @trip.max_people %></h3>
         </div>
         <%# If signed in %>
         <% if (user_signed_in?) then %>
