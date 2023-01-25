@@ -33,7 +33,7 @@ class Trip < ApplicationRecord
   # validates :pets, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :photos, presence: true, length: {maximum: 5, minimum: 1}
+  # validates :photos, presence: true, length: {maximum: 5, minimum: 1}
   validates :country, presence: true
 
   belongs_to :user

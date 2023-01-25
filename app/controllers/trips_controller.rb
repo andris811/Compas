@@ -30,7 +30,7 @@ class TripsController < ApplicationController
       ['partying'],
       ['meditation'],
       ['volunteering'],
-      ['wine tasting'],
+      ['wine-tasting'],
       ['fishing'],
       ['hunting'],
       ['other']
