@@ -1,5 +1,5 @@
 class AttendeesController < ApplicationController
-  before_action :set_attendees, only: [:show, :edit, :update, :destroy]
+  before_action :set_attendees, only: [:show, :edit, :destroy]
 
   def create
     @attendee = Attendee.new
@@ -36,6 +36,11 @@ class AttendeesController < ApplicationController
 
   def update
     # change boolean value of attendee
+    @attendee = Attendee.find(params[:trip_id])
+    # @trip = Trip.find(params[:trip_id])
+    @attendee.approved = !@attendee.approved
+      @attendee.save
+      redirect_to trip_path(@attendee.trip)
 
   end
 
