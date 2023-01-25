@@ -135,7 +135,7 @@
                 <div class="p-2">
                   <% @trip.attendees.each do |attendee| %>
                     <% if attendee.approved == false %>
-                      <div class="flex">
+                      <div class="flex  ">
                         <%= link_to user_path(attendee.user.id) do %>
                           <div>
                             <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
@@ -146,6 +146,12 @@
                         <div>
                           <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
                             <p class="bg-yellow py-2 px-4 rounded-2xl cursor-pointer" ><strong>Approve</strong></p>
+                          <% end %>
+                          <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a> %>
+                        </div>
+                        <div>
+                          <%= button_to trip_attendee_path(attendee.id), method: :delete do %>
+                            <p class="bg-yellow py-2 px-4 rounded-2xl  cursor-pointer" ><strong>Reject</strong></p>
                           <% end %>
                           <%# <a href="" class="bg-yellow py-2 px-4 rounded-2xl ">Accept</a> %>
                         </div>
