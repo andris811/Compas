@@ -27,9 +27,9 @@
 #
 class Trip < ApplicationRecord
   validates :trip_name, presence: true
-  validates :description, presence: true, length: { minimum: 20, maximum: 500}
+  validates :description, presence: true, length: { minimum: 20, maximum: 500 }
   validates :max_people,  presence: true, inclusion: { in: 1..100 }
-  validates :activities, presence: true
+  validate :activity_validator
   # validates :pets, presence: true
   validate :start_date_validator
   validate :end_date_validator
@@ -43,6 +43,12 @@ class Trip < ApplicationRecord
 
   def organizer
     return self.user
+  end
+
+  def activity_validator
+    if activities.length > 5
+      errors.add(:activities, "Please only choose 4 tags")
+    end
   end
 
   def start_date_validator
