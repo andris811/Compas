@@ -41,7 +41,7 @@
   </div>
 
   <div class="field mt-4">
-    <%= f.label :current_password, class: "text-base text-gray-600" %><br><i class="text-sm text-gray-500">(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password, class: "text-base text-gray-600" %><br><i class="text-sm text-red-500">Please input your password to confirm any changes</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password", class: "rounded-md border-transparent	drop-shadow" %>
   </div>
 
@@ -50,11 +50,11 @@
   </div>
 <% end %>
 
-<div>
+<%# <div>
 <h3 class="mt-10 text-2xl">Cancel Account</h3>
 
 <p class="text-base">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,  class: "mt-2 btn w-52 px-6 py-2.5 bg-yellow text-darkblue text-sm leading-tight uppercase rounded shadow-md"%></p>
 
-<%= link_to "Back", :back, class: "btn bg-white border border-yellow text-darkblue text-sm font-bold leading-tight rounded shadow-md" %>
+<%# <%= link_to "Back", :back, class: "btn bg-white border border-yellow text-darkblue text-sm font-bold leading-tight rounded shadow-md" %>
 
-</div>
+<%# </div> %>
