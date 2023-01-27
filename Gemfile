@@ -73,3 +73,5 @@ gem "annotate", group: :development
 gem "devise"
 gem "simple_form"
 gem "faker"
+gem "searchkick"
+gem "elasticsearch"

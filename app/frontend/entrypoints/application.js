@@ -43,7 +43,7 @@ function deleteImage(index) {
 }
 function displayImages() {
   let images = "";
-  imagesArray.forEach((image, index) => {
+  imagesArray.forEach((image) => {
     images += `<div class="image">
                 <img src="${URL.createObjectURL(image)}" alt="image" class="ml-8 w-48 h-48">
                 <span class="deleteImage"
@@ -61,28 +61,28 @@ function displayImages() {
   output.innerHTML = images;
 }
 
-// Get the button
-const mybutton = document.querySelector("#btnScrollToTop");
-console.log(mybutton);
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
+// // Get the button
+// const mybutton = document.querySelector("#btnScrollToTop");
+// console.log(mybutton);
+// // When the user scrolls down 20px from the top of the document, show the button
+// window.onscroll = function () {
+//   scrollFunction();
+// };
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-// When the user clicks on the button, scroll to the top of the document
-mybutton.addEventListener("click", (e) => {
-  console.log(e.target.value);
-  backToTop();
-});
+// function scrollFunction() {
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//     mybutton.style.display = "block";
+//   } else {
+//     mybutton.style.display = "none";
+//   }
+// }
+// // When the user clicks on the button, scroll to the top of the document
+// mybutton.addEventListener("click", (e) => {
+//   console.log(e.target.value);
+//   backToTop();
+// });
 
-function backToTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+// function backToTop() {
+//   document.body.scrollTop = 0;
+//   document.documentElement.scrollTop = 0;
+// }

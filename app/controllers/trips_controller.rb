@@ -3,13 +3,10 @@ class TripsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @trips = Trip.all
-
-    @search = params["search"].present? ? params[:search] : nil
-
-    if @search.present?
-      puts "@search present ? #{@search}"
-      @trips = Trip.where("trip_name ILIKE ? OR country ILIKE ?", "%#{@search}%", "%#{@search}%")
+    if params[:search]
+      @trips = Trip.search(params[:search])
+    else
+      @trips = Trip.all
     end
   end
 
@@ -30,7 +27,7 @@ class TripsController < ApplicationController
       ['partying'],
       ['meditation'],
       ['volunteering'],
-      ['wine tasting'],
+      ['wine-tasting'],
       ['fishing'],
       ['hunting'],
       ['other']
@@ -299,13 +296,17 @@ class TripsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @trip = Trip.find(params[:id])
+  end
 
   def update
+    @trip = Trip.find(params[:id])
+
     if @trip.update(trip_params)
-      redirect_to trip_path(@trip)
+      redirect_to trip_path(@trip.id)
     else
-      render :new, status: 422
+      render :edit, status: 422
     end
   end
 
