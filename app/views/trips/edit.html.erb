@@ -2,10 +2,10 @@
   <div class="container grid grid-cols-2 px-10">
       <div class="border-r">
           <h1 class="uppercase text-4xl mt-8 ml-8 tracking-wide">
-            Create a trip
+            Edit your trip
           </h1>
             <%= f.input :trip_name, label: false, label: "Give your trip a name",placeholder: "Exploring the streets of Shanghai", wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: {class:"w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"}, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"} %>
-            <%= f.input :country, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, collection: @countries = [
+            <%= f.input :country, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, autofill: true,  collection: @countries = [
         "Afghanistan",
         "Albania",
         "Algeria",
@@ -268,13 +268,14 @@
                 </div>
             </div>
       </div>
-      <div class="relative justify-center">
+      <div class="flex justify-center">
         <div class="fixed right-2">
           <%= f.input :photos, as: :file, error: "Please upload upto 5 photos", error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, wrapper_html: { class: "mt-8 w-96" }, hint: "Please upload 5 pictures", hint_html: {class: "text-gray-500"}, input_html: { multiple: true, class: "mb-4 mt-4 w-96"}, label_html: { class: "border-b-2 border-yellow w-96 font-bold upload uppercase text-4xl tracking-wide"} %>
         </div>
       </div>
+
     <div class="container flex justify-start mt-6">
-      <%= f.submit "CREATE", class: "-mt-10 ml-8 btn item-center w-48 bg-yellow text-darkblue font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
+      <%= f.submit "UPDATE", class: "-mt-10 ml-8 btn item-center w-48 bg-yellow text-darkblue font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
       <% end %>
     </div>
   </div>

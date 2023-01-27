@@ -1,12 +1,12 @@
-<nav class="px-8 py-4 flex flex-wrap items-center shared_navbar shadow-xl sticky top-0 bg-darkblue relative z-10">
+<nav class="flex flex-wrap items-center shared_navbar shadow-xl sticky top-0 bg-darkblue relative z-10 sm:px-4 py-2 md:px-8 py-4">
   <%# logo %>
   <div class="h-14 flex text-center text-xl font-semibold items-center w-full justify-between bg-transparent">
     <%= link_to root_path do %>
       <div class="flex items-center">
-        <div class="m-3 flex h-16 w-16 items-center">
+        <div class="flex items-center m-3  md:h-16 w-16 sm:h-10 w-10">
           <%= image_tag "logo.png", height: 16, width: 16 %>
           <div class="m-3">
-            <h1 class="logo text-yellow text-6xl">Compas</h1>
+            <h1 class="logo text-yellow md:text-6xl sm:text-md">Compas</h1>
           </div>
         </div>
       </div>
@@ -18,9 +18,9 @@
     <%# dropdown and avatar %>
     <div class="dropdown relative">
       <% if (user_signed_in?) then %>
-        <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 ring-4 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
+        <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 ring-4 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
           <span class="sr-only"></span>
-          <img class="w-12 h-12 rounded-full" src=<%= current_user.avatar %> alt="user photo">
+          <img class="rounded-full md:h-16 w-16 sm:h-10 w-10" src=<%= current_user.avatar %> alt="user photo">
         </button>
       <% else %>
         <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="" type="button">

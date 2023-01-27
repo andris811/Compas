@@ -27,7 +27,7 @@ class TripsController < ApplicationController
       ['partying'],
       ['meditation'],
       ['volunteering'],
-      ['wine tasting'],
+      ['wine-tasting'],
       ['fishing'],
       ['hunting'],
       ['other']
@@ -296,13 +296,17 @@ class TripsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @trip = Trip.find(params[:id])
+  end
 
   def update
+    @trip = Trip.find(params[:id])
+
     if @trip.update(trip_params)
-      redirect_to trip_path(@trip)
+      redirect_to trip_path(@trip.id)
     else
-      render :new, status: 422
+      render :edit, status: 422
     end
   end
 
