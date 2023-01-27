@@ -10,7 +10,7 @@
 <form action="">
   <div class="gap-4 flex bg-blue">
     <%= simple_form_for :search, url: trips_path, method: "GET", html: { class: 'form-inline' }, defaults: { required: false } do |f|%>
-      <%=  f.input :search, label: false, input_html: {value: "", class:"pl-1 border-1 border-slate-800 rounded-xl"}, class: "text-black pl-2", style: 'width:500px', placeholder: "Search for a trip"  %>
+      <%=  f.input :search, label: false, input_html: {value: "", class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}, style: 'width:500px', placeholder: "Search for a trip"  %>
       <div date-rangepicker class=" flex items-center">
         <div class="relative">
           <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
