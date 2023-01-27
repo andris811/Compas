@@ -40,7 +40,7 @@
         <div class="grid grid-cols-4">
           <% trip.activities.each do |activity| %>
             <div class="bg-yellow rounded-full px-3 text-center py-2 m-1 gap-2 ">
-              <h4 class="text-sm font-bold"><%= activity %></h4>
+              <%= link_to activity, controller: "trips", search: activity %>
             </div>
           <% end %>
         </div>
