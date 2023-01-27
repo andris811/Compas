@@ -45,10 +45,8 @@
         <%# tags %>
         <div class="grid grid-cols-4 gap-y-2 mt-2">
           <% trip.activities.each do |activity| %>
-
-            <div class="bg-darkblue text-white rounded-full px-auto m-1 text-center ">
-              <h4 class="text-xs md:text-sm font-bold"><%= activity %></h4>
-
+            <div class="bg-yellow rounded-full px-3 text-center py-2 m-1 gap-2 ">
+              <%= link_to activity, controller: "trips", search: activity %>
             </div>
           <% end %>
         </div>

@@ -3,13 +3,10 @@ class TripsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @trips = Trip.all
-
-    @search = params["search"].present? ? params[:search] : nil
-
-    if @search.present?
-      puts "@search present ? #{@search}"
-      @trips = Trip.where("trip_name ILIKE ? OR country ILIKE ?", "%#{@search}%", "%#{@search}%")
+    if params[:search]
+      @trips = Trip.search(params[:search])
+    else
+      @trips = Trip.all
     end
   end
 
