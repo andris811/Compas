@@ -1,7 +1,6 @@
 <div class="container">
-
-  <div class="grid grid-cols-1 md:grid-cols-2">
-    <div class="mr-2 md:mr-12 rounded relative" style="background-image: url(<%= @trip.trip_img %>); background-size: cover;">
+  <div class="grid grid-cols-2">
+    <div class="w-full mr-14 rounded relative" style="background-image: url(<%= @trip.trip_img %>); background-size: cover;">
       <div class="content-end" style="background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,.3));">
         <div class="h-96"></div>
         <%# tags %>
@@ -16,7 +15,6 @@
               <%= @trip.trip_name.capitalize %> in <%= @trip.country.capitalize %>
             </h2>
         <% list = [] %>
-
           <% @trip.attendees.each do |attendee| %>
             <% list << attendee.user_id %>
           <% end %>
