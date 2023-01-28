@@ -3,14 +3,14 @@
   <div class="flex justify-center bg-blue-800 h-96 bg-cover bg-center p-48" style="background-image: url(https://images.unsplash.com/photo-1521292270410-a8c4d716d518?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)">
     <div class="relative">
       <div class="flex justify-center w-full">
-        <div class="p-8 rounded-xl bg-white shadow-xl absolute top-32 w-max">
+        <div class="p-8 rounded-xl bg-white shadow-xl absolute top-16 md:top-32 w-max">
           <%= render 'trips/search'%>
         </div>
       </div>
     </div>
   </div>
   <%# end banner and search %>
-  <div class="flex flex-wrap my-20">
+  <div class="flex flex-wrap my-60 md:my-40">
     <div class="text-center w-full">
       <h2 class="-mt-4"> FOUND THESE PLACES JUST FOR <em><u><strong>YOU</u></em></strong> ! </h2>
     </div>
@@ -45,7 +45,7 @@
         <%# tags %>
         <div class="grid grid-cols-4 gap-y-2 mt-2">
           <% trip.activities.each do |activity| %>
-            <div class="bg-yellow rounded-full px-3 text-center py-2 m-1 gap-2 ">
+            <div class="rounded-md mx-1 px-3 text-center bg-darkblue hover:bg-yellow my-2 text-xs md:text-sm hover:text-black text-white font-md">
               <%= link_to activity, controller: "trips", search: activity %>
             </div>
           <% end %>
