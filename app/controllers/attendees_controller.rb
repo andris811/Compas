@@ -17,7 +17,7 @@ class AttendeesController < ApplicationController
 
   def destroy
     @trip = Trip.find(params[:id])
-    @attendee = Attendee.find(params[:trip_id])
+    @attendee = Attendee.find(params[:id])
     name = @attendee.user.first_name
     if @attendee.destroy
       flash[:notice] = "#{name} has canceled their trip successfully."
