@@ -24,65 +24,65 @@ app.mount("#vue");
 
 const upload = document.querySelector("#trip_photos");
 console.log(upload);
-const output = document.querySelector("output");
+const output = document.querySelector("#output");
 console.log(output);
-const imagesArray = [];
+// const imagesArray = [];
 upload.addEventListener("click", (e) => {
   console.log(e.target.value);
   e.target.value = null;
 });
 upload.addEventListener("change", () => {
-  const file = upload.files;
-  console.log(file);
-  imagesArray.push(file[0]);
-  displayImages();
+  const imagesArray = Array.from(upload.files);
+  // const file = upload.files;
+  // console.log(file);
+  // imagesArray.push(file[0]);
+  displayImages(imagesArray);
 });
-function deleteImage(index) {
-  imagesArray.splice(index, 1);
-  displayImages();
-}
-function displayImages() {
+// function deleteImage(index) {
+//   imagesArray.splice(index, 1);
+//   displayImages();
+// }
+function displayImages(imagesArray) {
   let images = "";
   imagesArray.forEach((image) => {
     images += `<div class="image">
-                <img src="${URL.createObjectURL(image)}" alt="image" class="ml-8 w-48 h-48">
-                <span class="deleteImage"
-                >&times;</span>
+                <img src="${URL.createObjectURL(image)}" alt="image" class="grid grid-cols-4 ml-8 w-36 h-36 mt-6">
               </div>`;
   });
-  const cancels = document.querySelectorAll(".deleteImage");
-  console.log(cancels);
-  cancels.forEach((cancel, index) => {
-    cancel.addEventListener("click", () => {
-      console.log(index);
-      deleteImage(index);
-    });
-  });
   output.innerHTML = images;
+  // /* <span style="cursor: default;" class="deleteImage">x</span> */
+  // const cancels = document.querySelectorAll(".deleteImage");
+  // console.log(cancels);
+  // cancels.forEach((cancel, index) => {
+  //   cancel.addEventListener("click", () => {
+  //     console.log(index);
+  //     deleteImage(index);
+  //   });
+  // });
 }
 
-// // Get the button
-// const mybutton = document.querySelector("#btnScrollToTop");
-// console.log(mybutton);
-// // When the user scrolls down 20px from the top of the document, show the button
-// window.onscroll = function () {
-//   scrollFunction();
-// };
+// Get the button
+const mybutton = document.querySelector("#btnScrollToTop");
+console.log(mybutton);
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
 
-// function scrollFunction() {
-//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-//     mybutton.style.display = "block";
-//   } else {
-//     mybutton.style.display = "none";
-//   }
-// }
-// // When the user clicks on the button, scroll to the top of the document
-// mybutton.addEventListener("click", (e) => {
-//   console.log(e.target.value);
-//   backToTop();
-// });
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", (e) => {
+  console.log(e.target.value);
+  backToTop();
+});
 
-// function backToTop() {
-//   document.body.scrollTop = 0;
-//   document.documentElement.scrollTop = 0;
-// }
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}

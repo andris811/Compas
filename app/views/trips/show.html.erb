@@ -1,6 +1,6 @@
 <div class="container">
   <div class="grid grid-cols-2">
-    <div class="w-full mr-14 rounded relative" style="background-image: url(<%= @trip.trip_img %>); background-size: cover;">
+    <div class="w-full mr-14 rounded relative" style="background-image: url(<%= @trip.photos.first.url %>); background-size: cover;">
       <div class="content-end" style="background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,.3));">
         <div class="h-96"></div>
         <%# tags %>
@@ -53,11 +53,12 @@
       <%# Bottom half of the page %>
         <%# make a list of attendees by id %>
     </div>
+
     </div>
 
     <div class="grid grid-cols-2 ml-4 gap-4">
-      <% @trip.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% @trip.photos[1..4].each do |photo| %>
+        <%= cl_image_tag photo.key, height: 120, width: 200, crop: :fill %>
       <% end %>
     </div>
   </div>
