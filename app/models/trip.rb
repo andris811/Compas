@@ -33,7 +33,7 @@ class Trip < ApplicationRecord
   # validates :pets, presence: true
   validate :start_date_validator
   validate :end_date_validator
-  # validates :photos, presence: true, length: {maximum: 5, minimum: 1}
+  # validate :photo_validator
   validates :country, presence: true
 
   belongs_to :user
@@ -50,8 +50,14 @@ class Trip < ApplicationRecord
     where("trip_name ILIKE ? OR country ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 
+  # def photo_validator
+  #   if photos.length > 5
+  #     errors.add(:photos, "Please only upload 5 photos")
+  #   end
+  # end
+
   def activity_validator
-    if activities.length > 5
+    if activities.length > 4
       errors.add(:activities, "Please only choose 4 tags")
     end
   end
