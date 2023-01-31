@@ -315,7 +315,7 @@ puts 'Creating trips'
     country: cnt,
     location: lct,
     trip_img: Faker::LoremFlickr.image(size: "475x475", search_terms: [cnt.split[0..2].join('')]),
-    start_date: Faker::Date.forward(days: 7),
+    start_date: Date.today,
     end_date: Faker::Date.forward(days: 20)
   )
 end
