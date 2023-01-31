@@ -2,15 +2,15 @@
 <% @foot = false  %>
 <% @scrollbutton = false %>
 
-<div class="flex">
+<div class="flex-column md:flex">
 
-  <div class="flex w-1/2 h-screen">
+  <div class="flex w-0 md:w-1/2 h-0 md:h-screen">
     <img src="https://images.unsplash.com/photo-1500049242364-5f500807cdd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHRyYXZlbCUyMHdpdGglMjBmcmllbmRzfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=800&q=60">
   </div>
 
-  <div class="grid grid-rows place-content-center ml-48">
+  <div class="flex flex-col justify-center my-10 mx-10  md:ml-48">
 
-      <h2 class="text-darkblue uppercase mb-20">Welcome back!</h2>
+      <h2 class="text-darkblue uppercase ml-3 md:ml-0 mb-20">Welcome back!</h2>
 
       <div class="ml-12">
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),

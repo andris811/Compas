@@ -10,13 +10,13 @@
     </div>
   </div>
   <%# end banner and search %>
-  <div class="flex flex-wrap my-60 md:my-40">
+  <div class="flex flex-wrap mx-5 my-60 md:mx-20 lg:mx-40 ">
     <div class="text-center w-full">
       <h2 class="-mt-4"> FOUND THESE PLACES JUST FOR <em><u><strong>YOU</u></em></strong> ! </h2>
     </div>
     <%# card %>
     <% @trips.each do |trip| %>
-      <div class="p-4 mb-3 h-1/2 sm: rounded-sm drop-shadow bg-gray-50 md:w-1/3 drop-shadow-none">
+      <div class="p-4 mb-3 h-full md:w-1/2 lg:w-1/3">
         <%= link_to trip_path(trip) do %>
           <div class="rounded-lg h-64 overflow-hidden relative">
             <div class="">
@@ -45,7 +45,7 @@
         <%# tags %>
         <div class="grid grid-cols-4 gap-y-2 mt-2">
           <% trip.activities.each do |activity| %>
-            <div class="rounded-md mx-1 px-3 text-center bg-darkblue hover:bg-yellow my-2 text-xs md:text-sm hover:text-black text-white font-md">
+            <div class="flex rounded-md mx-1 px-5 justify-center bg-darkblue hover:bg-yellow my-2 text-xs md:text-sm hover:text-black text-white font-md">
               <%= link_to activity, controller: "trips", search: activity %>
             </div>
           <% end %>
