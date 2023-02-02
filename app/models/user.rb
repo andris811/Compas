@@ -15,6 +15,7 @@
 #  remember_created_at            :datetime
 #  reset_password_sent_at         :datetime
 #  reset_password_token           :string
+#  user_img                       :string           default([]), is an Array
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
 #
@@ -26,7 +27,9 @@
 class User < ApplicationRecord
   has_many :trip
   has_many :messages
-  
+  has_many_attached :photos
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
