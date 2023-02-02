@@ -45,9 +45,8 @@ class Trip < ApplicationRecord
     return self.user
   end
 
-
-  def self.search(search)
-    where("trip_name ILIKE ? OR country ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+  def self.search_by_name(search)
+    self.where('trip_name ILIKE ? OR country ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
   end
 
   def activity_validator

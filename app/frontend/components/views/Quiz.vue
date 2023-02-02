@@ -109,7 +109,7 @@ export default {
       this.country = e.target.value;
     },
     submit() {
-      window.location.href = `/trips?search=${this.country}`;
+      window.location.href = `/trips?search=${this.country}&type=quiz`;
     }
   }
 };
