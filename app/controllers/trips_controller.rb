@@ -12,7 +12,11 @@ class TripsController < ApplicationController
         puts trips_by_month
         @trips = trips_by_month
       else
-        @trips = search_by_activity(params[:search], Trip.all)
+        if (params[:type])
+          @trips = Trip.search_by_name(params[:search])
+        else
+          @trips = search_by_activity(params[:search], Trip.all)
+        end
       end
     else
       @trips = Trip.all
