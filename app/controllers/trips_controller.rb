@@ -4,10 +4,29 @@ class TripsController < ApplicationController
 
   def index
     if params[:search]
-      @trips = Trip.search(params[:search])
+      if (params[:search].class != String)
+        trips_by_name = Trip.search_by_name(params[:search][:search])
+        trips_by_activity = search_by_activity(params[:search][:activities], trips_by_name)
+        puts trips_by_activity
+        trips_by_month = search_by_month(params[:search][:start_date], trips_by_activity)
+        puts trips_by_month
+        @trips = trips_by_month
+      else
+        @trips = search_by_activity(params[:search], Trip.all)
+      end
     else
       @trips = Trip.all
     end
+  end
+
+  def search_by_month(month, trips)
+    if (month == "") then return trips end
+    trips.select{ |trip| trip.start_date.month == month.to_i }
+  end
+
+  def search_by_activity(activity, trips)
+    if (activity == "") then return trips end
+    trips.select{ |trip| trip.activities.include?(activity) }
   end
 
   def show
