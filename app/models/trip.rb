@@ -28,7 +28,7 @@
 class Trip < ApplicationRecord
   validates :trip_name, presence: true
   validates :description, presence: true, length: { minimum: 20, maximum: 500 }
-  validates :max_people,  presence: true, inclusion: { in: 1..100 }
+  validates :max_people,  presence: true, inclusion: { in: 1..100, message: 'Max number of people = 100' }
   validate :activity_validator
   # validates :pets, presence: true
   validate :start_date_validator
@@ -48,12 +48,6 @@ class Trip < ApplicationRecord
   def self.search_by_name(search)
     self.where('trip_name ILIKE ? OR country ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
   end
-
-  # def photo_validator
-  #   if photos.length > 5
-  #     errors.add(:photos, "Please only upload 5 photos")
-  #   end
-  # end
 
   def activity_validator
     if activities.length > 4
