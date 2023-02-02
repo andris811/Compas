@@ -46,7 +46,7 @@ class Trip < ApplicationRecord
   end
 
 
-  def self.search(search)\
+  def self.search(search)
     where("trip_name ILIKE ? OR country ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 
