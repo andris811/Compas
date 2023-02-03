@@ -48,16 +48,12 @@ class UsersController < ApplicationController
 
             photo = attendees.trip.photos.first
             future_trips = {
-              url: photo.url
-            }
+                url: photo.url
+              }
             @future_trips << future_trips
+        end
       end
     end
-
-
-
-    end
-
   end
 
   def update
@@ -70,15 +66,11 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :dob, :emergency_contact_name, :emergency_contact_phone_number, :avatar, photos:[])
   end
 
-
   def set_attendees
     @attendee = Attendee.find(params[:user_id])
   end
-
 end
