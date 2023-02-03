@@ -73,7 +73,9 @@
       <% end %>
     </div>
   </div>
-  <div class="rounded-2xl">
+
+  <%# bottom %>
+  <div class="rounded-2xl container">
     <div class="flex flex-col md:flex-row">
       <h3 class="ml-3 md:ml-10 text-gray-500 text-base"> <%= @trip.start_date %> - <%= @trip.end_date %>  </h3>
       <div class="flex flex-inline"><h6 class= "ml-3 md:ml-20 text-sm mr-4">Pets allowed?</h6>
@@ -170,7 +172,7 @@
                         <%= link_to user_path(attendee.user.id) do %>
                           <div class="flex flex-col justify-center w-14 md:w-28">
                             <div class="mx-auto my-1 md:my-2">
-                              <img src=<%= attendee.user.avatar %> class="rounded-full border-2"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+                              <img src=<%= attendee.user.avatar %> class="rounded-full border-2"  style="height: 64px; width: 64px; " alt=" pic" loading="lazy"  />
                             </div>
                             <div class="mx-auto my-1 md:my-2">
                               <%= attendee.user.first_name %>
