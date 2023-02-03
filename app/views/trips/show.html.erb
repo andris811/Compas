@@ -4,13 +4,13 @@
     <% approved_attendees << attendee %>
   <% end %>
 <% end %>
-<div class="container">
-  <div class="grid grid-cols-2">
+<div class="container grid grid-cols-1 lg:grid-cols-2">
+  <div class="">
     <div class="w-full mr-14 rounded relative" style="background-image: url(<%= @trip.photos.first.url %>); background-size: cover;">
       <div class="content-end" style="background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,.3));">
         <div class="h-96"></div>
         <%# tags %>
-        <div class="absolute right-2 bottom-2">
+        <div class="absolute right-2 top-2 md:bottom-2">
           <% @trip.activities.each do |tag|  %>
             <h2 class="rounded-md px-2 text-center bg-darkblue mt-2 text-sm text-white font-md"> <%= link_to tag, controller: "trips", search: tag %> </h2>
           <% end %>
@@ -35,7 +35,7 @@
                 <% end %>
               <% end %>
               <%= button_to "/trips/#{@trip.id}/attendees/#{current_user_attendee_id}", confirm: "Are you sure?", method: :delete do %>
-                <p class="bg-yellow py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Cancel</strong></p>
+                <p class="bg-yellow hover:bg-darkblue hover:text-white py-2 px-8 ml-4 rounded-2xl shadow-md active:shadow-lg transition duration-150 ease-in-out uppercase text-darkblue text-md cursor-pointer" ><strong>Cancel</strong></p>
               <% end %>
               <%# if you're organizer, doesn't show the apply button %>
             <% elsif current_user.id == @trip.organizer.id %>
@@ -63,50 +63,56 @@
     </div>
 
     </div>
-
-    <div class="grid grid-cols-2 ml-4 gap-4">
-      <% @trip.photos[1..4].each do |photo| %>
-        <%= cl_image_tag photo.key, height: 120, width: 200, crop: :fill %>
+    <div class="w-full grid grid-cols-2 my-2 ml-0 lg:ml-4 gap-2 md:gap-4">
+      <% if @trip.photos.exists? %>
+        <% @trip.photos[1..4].each do |photo| %>
+          <%= cl_image_tag photo.key, height: 93, width: 186, crop: :fill %>
+        <% end %>
+      <% else %>
+        <p>Could have awesome images here</p>
       <% end %>
     </div>
   </div>
-  <div class="rounded-2xl mt-6">
-    <div class="flex">
-      <h3 class="ml-4 text-gray-500 text-base mr-10"> <%= @trip.start_date %> - <%= @trip.end_date %>  </h3>
-      <h6 class= "text-sm mr-4">Are pets allowed?</h6>
+  <div class="rounded-2xl">
+    <div class="flex flex-col md:flex-row">
+      <h3 class="ml-3 md:ml-10 text-gray-500 text-base"> <%= @trip.start_date %> - <%= @trip.end_date %>  </h3>
+      <div class="flex flex-inline"><h6 class= "ml-3 md:ml-20 text-sm mr-4">Pets allowed?</h6>
       <% if @trip.pets == true  %>
         <i class="fa-solid fa-dog"></i>
       <% else %>
         <i class="fa-sharp fa-solid fa-ban"></i>
-      <% end %>
+      <% end %></div>
     </div>
-    <h1 class="ml-4 text-darkblue mr-10 text-3xl mt-2"><%= @trip.trip_name.capitalize %> in <%= @trip.country.capitalize %></h1>
-    <div class="flex pb-8 ml-4">
+
+    <h1 class="mx-3 md:mx-10 my-5 text-darkblue text-3xl"><%= @trip.trip_name.capitalize %> in <%= @trip.country.capitalize %></h1>
+    <div class="flex flex-col md:flex-row pb-3 md:pb-8 ml-4">
       <%# left %>
-      <div class="mr-24 w-1/2">
+
+      <div class="ml-3 md:ml-10 my-2 md:my-5 w-full md:w-1/2">
         <%# description and comment tabs %>
         <div class="tabs">
           <input type="radio" class="tabs__radio" name="tab-" id="tab1" checked>
           <label for="tab1" class="tabs__label mt-2 mr-8 text-base text-gray-500 hover:text-darkblue">About</label>
           <div class="tabs__content">
-            <h3 class="mt-2 text-base text-darkblue font-md"><%= @trip.description.capitalize %></h3>
+            <p class="flex shrink mt-5 text-base text-darkblue text-xl font-md"><%= @trip.description.capitalize %></p>
           </div>
           <input type="radio" class="tabs__radio" name="tab-" id="tab2" >
           <label for="tab2" class="tabs__label mt-2 text-base text-gray-500 hover:text-darkblue">Comments</label>
           <div class="tabs__content">
+
             <% if (user_signed_in?) then %>
               <% if @trip.attendees.length == 0 %>
                 <p>You have to apply for the trip to comment.</p>
               <% else %>
                 <% @trip.attendees.each do |attendee| %>
                   <% if attendee.approved == true || current_user.id == @trip.organizer.id %>
-                    <h2 class="mt-2 text-xl mb-2"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h2>
+                    <h2 class="mt-5 text-xl mb-2"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h2>
                     <%= simple_form_for [@trip, @message] do |f| %>
                       <div>
-                        <%= f.input :comment, :as => :text, label: false, input_html: { class:"w-full h-40 border-transparent drop-shadow" } %>
+                        <%= f.input :comment, :as => :text, label: false, input_html: { class:"w-3/4 h-40 border-transparent drop-shadow" } %>
                       </div>
-                      <div class="relative mb-12">
-                        <%= f.button :submit, :value => "Send", class: "absolute -bottom-10 right-0 mt-px btn px-4 py-2 bg-yellow text-darkblue font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
+                      <div class="mb-12">
+                        <%= f.button :submit, :value => "Send", class: " btn px-4 py-2 bg-yellow text-darkblue hover:bg-darkblue hover:text-white font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
                       </div>
                     <% end %>
                   <% elsif attendee.approved == false %>
@@ -114,7 +120,7 @@
                   <% end %>
                 <% end %>
               <% end %>
-              <div class= "shadow-lg border-t rounded-xl mt-2">
+              <div class= "shadow-lg w-3/4 border-t rounded-xl my-5 mt-2">
                 <% @trip.messages.each do |message| %>
                   <h3 class="text-sm mx-4 mt-2"><%= message.user.first_name.capitalize %></h3>
                   <div class="flex">
@@ -124,14 +130,15 @@
                 <% end %>
               </div>
             <% else %>
-              <p>You need to log in to see the comments</p>
+              <h3 class="my-10">You need to log in to see the comments</h3>
             <% end %>
           </div>
         </div>
       </div>
+
       <%# right side of page%>
-      <div class="ml-24 mb-2 w-1/2 h-full">
-        <h3 class="text-base"><strong> Organized by: </strong></h3>
+      <div class="mr-2 md:mr-20 w-10/12 md:w-1/2">
+        <h3 class="mb-5 text-base"><strong> Organized by: </strong></h3>
         <div class="flex mb-2 mt-4">
           <%= link_to user_path(@trip.organizer.id) do %>
             <div class="flex flex-row">
@@ -140,8 +147,9 @@
             </div>
           <% end %>
         </div>
+
         <%# attendee box %>
-        <div class="flex">
+        <div class="flex flex-wrap">
           <h3 class="text-base mt-4 mr-3">Attendees:</h3>
           <h3 class="text-base mt-4 ml-3"> <%= approved_attendees.count + 1 %> / <%= @trip.max_people %></h3>
         </div>
@@ -150,34 +158,32 @@
           <%# If organizer %>
           <% if current_user.id == @trip.organizer.id then %>
             <%# tabs %>
-            <div class="tabs shadow-md rounded-lg mt-2">
+            <div class="tabs shadow-md rounded-lg mt-5">
               <input type="radio" class="tabs__radio" name="tab-2" id="tab3" checked>
               <label for="tab3" class="tabs__label m-2 text-gray-500 hover:text-darkblue">Requests</label>
-              <div class="ml-2 tabs__content">
+              <div class="ml-0 md:ml-2 tabs__content">
                 <%# List attendees requesting %>
                 <div class="p-2">
                   <% @trip.attendees.each do |attendee| %>
                     <% if attendee.approved == false %>
-                      <div class="flex justify-between p-2 mx-10">
+                      <div class="flex justify-between p-0 md:p-2 mx-0 md:mx-2">
                         <%= link_to user_path(attendee.user.id) do %>
-                          <div class=" grid grid-cols-1 w-32">
-                            <div class="mx-auto">
-                              <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+                          <div class="flex flex-col justify-center w-14 md:w-28">
+                            <div class="mx-auto my-1 md:my-2">
+                              <img src=<%= attendee.user.avatar %> class="rounded-full border-2"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
                             </div>
-                            <div class="mx-auto">
+                            <div class="mx-auto my-1 md:my-2">
                               <%= attendee.user.first_name %>
                               <%= attendee.user.last_name %>
                             </div>
                           </div>
                         <% end %>
-                        <div>
+                        <div class="flex flex-col mx-10 md:mx-5 my-3">
                           <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
-                            <p class="bg-yellow py-2 px-5 rounded-2xl cursor-pointer" ><strong>Approve</strong></p>
+                            <p class="bg-yellow hover:bg-darkblue hover:text-white py-1  px-5 w-24 rounded-2xl cursor-pointer" ><strong>Approve</strong></p>
                           <% end %>
-                        </div>
-                        <div>
                           <%= button_to trip_attendee_path(attendee.id), method: :delete do %>
-                            <p class="bg-yellow py-2 px-8 rounded-2xl  cursor-pointer" ><strong>Reject</strong></p>
+                            <p class="bg-yellow hover:bg-darkblue hover:text-white py-1 px-5 w-24 rounded-2xl  cursor-pointer" ><strong>Reject</strong></p>
                           <% end %>
                         </div>
                       </div>
@@ -193,21 +199,22 @@
                 <div>
                   <% @trip.attendees.each do |attendee| %>
                     <% if attendee.approved == true %>
-                      <div class="flex justify-between p-2 mx-10">
-                        <div class="">
-                          <a href="" class=""><img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
+                    <div class="flex flex-row justify-between content-center">
+                      <div class="flex p-2 mx-3">
+                        <div>
+                          <a href="" class=""><img src=<%= attendee.user.avatar %> class="rounded-full border-2"  style="height: 64px; width: 64px; " alt="" loading="lazy"  /></a>
                         </div>
-                        <div class="mt-4 text-xl"><strong>
-                            <%= attendee.user.first_name %>
-                            <%= attendee.user.last_name %>
-                          </strong>
-                        </div>
-                        <div class="mt-2">
-                          <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
-                            <p class="bg-yellow py-2 px-8 rounded-2xl  cursor-pointer" ><strong>Remove</strong></p>
-                          <% end %> <%# button %>
+                        <div class="mt-4 mx-5 text-md">
+                          <%= attendee.user.first_name %>
+                          <%= attendee.user.last_name %>
                         </div>
                       </div>
+                      <div class="my-2 mx-5">
+                        <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
+                          <p class="bg-yellow hover:bg-darkblue hover:text-white py-1 px-5 rounded-2xl  cursor-pointer" ><strong>Remove</strong></p>
+                        <% end %> <%# button %>
+                      </div>
+                    </div>
                     <% end %> <%# if %>
                   <% end %> <%# each %>
                 </div>
@@ -224,15 +231,15 @@
                 <h2 class="text-base mt-4 text-gray-500"> <%= approved_attendees.count %> other people are going </h2>
               <% end %>
             </div>
-            <div class="flex mt-4 gap-x-2"> <%# grid grid-cols-6 %>
+            <div class="flex flex-col"> <%# grid grid-cols-6 %>
               <% @trip.attendees.each do |attendee| %>
                 <% if attendee.approved == true %>
                   <%= link_to user_path(attendee.user.id) do %>
-                    <div class=" grid grid-cols-1 w-24">
-                      <div class="mx-auto">
+                    <div class="flex flex-row w-12 md:w-24 h-12 md:h-24">
+                      <div class="mx-1 md:mx-5">
                         <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
                       </div>
-                      <div class="mx-auto">
+                      <div class="mx-1 md:mx-5">
                         <%= attendee.user.first_name %>
                       </div>
                     </div>
@@ -258,4 +265,3 @@
   </div>
 </div>
 </div>
-<%# this is a test %>
