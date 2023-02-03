@@ -41,12 +41,12 @@
 
     <%# <div class="flex flex-col h-screen"> %>
       <div id="vue">
-      <div class="flex-grow">
-        <%= yield %>
-      </div>
-          <% unless @scrollbutton == false %>
-            <%= render "shared/scroll_up" %>
-          <% end %>
+        <div class="flex-grow">
+          <%= yield %>
+        </div>
+            <% unless @scrollbutton == false %>
+              <%= render "shared/scroll_up" %>
+            <% end %>
       </div>
     <%# </div> %>
       <% unless @foot == false %>
