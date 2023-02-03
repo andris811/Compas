@@ -1,5 +1,5 @@
 <%= simple_form_for (@trip) do |f| %>
-  <div class="container grid grid-cols-2 px-10">
+  <div class="container grid grid-cols-1 md:grid-cols-2 px-10">
       <div class="border-r">
           <h1 class="uppercase text-4xl mt-8 ml-8 tracking-wide">
             Create a trip
@@ -264,7 +264,7 @@
                 <div class="flex flex-wrap w-96">
                   <h1 class="mb-2">Choose 4 tags that apply to your trip</h1>
                   <%= f.input :activities, as: :check_boxes, error_html: { class: "mt-2 text-xs text-red-400 uppercase"}, label: false,
-                  collection: [['surfing'],['hiking'],['kayaking'],['diving'],['racing'],['climbing'],['skydiving'],['partying'],['meditation'],['volunteering'],['wine tasting'],['fishing'],['hunting'],['other']], label_method: :first, value_method: :first, wrapper_html: { class: "grid grid-cols-2 gap-2 pl-2"}, input_html: { class: "m-2"} %>
+                  collection: [['surfing'],['hiking'],['kayaking'],['diving'],['racing'],['climbing'],['skydiving'],['partying'],['meditation'],['volunteering'],['wine tasting'],['fishing'],['hunting'],['other']], label_method: :first, value_method: :first, wrapper_html: { class: "grid grid-cols-2 gap-2 pl-2"}, input_html: { class: "m-2"}, include_hidden: false %>
                 </div>
             </div>
       </div>

@@ -49,7 +49,9 @@
           <% end %>
       </div>
     <%# </div> %>
-      <%= render "shared/footer" %>
+      <% unless @foot == false %>
+        <%= render "shared/footer" %>
+      <% end %>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
 
