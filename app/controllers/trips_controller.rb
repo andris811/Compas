@@ -25,12 +25,14 @@ class TripsController < ApplicationController
 
   def search_by_month(month, trips)
     if (month == "") then return trips end
+
     trips.select{ |trip| trip.start_date.month == month.to_i }
   end
 
   def search_by_activity(activity, trips)
-    if (activity == "") then return trips end
-    trips.select{ |trip| trip.activities.include?(activity) }
+    if (activity == '') then return trips end
+
+    trips.select { |trip| trip.activities.include?(activity) }
   end
 
   def show
