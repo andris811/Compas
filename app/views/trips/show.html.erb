@@ -63,10 +63,10 @@
     </div>
 
     </div>
-    <div class="w-full grid grid-cols-2 my-2 ml-0 lg:ml-4 gap-2 md:gap-4">
+    <div class="w-full grid grid-cols-2 ml-0 lg:ml-4 gap-2 md:gap-4">
       <% if @trip.photos.exists? %>
         <% @trip.photos[1..4].each do |photo| %>
-          <%= cl_image_tag photo.key, height: 93, width: 186, crop: :fill %>
+          <%= cl_image_tag photo.key, height: 91, width: 186, crop: :fill, radius: 4 %>
         <% end %>
       <% else %>
         <p>Could have awesome images here</p>
@@ -118,7 +118,7 @@
                       </div>
                     <% end %>
                   <% elsif attendee.approved == false %>
-                    <p>You have to be an approved attendee to comment on the trip.</p>
+                    <p class="mt-5">You have to be an approved attendee to comment on the trip.</p>
                   <% end %>
                 <% end %>
               <% end %>
@@ -196,7 +196,7 @@
               <%# confirmed tab %>
               <input type="radio" class="tabs__radio" name="tab-2" id="tab4" >
               <label for="tab4" class="tabs__label m-2 text-gray-500 hover:text-darkblue">Confirmed</label>
-              <div class="ml-2 tabs__content ">
+              <div class="ml-2 tabs__content mb-5">
                 <%# list all confirmed %>
                 <div>
                   <% @trip.attendees.each do |attendee| %>
