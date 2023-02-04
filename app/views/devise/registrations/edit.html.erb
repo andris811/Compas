@@ -36,6 +36,11 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded-md border-transparent	drop-shadow" %>
   </div>
 
+  <div class="field mt-4">
+    <%= f.label :How_would_you_describe_yourself?, class: "text-base text-gray-600"  %><br />
+    <%= f.input_field :description, autofocus: true, autocomplete: "email", class: "rounded-md border-transparent	drop-shadow" %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
