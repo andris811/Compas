@@ -193,7 +193,7 @@
                   <% end %>
                 </div>
               </div>
-              <%# confirmed tab %>
+              <%# confirmed tab organizer%>
               <input type="radio" class="tabs__radio" name="tab-2" id="tab4" >
               <label for="tab4" class="tabs__label m-2 text-gray-500 hover:text-darkblue">Confirmed</label>
               <div class="ml-2 tabs__content mb-5">
@@ -233,15 +233,16 @@
                 <h2 class="text-base mt-4 text-gray-500"> <%= approved_attendees.count %> other people are going </h2>
               <% end %>
             </div>
-            <div class="flex flex-col"> <%# grid grid-cols-6 %>
+            <div class="flex flex-col mt-2"> <%# grid grid-cols-6 %>
               <% @trip.attendees.each do |attendee| %>
                 <% if attendee.approved == true %>
                   <%= link_to user_path(attendee.user.id) do %>
-                    <div class="flex flex-row w-12 md:w-24 h-12 md:h-24">
-                      <div class="mx-1 md:mx-5">
-                        <img src=<%= attendee.user.avatar %> class="rounded-full"  style="height: 64px; width: 64px; " alt="" loading="lazy"  />
+                    <div class="flex flex-row ">
+                      <div class="">
+                        <img src="<%= attendee.user.avatar %>" class="rounded-full"  style="height: 48px; width: 48px; " alt="oops" loading="lazy"  />
+
                       </div>
-                      <div class="mx-1 md:mx-5">
+                      <div class="mx-1 md:mx-5 mt-3.5">
                         <%= attendee.user.first_name %>
                       </div>
                     </div>
@@ -249,7 +250,7 @@
                 <% end %>
               <% end %><%# each%>
             </div>
-          </div>
+          <%# </div> %>
         <% end %><%# else %>
         <%# If not signed in %>
       <% else %>
