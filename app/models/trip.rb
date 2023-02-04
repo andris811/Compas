@@ -40,6 +40,7 @@ class Trip < ApplicationRecord
   has_many :messages
   has_many_attached :photos
   has_many :attendees
+  has_many :users, through: :attendees
 
   def organizer
     return self.user

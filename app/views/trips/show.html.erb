@@ -103,11 +103,11 @@
           <div class="tabs__content">
 
             <% if (user_signed_in?) then %>
-              <% if @trip.attendees.length == 0 %>
+              <% if !@trip.users.include?(current_user) && current_user.id != @trip.organizer.id %>
                 <p>You have to apply for the trip to comment.</p>
-              <% else %>
-                <% @trip.attendees.each do |attendee| %>
-                  <% if attendee.approved == true || current_user.id == @trip.organizer.id %>
+              <% elsif (@trip.users.include?(current_user) && @trip.attendees.find_by(user_id: current_user.id).approved) || @trip.organizer.id == current_user.id %>
+                <%# <% @trip.attendees.each do |attendee| %>
+                  <%# <% if attendee.approved == true || current_user.id == @trip.organizer.id %>
                     <h2 class="mt-5 text-xl mb-2"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h2>
                     <%= simple_form_for [@trip, @message] do |f| %>
                       <div>
@@ -117,11 +117,11 @@
                         <%= f.button :submit, :value => "Send", class: " btn px-4 py-2 bg-yellow text-darkblue hover:bg-darkblue hover:text-white font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
                       </div>
                     <% end %>
-                  <% elsif attendee.approved == false %>
+                  <% elsif @trip.attendees.find_by(user_id: current_user.id)&.approved == false  %>
                     <p class="mt-5">You have to be an approved attendee to comment on the trip.</p>
                   <% end %>
-                <% end %>
-              <% end %>
+                <%# <% end %>
+              <%# <% end %>
               <div class= "shadow-lg w-3/4 border-t rounded-xl my-5 mt-2">
                 <% @trip.messages.each do |message| %>
                   <h3 class="text-sm mx-4 mt-2"><%= message.user.first_name.capitalize %></h3>
