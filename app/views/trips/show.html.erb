@@ -6,7 +6,7 @@
 <% end %>
 <div class="container grid grid-cols-1 lg:grid-cols-2">
   <div class="">
-    <div class="w-full mr-14 rounded relative" style="background-image: url(<%= @trip.photos.first.url %>); background-size: cover;">
+    <div class="w-full mr-14 rounded relative" style="background-image: url(<%= @trip.photos.first.url %>); background-size: cover; background-position: center center;">
       <div class="content-end" style="background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,.3));">
         <div class="h-96"></div>
         <%# tags %>
@@ -57,8 +57,6 @@
             <% end %>
           <% end %>
         </div>
-        <%# Bottom half of the page %>
-        <%# make a list of attendees by id %>
       </div>
     </div>
 
@@ -74,6 +72,7 @@
     </div>
   </div>
 
+        <%# Bottom half of the page %>
   <%# bottom %>
   <div class="rounded-2xl container">
     <div class="flex flex-col md:flex-row">
