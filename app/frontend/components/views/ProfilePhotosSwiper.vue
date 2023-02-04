@@ -9,7 +9,8 @@
     :modules="modules"
   >
     <swiper-slide v-for="(image, index) in images" :key="index">
-      <img :src="image.url" class="rounded-lg h-52" />
+      <a v-if="image.id" :href="`/trips/${image.id}`"> <img :src="image.url" class="rounded-lg h-52" /></a>
+      <img v-else :src="image.url" class="rounded-lg h-52" />
     </swiper-slide>
   </swiper>
 </template>

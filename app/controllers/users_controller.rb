@@ -18,7 +18,8 @@ class UsersController < ApplicationController
       if pic.user_id == @user.id
         photo = pic.photos.first
         current_trips = {
-          url: photo.url
+          url: photo.url,
+          id: pic.id
         }
         @current_trips << current_trips
       end
@@ -29,17 +30,19 @@ class UsersController < ApplicationController
       if attendees.user_id == @user.id
         puts 'Worked!!-----------------------------------------------------------------------'
         if attendees.trip.end_date <= Date.today
-          puts 'This is in thbe past'
+          puts 'This is in the past'
           photo = attendees.trip.photos.first
           past_trips = {
-            url: photo.url
+            url: photo.url,
+            id: attendees.trip.id
           }
           @past_trips << past_trips
         else
           puts 'This is in the future'
           photo = attendees.trip.photos.first
           future_trips = {
-              url: photo.url
+              url: photo.url,
+              id: attendees.trip.id
           }
           @future_trips << future_trips
         end
