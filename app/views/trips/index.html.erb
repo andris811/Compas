@@ -11,9 +11,18 @@
   </div>
   <%# end banner and search %>
   <div class="flex flex-wrap mx-5 my-60 md:my-36 md:mx-20 lg:mx-40 ">
-    <div class="text-center w-full">
-      <h2 class="-mt-4"> FOUND THESE PLACES JUST FOR <em><u><strong>YOU</u></em></strong> ! </h2>
-    </div>
+    <% if @trips.exists? %>
+      <div class="text-center w-full">
+        <h2 class="-mt-4"> FOUND THESE PLACES JUST FOR <em><u><strong>YOU</u></em></strong> ! </h2>
+      </div>
+      <% else %>
+        <div class="text-center w-full">
+          <h2 class="-mt-4">Sorry, we couldn't find any trips for you 😢 <br> please search something else or</h2>
+          <%= link_to new_trip_path do %>
+            <h2 class="text-darkblue hover:text-yellow hover:underline">Create a new trip</h2>
+          <% end %>
+        </div>
+    <% end %>
     <%# card %>
     <% @trips.each do |trip| %>
       <div class="p-4 mb-3 h-full md:w-1/2 lg:w-1/3">
