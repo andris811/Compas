@@ -22,7 +22,8 @@
             <div class="">
               <img src="<%= trip.user.avatar %>" class=" rounded-full absolute top-3 right-3 bg-white sm:h-10 w-10 md:h-13 w-13 z-10" alt="" loading="lazy"  />
               <div class="brightness-75">
-                <img alt="content" class="" src="<%= trip.trip_img%>">
+                <%= cl_image_tag trip.photos.first.key, height: 93, width: 186, crop: :fill %>
+                <%# <img alt="content" class="" src="<%= trip.photos.first %>
               </div>
             </div>
             <div class="absolute bottom-0 left-0">
