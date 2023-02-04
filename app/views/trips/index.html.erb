@@ -20,7 +20,11 @@
         <%= link_to trip_path(trip) do %>
           <div class="rounded-lg h-64 overflow-hidden relative">
             <div class="">
-              <img src="<%= trip.user.avatar %>" class=" rounded-full absolute top-3 right-3 bg-white sm:h-10 w-10 md:h-13 w-13 z-10" alt="" loading="lazy"  />
+              <div class="absolute top-3 right-3 sm:h-10 md:h-13 z-10">
+                <% if trip.user.avatar.attached? %>
+                  <%= cl_image_tag(trip.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full w-14 h-14") %>
+                <% end %>
+              </div>
               <div class="brightness-75">
                 <img alt="content" class="" src="<%= trip.trip_img%>">
               </div>

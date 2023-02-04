@@ -28,6 +28,7 @@ class User < ApplicationRecord
   has_many :trip
   has_many :messages
   has_many_attached :photos
+  has_one_attached :avatar
 
 
   devise :database_authenticatable, :registerable,
