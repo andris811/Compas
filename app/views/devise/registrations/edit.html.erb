@@ -7,6 +7,18 @@
   data: {turbo: false}) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div class="field mt-4 flex space-x-4">
+    <div class="mt-4">
+      <% if resource.avatar.attached? %>
+        <%= cl_image_tag(resource.avatar.key, crop: :thumb, gravity: :face, class: "rounded w-24 h-24") %>
+      <% end %>
+    </div>
+    <div>
+      <%= f.label :avatar, class: "text-base text-gray-600 flex flex-col mt-4" %>
+      <%= f.input_field :avatar, as: :file %>
+    </div>
+  </div>
+
   <div class="field mt-4">
     <%= f.label :first_name, class: "text-base text-gray-600"%><br />
     <%= f.input_field :first_name, autofocus: true, autocomplete: "first-name", class: "rounded-md border-transparent	drop-shadow"%>
