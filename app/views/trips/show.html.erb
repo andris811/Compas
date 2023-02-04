@@ -219,9 +219,10 @@
                   <% @trip.attendees.each do |attendee| %>
                     <% if attendee.approved == true %>
                     <div class="flex flex-row justify-between content-center">
-                      <div class="flex p-2 mx-3">
+                      <div class="flex p-2 mx-3 ">
                         <div>
                           <a href="" class="">
+                          <%= link_to user_path(attendee.user.id) do %>
                             <div class="border border-2 border-yellow rounded-full">
                               <% if attendee.user.avatar.attached? %>
                                 <%= cl_image_tag(attendee.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-14 w-14")%>
@@ -229,6 +230,7 @@
                                 <%= image_tag "icons.jpeg", class:"rounded-full h-14 w-14" %>
                               <% end %>
                             </div>
+                            <% end %>
                         </div>
                         <div class="mt-4 mx-5 text-md">
                           <%= attendee.user.first_name %>
