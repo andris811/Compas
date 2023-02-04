@@ -237,7 +237,7 @@
       <p class="text-xl font-bold -mb-8">My Trips</p>
       <div class="container">
         <a href="">
-          <profile-photos-swiper :images="<%= @images.to_json %>" />
+          <profile-photos-swiper :images="<%= @current_trips.to_json %>" />
         </a>
       </div>
     </div>
@@ -247,7 +247,7 @@
       <p class="text-xl font-bold -mb-8">Previous Trips</p>
       <div class="container">
         <a href="">
-          <profile-photos-swiper :images="<%= @images.to_json %>" />
+          <profile-photos-swiper :images="<%= @past_trips.to_json %>" />
         </a>
       </div>
     </div>
@@ -257,7 +257,7 @@
       <p class="text-xl font-bold -mb-8">Upcoming Trips</p>
       <div class="container">
         <a href="">
-          <profile-photos-swiper :images="<%= @images.to_json %>" />
+          <profile-photos-swiper :images="<%= @future_trips.to_json %>" />
         </a>
       </div>
     </div>
