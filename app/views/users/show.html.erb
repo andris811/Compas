@@ -12,6 +12,8 @@
           <div class="w-14 md:w-28 mt-28">
             <% if current_user.avatar.attached? %>
               <%= cl_image_tag(current_user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-28 w-28 bg-center")%>
+            <% else %>
+              <%= image_tag "icons.jpeg", height: 28, width: 28, class:"rounded-full" %>
             <% end %>
           </div>
           <div class="pl-20 md:pl-32 pt-10 md:pt-0">

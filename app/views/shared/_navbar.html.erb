@@ -20,7 +20,13 @@
       <% if (user_signed_in?) then %>
         <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 ring-4 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
           <span class="sr-only"></span>
-          <img class="rounded-full md:h-16 w-16 sm:h-10 w-10" src=<%= current_user.avatar %> alt="user photo">
+          <div class="rounded-full">
+            <% if current_user.avatar.attached? %>
+              <%= cl_image_tag(current_user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full md:h-16 w-16 sm:h-10 w-10")%>
+            <% else %>
+              <%= image_tag "icons.jpeg", class:"rounded-full md:h-16 w-16 sm:h-10 w-10" %>
+            <% end %>
+          </div>
         </button>
       <% else %>
         <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="" type="button">
