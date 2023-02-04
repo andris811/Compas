@@ -23,10 +23,12 @@
               <div class="absolute top-3 right-3 sm:h-10 md:h-13 z-10">
                 <% if trip.user.avatar.attached? %>
                   <%= cl_image_tag(trip.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full w-14 h-14") %>
+                  <% else %>
+                  <%= image_tag "icons.jpeg", class:"rounded-full w-14 h-14" %>
                 <% end %>
               </div>
               <div class="brightness-75">
-                <%= cl_image_tag trip.photos.first.key, crop: :fill %>
+                <%= cl_image_tag trip.photos.first.key, crop: :fill, gravity: :auto %>
                 <%# <img alt="content" class="" src="<%= trip.photos.first %>
               </div>
             </div>
