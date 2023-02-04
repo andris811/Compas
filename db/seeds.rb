@@ -276,49 +276,49 @@ Answer.destroy_all
 Question.destroy_all
 User.destroy_all
 
-puts "Creating users"
-users = []
-default_user = User.create!(
-  email: "vargan89@gmail.com",
-  password: "12345678",
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  phone_number: 13646667150,
-  avatar: Faker::Avatar.image
-)
-users << default_user
-50.times do
-  user = User.create!(
-    email: Faker::Internet.email,
-    password: "12345678",
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    phone_number: Faker::PhoneNumber.phone_number,
-    avatar: Faker::Avatar.image
-    # avatar: Faker::LoremFlickr.image(size: "300x300", search_terms: ['people', 'avatar']),
-  )
-  users << user
-end
+puts "Skipping Creating users"
+# users = []
+# default_user = User.create!(
+#   email: "vargan89@gmail.com",
+#   password: "12345678",
+#   first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   phone_number: 13646667150,
+#   avatar: Faker::Avatar.image
+# )
+# users << default_user
+# 50.times do
+#   user = User.create!(
+#     email: Faker::Internet.email,
+#     password: "12345678",
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     phone_number: Faker::PhoneNumber.phone_number,
+#     avatar: Faker::Avatar.image
+#     # avatar: Faker::LoremFlickr.image(size: "300x300", search_terms: ['people', 'avatar']),
+#   )
+#   users << user
+# end
 
-puts 'Creating trips'
-100.times do
-  cnt = countries.sample
-  lct = locations.sample
-  act = activities.sample
-  Trip.create!(
-    trip_name: act,
-    max_people: Faker::Number.between(from: 1, to: 30),
-    description: Faker::Quote.matz,
-    pets: Faker::Boolean.boolean,
-    user_id: users.sample.id,
-    activities: activities.sample(rand(1..4)),
-    country: cnt,
-    location: lct,
-    trip_img: Faker::LoremFlickr.image(size: "475x475", search_terms: [cnt.split[0..2].join('')]),
-    start_date: Date.today,
-    end_date: Faker::Date.forward(days: 20)
-  )
-end
+puts ' skipping Creating trips'
+# 100.times do
+#   cnt = countries.sample
+#   lct = locations.sample
+#   act = activities.sample
+#   Trip.create!(
+#     trip_name: act,
+#     max_people: Faker::Number.between(from: 1, to: 30),
+#     description: Faker::Quote.matz,
+#     pets: Faker::Boolean.boolean,
+#     user_id: users.sample.id,
+#     activities: activities.sample(rand(1..4)),
+#     country: cnt,
+#     location: lct,
+#     trip_img: Faker::LoremFlickr.image(size: "475x475", search_terms: [cnt.split[0..2].join('')]),
+#     start_date: Date.today,
+#     end_date: Faker::Date.forward(days: 20)
+#   )
+# end
 puts 'writing questions...'
 quest1 = Question.create!(
   content: 'Where do you want to go?'
