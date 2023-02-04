@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-
   def show
-    # set_attendees
-
     @user = User.find(params[:id])
     @images = []
     @current_trips = []
@@ -12,7 +9,7 @@ class UsersController < ApplicationController
     @user.photos.each do |pic|
       image = {
         url: pic.url,
-        text: "This is a pic"
+        text: 'This is a pic'
       }
       @images << image
     end
@@ -28,29 +25,23 @@ class UsersController < ApplicationController
     end
 
     Attendee.all.each do |attendees|
-      # x = pic.id
-      # puts attendee.attendees
-      puts "HELLO THIS IS ME!!-----------------------------------------------------------------------"
+      puts 'HELLO THIS IS ME!!-----------------------------------------------------------------------'
       if attendees.user_id == @user.id
-        puts "Worked!!-----------------------------------------------------------------------"
+        puts 'Worked!!-----------------------------------------------------------------------'
         if attendees.trip.end_date <= Date.today
-          puts "This is in thbe past"
-        # if @user.id == pic.attendees
-
+          puts 'This is in thbe past'
           photo = attendees.trip.photos.first
           past_trips = {
             url: photo.url
           }
           @past_trips << past_trips
         else
-          puts "This is in the future"
-          # if @user.id == pic.attendees
-
-            photo = attendees.trip.photos.first
-            future_trips = {
-                url: photo.url
-              }
-            @future_trips << future_trips
+          puts 'This is in the future'
+          photo = attendees.trip.photos.first
+          future_trips = {
+              url: photo.url
+          }
+          @future_trips << future_trips
         end
       end
     end
@@ -67,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :dob, :emergency_contact_name, :emergency_contact_phone_number, :avatar, photos:[])
+    params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :dob, :emergency_contact_name, :emergency_contact_phone_number, :avatar, photos: [])
   end
 
   def set_attendees

@@ -7,8 +7,8 @@ class AttendeesController < ApplicationController
     @attendee.approved = false
     @attendee.trip = trip
     @attendee.user = current_user
-      @attendee.save
-      redirect_to trip_path(@attendee.trip)
+    @attendee.save
+    redirect_to trip_path(@attendee.trip)
   end
 
   def index
@@ -39,11 +39,9 @@ class AttendeesController < ApplicationController
     @attendee = Attendee.find(params[:trip_id])
     # @trip = Trip.find(params[:trip_id])
     @attendee.approved = !@attendee.approved
-      @attendee.save
-      redirect_to trip_path(@attendee.trip)
-
+    @attendee.save
+    redirect_to trip_path(@attendee.trip)
   end
-
 
   private
 
