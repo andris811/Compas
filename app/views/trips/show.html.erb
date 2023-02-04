@@ -103,7 +103,7 @@
           <div class="tabs__content">
 
             <% if (user_signed_in?) then %>
-              <% if @trip.attendees.length == 0 %>
+              <% if @trip.attendees.length == 0 && current_user.id != @trip.organizer.id %>
                 <p>You have to apply for the trip to comment.</p>
               <% else %>
                 <% @trip.attendees.each do |attendee| %>
