@@ -4,11 +4,31 @@
   <div class="">
     <div class="container my-2 md:my-5 w-11/12 text-center" v-for="question in questions">
       <div class="flex flex-row">
-        <div v-if="question.content === 'Where do you want to go?'" class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/globe.jpeg')]"></div>
-        <div v-if="question.content === 'How many people do you want to travel with?'" class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/friends.jpg')]"></div>
-        <div v-if="question.content === 'Do you mind having pets on this trip?'" class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/dog.jpg')]"></div>
-        <div v-if="question.content === 'What kind of vacation would you enjoy most?'" class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/beach.jpg')]"></div>
-        <div v-if="question.content === 'What kind of activities would you like to join?'" class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/climbing.jpg')]"></div>
+        <div
+          id="1"
+          v-if="question.content === 'Where do you want to go?'"
+          class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/globe.jpeg')]"
+        ></div>
+        <div
+        id="2"
+          v-if="question.content === 'How many people do you want to travel with?'"
+          class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/friends.jpg')]"
+        ></div>
+        <div
+          id="3"
+          v-if="question.content === 'Do you mind having pets on this trip?'"
+          class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/dog.jpg')]"
+        ></div>
+        <div
+        id="4"
+          v-if="question.content === 'What kind of vacation would you enjoy most?'"
+          class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/beach.jpg')]"
+        ></div>
+        <div
+          id="5"
+          v-if="question.content === 'What kind of activities would you like to join?'"
+          class="basis-1/3 h-screen bg-cover bg-center rounded-l-xl bg-[url('/images/quiz/climbing.jpg')]"
+        ></div>
         <div class="basis-2/3 bg-darkblue rounded-r-xl">
           <div class="text-white text-md my-10 mx-5 md:text-xl my-20">
             <h2>{{ question.content }}</h2>
@@ -33,6 +53,7 @@
                 <button
                   type="button"
                   class="w-3/4 lg:my-5 sm: my-3 bg-white text-darkblue hover:bg-yellow border border-yellow-400 hover:bg-yellow focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900"
+                  @mouseup="scroll2"
                 >
                   {{ answer }}
                 </button>
@@ -46,7 +67,8 @@
                 <button
                   type="button"
                   class="w-3/4 my-5 bg-white text-dark-blue border border-yellow-400 hover:bg-yellow focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900"
-                >
+                  @mouseup="scroll3"
+                  >
                   {{ answer }}
                 </button>
               </div>
@@ -58,7 +80,8 @@
                 <button
                   type="button"
                   class="w-3/4 my-5 sm: my-3 bg-white text-darkblue border border-yellow-400 hover:bg-yellow focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900"
-                >
+                  @mouseup="scroll4"
+                  >
                   {{ answer }}
                 </button>
               </div>
@@ -68,8 +91,9 @@
           <div v-if="question.content === 'What kind of activities would you like to join?'">
             <label for="countries" class="block mb-20 text-md font-medium text-white dark:text-white">Select an option</label>
             <select
-              id="countries"
+              id="activity"
               class="bg-white border border-yellow-400 text-darkblue text-lg rounded-lg hover:bg-yellow focus:ring-yellow-300 focus:border-yellow-500 block w-1/2 p-2.5 dark:bg-yellow-700 dark:border-yellow-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500 m-auto"
+              @change="selectActivity($event)"
             >
               <option v-for="answer in question.answers">
                 {{ answer }}
@@ -81,6 +105,7 @@
     </div>
     <div class="flex justify-end container -mt-20 mr-20">
       <button
+        id="6"
         type="button"
         class="w-full md:w-48 focus:outline-none text-darkblue bg-yellow hover:bg-darkblue hover:text-yellow focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
         @click="submit()"
@@ -353,15 +378,35 @@ export default {
           ]
         }
       ],
-      country: ""
+      country: "",
+      activity: ""
     };
   },
   methods: {
     selectCountry(e) {
       this.country = e.target.value;
+      const access = document.getElementById("2");
+      access.scrollIntoView();
+    },
+    selectActivity(e) {
+      this.activity = e.target.value;
+      const access = document.getElementById("6");
+      access.scrollIntoView();
     },
     submit() {
-      window.location.href = `/trips?search=${this.country}&type=quiz`;
+      window.location.href = `/trips?search=${this.country}&search=activities=${this.activity}&type=quiz`;
+    },
+    scroll2: function () {
+      const access = document.getElementById("3");
+      access.scrollIntoView();
+    },
+    scroll3: function () {
+      const access = document.getElementById("4");
+      access.scrollIntoView();
+    },
+    scroll4: function () {
+      const access = document.getElementById("5");
+      access.scrollIntoView();
     }
   }
 };
