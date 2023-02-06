@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_04_092146) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_06_081431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -156,7 +156,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_092146) do
     t.string "emergency_contact_phone_number"
     t.string "avatar", default: "https://png.pngtree.com/png-clipart/20210915/ourlarge/pngtree-user-avatar-placeholder-png-image_3918418.jpg"
     t.string "user_img", default: [], array: true
-    t.text "description"
+    t.text "description", default: ""
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
