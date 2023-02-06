@@ -251,12 +251,12 @@
             <%# if not the organizer %>
           <% else %>
             <div>
-              <% if @trip.attendees.count == 0 %>
-                <h2 class="text-base mt-4 text-gray-500"> Be the first to sign-up! </h2>
+              <% if approved_attendees.count == 0 %>
+                <h2 class="text-base mt-4 text-gray-500"> Be the first to join <%= @trip.organizer.first_name %>! </h2>
               <% elsif approved_attendees.count == 1  %>
-                <h2 class="text-base mt-4 text-gray-500"> <%= approved_attendees.count %> person is going </h2>
+                <h2 class="text-base mt-4 text-gray-500"> <%= approved_attendees.count %> person is going with <%= @trip.organizer.first_name %> </h2>
               <% elsif approved_attendees.count >= 2 %>
-                <h2 class="text-base mt-4 text-gray-500"> <%= approved_attendees.count %> other people are going </h2>
+                <h2 class="text-base mt-4 text-gray-500"><%= @trip.organizer.first_name %> and <%= approved_attendees.count %> other people are going </h2>
               <% end %>
             </div>
             <div class="flex flex-col mt-2"> <%# grid grid-cols-6 %>
@@ -286,12 +286,12 @@
         <%# If not signed in %>
       <% else %>
         <div>
-          <% if @trip.attendees.count-1 == 0  %>
-            <h2 class="text-base mt-4 text-gray-500"> Be the first to sign-up! </h2>
+          <% if @trip.attendees.count == 0  %>
+            <h2 class="text-base mt-4 text-gray-500"> Be the first to join <%= @trip.organizer.first_name %>! </h2>
           <% elsif @trip.attendees.count == 1  %>
-            <h2 class="text-base mt-4 text-gray-500"> <%= @trip.attendees.count %> person is going </h2>
+            <h2 class="text-base mt-4 text-gray-500"><%= @trip.organizer.first_name %> and <%= @trip.attendees.count %> other person is going </h2>
           <% elsif @trip.attendees.count >= 2 %>
-            <h2 class="text-base mt-4 text-gray-500"> <%= @trip.attendees.count %> other people are going </h2>
+            <h2 class="text-base mt-4 text-gray-500"><%= @trip.organizer.first_name %> and <%= @trip.attendees.count %> other people are going </h2>
           <% end %>
         </div>
       <% end %>
