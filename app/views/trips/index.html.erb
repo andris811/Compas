@@ -37,7 +37,7 @@
                 <% end %>
               </div>
               <div class="brightness-75">
-                <%= cl_image_tag trip.photos.first.key, crop: :fill, gravity: :auto %>
+                <%= cl_image_tag trip.photos.first.key, height:295, width:415, crop:"fill", background: "blue" %>
                 <%# <img alt="content" class="" src="<%= trip.photos.first %>
               </div>
             </div>

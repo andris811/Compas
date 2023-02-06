@@ -32,7 +32,7 @@
         <%# Button %>
         <div class="absolute bottom-2 md:bottom-5 right-2 md:right-12">
           <%= link_to new_trip_path do %>
-            <button type="button" class="mr-2 h-10 p-2 md:px-4 py-2.5 md:py-0 bg-yellow text-darkblue font-bold text-xs md:text-lg leading-tight rounded-lg">
+            <button type="button" class="mr-2 h-10 p-2 md:px-4 py-2.5 md:py-0 bg-yellow hover:bg-darkblue text-darkblue  hover:text-white font-bold text-xs md:text-lg leading-tight rounded-lg">
               Create a new trip
             </button>
           <% end %>
@@ -48,19 +48,10 @@
 
 <%# upload button modal %>
 
+          <button type="button" class=" text-black hover:text-darkblue font-medium text-sm uppercase hover:underline" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+            Upload
+          </button>
 
-
-
-
-
-
-
-          <div class="">
-
-            <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
-              Upload
-            </button>
-          </div>
 
 
           <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollable" aria-modal="true" role="dialog">
@@ -81,12 +72,12 @@
                 <div
                   class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
                   <button type="button"
-                    class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    class="inline-block px-6 py-2.5 bg-darkblue text-white hover:text-darkblue font-medium text-sm leading-tight uppercase rounded shadow-md hover:bg-yellow hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                     data-bs-dismiss="modal">
                     Close
                   </button>
-                  <div class="flex justify-start mt-6">
-                    <%= f.submit "Upload", class: "-mt-10 ml-8 btn item-center w-48 bg-yellow text-darkblue font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
+                  <div class="flex justify-start">
+                    <%= f.submit "Upload", class: " ml-8 btn item-center w-48 bg-yellow hover:bg-darkblue text-darkblue hover:text-white font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
                   </div>
                 </div>
                 <% end %>
