@@ -4,7 +4,7 @@
 #
 #  id                             :bigint           not null, primary key
 #  avatar                         :string           default("https://png.pngtree.com/png-clipart/20210915/ourlarge/pngtree-user-avatar-placeholder-png-image_3918418.jpg")
-#  description                    :text
+#  description                    :text             default("")
 #  dob                            :date
 #  email                          :string           default(""), not null
 #  emergency_contact_name         :string
