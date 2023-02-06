@@ -64,7 +64,7 @@
     <div class="w-full grid grid-cols-2 ml-0 lg:ml-4 gap-2 md:gap-4">
       <% if @trip.photos.exists? %>
         <% @trip.photos[1..4].each do |photo| %>
-          <%= cl_image_tag photo.key, height: 91, width: 186, crop: :fill, radius: 4 %>
+          <%= cl_image_tag photo.key, height: 240, width: 480, crop: :fill, radius: 4 %>
         <% end %>
       <% else %>
         <p>Could have awesome images here</p>
@@ -253,9 +253,9 @@
             <div>
               <% if @trip.attendees.count == 0 %>
                 <h2 class="text-base mt-4 text-gray-500"> Be the first to sign-up! </h2>
-              <% elsif @trip.attendees.count == 1  %>
+              <% elsif approved_attendees.count == 1  %>
                 <h2 class="text-base mt-4 text-gray-500"> <%= approved_attendees.count %> person is going </h2>
-              <% elsif @trip.attendees.count >= 2 %>
+              <% elsif approved_attendees.count >= 2 %>
                 <h2 class="text-base mt-4 text-gray-500"> <%= approved_attendees.count %> other people are going </h2>
               <% end %>
             </div>
