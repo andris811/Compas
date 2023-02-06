@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
     Attendee.all.each do |attendees|
       puts 'HELLO THIS IS ME!!-----------------------------------------------------------------------'
-      if attendees.user_id == @user.id
+      if attendees.user_id == @user.id && attendees.approved
         puts 'Worked!!-----------------------------------------------------------------------'
         if attendees.trip.end_date <= Date.today
           puts 'This is in the past'
