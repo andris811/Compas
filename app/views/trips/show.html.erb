@@ -201,7 +201,7 @@
                           <%= button_to trip_attendee_path(attendee.id), method: :patch do %>
                             <p class="bg-yellow hover:bg-darkblue hover:text-white py-1  px-5 w-24 rounded-2xl cursor-pointer" ><strong>Approve</strong></p>
                           <% end %>
-                          <%= button_to trip_attendee_path(attendee.id), method: :delete do %>
+                          <%= button_to "/trips/#{@trip.id}/attendees/#{attendee.id}", method: :delete do %>
                             <p class="bg-yellow hover:bg-darkblue hover:text-white py-1 px-5 w-24 rounded-2xl  cursor-pointer" ><strong>Reject</strong></p>
                           <% end %>
                         </div>
