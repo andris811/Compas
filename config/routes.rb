@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get 'pages/home'
+  get 'pages/about'
 
   resources :quizzes
   resources :questions, only: [:index], defaults: { format: :json }
