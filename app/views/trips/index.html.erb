@@ -10,7 +10,7 @@
     </div>
   </div>
   <%# end banner and search %>
-  <div class="flex flex-wrap mx-5 my-60 md:my-36 md:mx-20 lg:mx-40 ">
+  <div class="flex flex-wrap mx-5 my-60 md:my-64 lg:my-36 md:mx-20 lg:mx-40 ">
     <% if @trips.any? %>
       <div class="text-center w-full">
         <h2 class="-mt-4"> FOUND THESE PLACES JUST FOR <em><u><strong>YOU</u></em></strong> ! </h2>
@@ -28,7 +28,7 @@
       <div class="p-4 mb-3 h-full md:w-1/2 lg:w-1/3">
         <%= link_to trip_path(trip) do %>
           <div class="rounded-lg h-64 overflow-hidden relative backdrop-brightness-75">
-            <div class="">
+            <div class="h-full">
               <div class="absolute top-3 right-3 sm:h-10 md:h-13 z-10">
                 <% if trip.user.avatar.attached? %>
                   <%= cl_image_tag(trip.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full w-14 h-14") %>
@@ -36,8 +36,8 @@
                   <%= image_tag "icons.jpeg", class:"rounded-full w-14 h-14" %>
                 <% end %>
               </div>
-              <div class="brightness-75">
-                <%= cl_image_tag trip.photos.first.key, height:295, width:415, crop:"fill", background: "blue" %>
+              <div class="brightness-75 h-full">
+                <%= cl_image_tag trip.photos.first.key, class:"object-cover h-full" %>
                 <%# <img alt="content" class="" src="<%= trip.photos.first %>
               </div>
             </div>
