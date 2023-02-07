@@ -11,7 +11,7 @@
   </div>
   <%# end banner and search %>
   <div class="flex flex-wrap mx-5 my-60 md:my-36 md:mx-20 lg:mx-40 ">
-    <% if @trips.exists? %>
+    <% if @trips.any? %>
       <div class="text-center w-full">
         <h2 class="-mt-4"> FOUND THESE PLACES JUST FOR <em><u><strong>YOU</u></em></strong> ! </h2>
       </div>
