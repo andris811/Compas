@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    quizzes_path
+    puts params
+
+    if params[:commit] == "Log in"
+      trips_path
+    else
+      quizzes_path
+    end
   end
 end
