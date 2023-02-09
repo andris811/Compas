@@ -395,7 +395,7 @@ export default {
       access.scrollIntoView();
     },
     submit() {
-      window.location.href = `/trips?search=${this.country}&search=activities=${this.activity}&type=quiz`;
+      window.location.href = `/trips?search%5Bsearch%5D=${this.country}&search%5Bstart_date%5D=&search%5Bactivities%5D=${this.activity}&type=quiz`;
     },
     scroll2: function () {
       const access = document.getElementById("3");
