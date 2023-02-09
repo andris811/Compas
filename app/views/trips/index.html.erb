@@ -33,7 +33,7 @@
                 <% if trip.user.avatar.attached? %>
                   <%= cl_image_tag(trip.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full w-14 h-14") %>
                   <% else %>
-                  <%= image_tag "icons.jpeg", class:"rounded-full w-14 h-14" %>
+                  <%= image_tag "icons.png", class:"rounded-full w-14 h-14" %>
                 <% end %>
               </div>
               <div class="brightness-75 h-full">
