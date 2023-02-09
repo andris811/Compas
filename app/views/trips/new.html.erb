@@ -1,10 +1,10 @@
 <%= simple_form_for (@trip) do |f| %>
   <div class="container grid grid-cols-1 md:grid-cols-2 px-10">
-    <div class="border-r">
+    <div class="border-0 md:border-r">
       <h1 class="uppercase text-4xl mt-8 ml-8 tracking-wide">
         Create a trip
       </h1>
-      <%= f.input :trip_name, label: false, label: "Give your trip a name",placeholder: "Exploring the streets of Shanghai", wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: {class:"w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"}, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"} %>
+      <%= f.input :trip_name, label: false, label: "Give your trip a name",placeholder: "Exploring the streets of Shanghai", wrapper_html: { class: "mt-8 px-8 w-64 md:w-96" }, input_html: {class:"w-64 md:w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"}, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"} %>
       <%= f.input :country, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, collection: @countries = [
             "Afghanistan",
             "Albania",
@@ -212,29 +212,29 @@
             "Yemen",
             "Zambia",
             "Zimbabwe"
-    ], as: :select, label: "Country", wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: {class:"w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
-      <%= f.input :max_people,  error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, label: "Max number of people", wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: {class:"w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
-      <%= f.input :pets, as: :radio_buttons, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, label: "Are pets allowed?", wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: {class:"ml-6 w-4 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
-      <%= f.input :start_date, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: {class:"w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
-      <%= f.input :end_date, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: {class:"w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"}, error: "Please choose a date" %>
-      <%= f.input :description, lerror_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, label: "Tell us a bit more about your trip", wrapper_html: { class: "mt-8 px-8 w-96" }, input_html: { class: "text-darkblue border outline-darkblue w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"}, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"} %>
+    ], as: :select, label: "Country", wrapper_html: { class: "mt-8 px-8 w-64 md:w-96" }, input_html: {class:"w-64 md:w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
+      <%= f.input :max_people,  error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, label: "Max number of people", wrapper_html: { class: "mt-8 px-8 w-64 md:w-96" }, input_html: {class:"w-64 md:w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
+      <%= f.input :pets, as: :radio_buttons, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, label: "Are pets allowed?", wrapper_html: { class: "mt-8 px-8 w-72 md:w-96" }, input_html: {class:"ml-2 md:ml-6 w-4 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
+      <%= f.input :start_date, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, wrapper_html: { class: "mt-8 px-8 w-64 md:w-96" }, input_html: {class:"w-64 md:w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"} %>
+      <%= f.input :end_date, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, wrapper_html: { class: "mt-8 px-8 w-64 md:w-96" }, input_html: {class:"w-64 md:w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"}, error: "Please choose a date" %>
+      <%= f.input :description, lerror_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, label: "Tell us a bit more about your trip", wrapper_html: { class: "mt-8 px-8 w-64 md:w-96" }, input_html: { class: "text-darkblue border outline-darkblue w-64 md:w-96 rounded-md border border-transparent drop-shadow"}, label_html: { class: "text-gray-500"}, error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"} %>
       <div class="ml-8">
-        <h1 class="uppercase text-2xl mt-12 tracking-wide border-b-2 border-yellow w-96">Categories</h1>
-        <div class="flex flex-wrap w-96">
-          <h1 class="mb-2">Choose 4 tags that apply to your trip</h1>
+        <h1 class="uppercase text-2xl mt-12 tracking-wide border-b-2 border-yellow w-64 md:w-96">Categories</h1>
+        <div class="flex flex-wrap w-64 md:w-96">
+          <h4 class="text-md md:text-xl mb-2">Choose up to 4 tags that apply to your trip</h4>
           <%= f.input :activities, as: :check_boxes, error_html: { class: "mt-2 text-xs text-red-400 uppercase"}, label: false,
                   collection: [['surfing'],['sightseeing'],['hiking'],['kayaking'],['diving'],['racing'],['climbing'],['skydiving'],['party'],['meditation'],['volunteering'],['wine tasting'],['fishing'],['hunting'],['theme parks'],['convention'],['beach'],['sports'],['spa'],['music'],['other']], label_method: :first, value_method: :first, wrapper_html: { class: "grid grid-cols-2 gap-2 pl-2"}, input_html: { class: "m-2"}, include_hidden: false %>
         </div>
       </div>
     </div>
-    <div class="relative justify-center">
-      <div class="fixed ml-10">
-        <%= f.input :photos, as: :file, error: "Please upload upto 5 photos", error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, wrapper_html: { class: "mt-8 w-96" }, hint: "Please upload 5 pictures", hint_html: {class: "text-gray-500"}, input_html: { multiple: true, class: "mb-4 mt-4 w-96"}, label_html: { class: "border-b-2 border-yellow w-96 font-bold upload uppercase text-4xl tracking-wide"} %>
-        <div id="output" class="grid grid-cols-4"></div>
+    <div class="grid grid-cols-1 gap-2">
+      <div class="relative md:fixed ml-5 md:ml-10">
+        <%= f.input :photos, as: :file, error: "Please upload upto 5 photos", error_html: { class: "flex flex-row mt-2 text-xs text-red-400 uppercase"}, wrapper_html: { class: "mt-8 w-96" }, hint: "Please upload 5 pictures", hint_html: {class: "text-gray-500"}, input_html: { multiple: true, class: "mb-4 mt-4 w-96"}, label_html: { class: "border-b-2 border-yellow w-96 font-bold upload uppercase text-xl md:text-4xl tracking-wide"} %>
+        <div id="output" class="grid grid-cols-2 md:grid-cols-3"></div>
       </div>
     </div>
     <div class="container flex justify-start mt-6">
       <%= f.submit "CREATE", class: "-mt-10 ml-8 btn item-center w-48 bg-yellow text-darkblue font-bold text-sm font-bold leading-tight uppercase rounded shadow-md" %>
+    <% end %>
     </div>
-  </div>
-<% end %>
+</div>
