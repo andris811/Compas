@@ -129,7 +129,7 @@
                       <% if message.user.avatar.attached? %>
                         <%= cl_image_tag(message.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-12 w-12")%>
                       <% else %>
-                        <%= image_tag "icons.jpeg", class:"rounded-full h-12 2-12" %>
+                        <%= image_tag "icons.png", class:"rounded-full h-12 2-12" %>
                       <% end %>
                     </div>
                     <h3 class="text-xs mx-6  my-4" ><%= message.comment %></h3>
@@ -153,7 +153,7 @@
                 <% if @trip.organizer.avatar.attached? %>
                   <%= cl_image_tag(@trip.organizer.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-16 w-16")%>
                 <% else %>
-                  <%= image_tag "icons.jpeg", class:"rounded-full h-16 w-16" %>
+                  <%= image_tag "icons.png", class:"rounded-full h-16 w-16" %>
                 <% end %>
               </div>
               <h3 class="ml-2 mt-3 text-lg"><%= @trip.organizer.first_name.capitalize %> <%= @trip.organizer.last_name.capitalize %></h3>
@@ -187,7 +187,7 @@
                                 <% if attendee.user.avatar.attached? %>
                                   <%= cl_image_tag(attendee.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-14 w-14")%>
                                 <% else %>
-                                  <%= image_tag "icons.jpeg", class:"rounded-full h-14 w-14" %>
+                                  <%= image_tag "icons.png", class:"rounded-full h-14 w-14" %>
                                 <% end %>
                               </div>
                             </div>
@@ -227,7 +227,7 @@
                               <% if attendee.user.avatar.attached? %>
                                 <%= cl_image_tag(attendee.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-14 w-14")%>
                               <% else %>
-                                <%= image_tag "icons.jpeg", class:"rounded-full h-14 w-14" %>
+                                <%= image_tag "icons.png", class:"rounded-full h-14 w-14" %>
                               <% end %>
                             </div>
                             <% end %>
@@ -269,7 +269,7 @@
                           <% if attendee.user.avatar.attached? %>
                             <%= cl_image_tag(attendee.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-12 w-12")%>
                           <% else %>
-                            <%= image_tag "icons.jpeg", class:"rounded-full h-12 w-12" %>
+                            <%= image_tag "icons.png", class:"rounded-full h-12 w-12" %>
                           <% end %>
                         </div>
                       </div>

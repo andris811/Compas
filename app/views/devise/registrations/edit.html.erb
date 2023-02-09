@@ -12,7 +12,7 @@
       <% if resource.avatar.attached? %>
         <%= cl_image_tag(resource.avatar.key, crop: :thumb, gravity: :face, class: "rounded w-24 h-24") %>
       <% else %>
-        <%= image_tag "icons.jpeg", class:"rounded-full w-24 h-24" %>
+        <%= image_tag "icons.png", class:"rounded-full w-24 h-24" %>
       <% end %>
     </div>
     <div>
