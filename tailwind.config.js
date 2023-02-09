@@ -11,6 +11,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        md: '991px'
+      },
       colors: {
         darkblue: "#091d36",
         yellow: "#FFD302"
