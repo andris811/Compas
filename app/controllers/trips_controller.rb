@@ -328,7 +328,13 @@ class TripsController < ApplicationController
   def update
     @trip = Trip.find(params[:id])
 
-    if @trip.update(trip_params)
+    if trip_params[:photos].last.present?
+      modified_params = trip_params
+    else
+      modified_params = trip_params.except(:photos)
+    end
+
+    if @trip.update(modified_params)
       redirect_to trip_path(@trip.id)
     else
       render :edit, status: 422
