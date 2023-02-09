@@ -41,6 +41,10 @@
     <%# <div class="flex flex-col h-screen"> %>
     <% if devise_controller? %>
       <%= yield %>
+    <% elsif controller.controller_name == 'users' %>
+      <div class="flex-grow">
+        <%= yield %>
+      </div>
     <% else %>
       <div id="vue">
         <div class="flex-grow">
