@@ -11,13 +11,13 @@
         <div class="absolute left-6 md:left-16 top-5 md:top-0 ">
           <div class="w-14 md:w-28 mt-28">
             <% if current_user.avatar.attached? %>
-              <%= cl_image_tag(current_user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-28 w-28")%>
+              <%= cl_image_tag(current_user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-10 md:h-28 md:w-28")%>
             <% else %>
-              <%= image_tag "icons.png", class:"rounded-full w-28 h-28" %>
+              <%= image_tag "icons.png", class:"rounded-full h-16 w-16 md:h-28 md:w-28" %>
             <% end %>
           </div>
           <div class="pl-20 md:pl-32 pt-10 md:pt-0">
-            <h1 class="text-xl text-white -mt-24"><%= current_user.first_name %> <%= current_user.last_name %></h1>
+            <h1 class="text-xl text-white md:-mt-24 -mt-28 "><%= current_user.first_name %> <%= current_user.last_name %></h1>
             <p class="text-base mt-2 break-words"> <%= current_user.email %></p>
             <h3 class="text-sm"><%= current_user.description %></h3>
           </div>
