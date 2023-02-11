@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       @images << image
     end
 
-    @user.trip.each do |pic|
+    @user.trips.each do |pic|
       if pic.user_id == @user.id
         photo = pic.photos.first
         current_trips = {

@@ -26,7 +26,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
-  has_many :trip
+  has_many :trips
   has_many :messages
   has_many_attached :photos
   has_one_attached :avatar
