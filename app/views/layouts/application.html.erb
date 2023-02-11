@@ -41,14 +41,13 @@
     <%# <div class="flex flex-col h-screen"> %>
     <% if devise_controller? %>
       <%= yield %>
-    <% elsif controller.controller_name == 'users' && !action_name == "show" %>
+    <% elsif controller.controller_name == 'users' %>
       <div class="flex-grow">
         <%= yield %>
       </div>
     <% else %>
-        in application.html xx
-        <div id="vue" class="flex-grow">
-          <%= yield %>
+      <div id="vue" class="flex-grow">
+        <%= yield %>
         <% unless @scrollbutton == false %>
           <%= render "shared/scroll_up" %>
         <% end %>
