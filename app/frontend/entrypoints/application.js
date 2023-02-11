@@ -27,17 +27,19 @@ console.log(upload);
 const output = document.querySelector("#output");
 console.log(output);
 // const imagesArray = [];
-upload.addEventListener("click", (e) => {
-  console.log(e.target.value);
-  e.target.value = null;
-});
-upload.addEventListener("change", () => {
-  const imagesArray = Array.from(upload.files);
-  // const file = upload.files;
-  // console.log(file);
-  // imagesArray.push(file[0]);
-  displayImages(imagesArray);
-});
+if (upload) {
+  upload.addEventListener("click", (e) => {
+    console.log(e.target.value);
+    e.target.value = null;
+  });
+  upload.addEventListener("change", () => {
+    const imagesArray = Array.from(upload.files);
+    // const file = upload.files;
+    // console.log(file);
+    // imagesArray.push(file[0]);
+    displayImages(imagesArray);
+  });
+}
 // function deleteImage(index) {
 //   imagesArray.splice(index, 1);
 //   displayImages();
