@@ -31,7 +31,7 @@ class Trip < ApplicationRecord
   validates :max_people,  presence: true, inclusion: { in: 1..100, message: 'Max number of people = 100' }
   validate :activity_validator
   # validates :pets, presence: true
-  validate :start_date_validator
+  # validate :start_date_validator
   validate :end_date_validator
   # validate :photo_validator
   validates :country, presence: true

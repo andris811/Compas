@@ -46,10 +46,8 @@
         <%= yield %>
       </div>
     <% else %>
-      <div id="vue">
-        <div class="flex-grow">
-          <%= yield %>
-        </div>
+      <div id="vue" class="flex-grow">
+        <%= yield %>
         <% unless @scrollbutton == false %>
           <%= render "shared/scroll_up" %>
         <% end %>
