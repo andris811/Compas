@@ -10,12 +10,14 @@
         </div>
       </div>
       <%# Avatar/ User details %>
+
       <div class="absolute left-6 md:left-16 top-5 md:top-0 ">
         <div class="w-14 md:w-28 mt-28">
           <% if current_user.avatar.attached? %>
             <%= cl_image_tag(current_user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-28 w-28")%>
           <% else %>
             <%= image_tag "icons.png", class:"rounded-full w-28 h-28" %>
+
           <% end %>
         </div>
         <div class="pl-20 md:pl-32 pt-10 md:pt-0">
@@ -24,6 +26,7 @@
           <h3 class="text-sm"><%= current_user.description %></h3>
         </div>
       </div>
+
       <%# Icons %>
       <div class="absolute text-white bottom-0 md:bottom-8 top-2 md:top-24 left-5 md:left-48 ">
         <%= link_to edit_user_registration_path do %>
@@ -125,7 +128,8 @@
 
         </div>
       </div>
-    <%# </div> %>
+    </div>
+   </div>
 
 <% else %>
     <%# Other users profile %>
