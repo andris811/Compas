@@ -11,9 +11,9 @@
         <div class="absolute left-6 md:left-16 top-5 md:top-0 ">
           <div class="w-14 md:w-28 mt-28">
             <% if current_user.avatar.attached? %>
-              <%= cl_image_tag(current_user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-28 w-28")%>
+              <%= cl_image_tag(current_user.avatar.key, height:400, width:400, crop: "fill", gravity: :face, class: "rounded-full")%>
             <% else %>
-              <%= image_tag "icons.png", class:"rounded-full w-28 h-28" %>
+              <%= image_tag "icons.png",  height:400, width:400, class:"rounded-full" %>
             <% end %>
           </div>
           <div class="pl-20 md:pl-32 pt-10 md:pt-0">
@@ -160,9 +160,9 @@
       <div class="absolute left-6 md:left-16 top-5 md:top-0">
         <div class="w-14 md:w-28 mt-28">
           <% if @user.avatar.attached? %>
-            <%= cl_image_tag(@user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-28 w-28 bg-center") %>
+            <%= cl_image_tag(@user.avatar.key, height:400, width:400, crop: :thumb, gravity: :face, class: "rounded-full bg-center") %>
           <% else %>
-            <%= image_tag "icons.png", class:"rounded-full w-28 h-28" %>
+            <%= image_tag "icons.png", height:400, width:400, class:"rounded-full w-28 h-28" %>
           <% end %>
         </div>
         <div class="pl-20 md:pl-32 pt-10 md:pt-0">
