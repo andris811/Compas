@@ -127,7 +127,7 @@
                   <div class="flex">
                     <div class="ml-4 mt-1 h-12 w-12">
                       <% if message.user.avatar.attached? %>
-                        <%= cl_image_tag(message.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-12 w-12")%>
+                        <%= cl_image_tag(message.user.avatar.key, height:400, width:400, crop: :fill, gravity: :face, class: "rounded-full")%>
                       <% else %>
                         <%= image_tag "icons.png", class:"rounded-full h-12 2-12" %>
                       <% end %>
@@ -151,7 +151,7 @@
             <div class="flex flex-row">
               <div class="rounded-full border border-2 border-yellow">
                 <% if @trip.organizer.avatar.attached? %>
-                  <%= cl_image_tag(@trip.organizer.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-16 w-16")%>
+                  <%= cl_image_tag(@trip.organizer.avatar.key, height:400, width:400, crop: :thumb, gravity: :face, class: "rounded-full h-16 w-16")%>
                 <% else %>
                   <%= image_tag "icons.png", class:"rounded-full h-16 w-16" %>
                 <% end %>
@@ -185,7 +185,7 @@
                             <div class="mx-auto my-1 md:my-2">
                               <div class="rounded-full border border-2 border-yellow">
                                 <% if attendee.user.avatar.attached? %>
-                                  <%= cl_image_tag(attendee.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-14 w-14")%>
+                                  <%= cl_image_tag(attendee.user.avatar.key, height:400, width:400, crop: :fill, gravity: :face, class: "rounded-full h-10 w-10")%>
                                 <% else %>
                                   <%= image_tag "icons.png", class:"rounded-full h-14 w-14" %>
                                 <% end %>
@@ -225,7 +225,7 @@
                           <%= link_to user_path(attendee.user.id) do %>
                             <div class="border border-2 border-yellow rounded-full">
                               <% if attendee.user.avatar.attached? %>
-                                <%= cl_image_tag(attendee.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-14 w-14")%>
+                                <%= cl_image_tag(attendee.user.avatar.key, height:400, width:400, crop: :thumb, gravity: :face, class: "rounded-full h-14 w-14")%>
                               <% else %>
                                 <%= image_tag "icons.png", class:"rounded-full h-14 w-14" %>
                               <% end %>
@@ -267,7 +267,7 @@
                       <div class="">
                         <div class="rounded-full border border-2 border-yellow">
                           <% if attendee.user.avatar.attached? %>
-                            <%= cl_image_tag(attendee.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-12 w-12")%>
+                            <%= cl_image_tag(attendee.user.avatar.key, height:400, width:400, crop: :thumb, gravity: :face, class: "rounded-full h-12 w-12")%>
                           <% else %>
                             <%= image_tag "icons.png", class:"rounded-full h-12 w-12" %>
                           <% end %>

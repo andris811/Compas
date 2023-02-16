@@ -37,8 +37,9 @@
             <div class="h-full">
               <div class="absolute top-3 right-3 sm:h-10 md:h-13 z-10">
                 <% if trip.user.avatar.attached? %>
-                  <%= cl_image_tag(trip.user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full w-14 h-14") %>
-                <% else %>
+                  <%= cl_image_tag(trip.user.avatar.key, height:400, width:400, crop: :thumb, gravity: :face, class: "rounded-full w-14 h-14") %>
+                  <% else %>
+
                   <%= image_tag "icons.png", class:"rounded-full w-14 h-14" %>
                 <% end %>
               </div>

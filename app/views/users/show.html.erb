@@ -11,6 +11,24 @@
       </div>
       <%# Avatar/ User details %>
 
+        <div class="absolute left-6 md:left-16 top-5 md:top-0 ">
+          <div class="w-14 md:w-28 mt-28">
+            <% if current_user.avatar.attached? %>
+              <%= cl_image_tag(current_user.avatar.key, height:400, width:400, crop: "fill", gravity: :face, class: "rounded-full")%>
+            <% else %>
+              <%= image_tag "icons.png",  height:400, width:400, class:"rounded-full" %>
+            <% end %>
+          </div>
+          <div class="pl-20 md:pl-32 pt-10 md:pt-0">
+            <h1 class="text-xl text-white -mt-24"><%= current_user.first_name %> <%= current_user.last_name %></h1>
+            <p class="text-base mt-2 break-words"> <%= current_user.email %></p>
+            <h3 class="text-sm"><%= current_user.description %></h3>
+          </div>
+        </div>
+        <%# Icons %>
+        <div class="absolute text-white bottom-0 md:bottom-8 top-2 md:top-24 left-5 md:left-48 ">
+
+
       <div class="absolute left-6 md:left-16 top-5 md:top-0 ">
         <div class="w-14 md:w-28 mt-28">
           <% if current_user.avatar.attached? %>
@@ -134,36 +152,37 @@
 <% else %>
     <%# Other users profile %>
     <div class="h-96 bg-transparent">
-                        <%# Banner %>
-                        <div class="relative">
-                          <div class="px-2 flex-wrap">
-                            <div class="bg-no-repeat bg-cover bg-center h-40 rounded-t-lg my-2 md:my-10 mx-1 md:mx-10" style="background-position: 50%; background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/146.webp');">
-                            </div>
-                          </div>
-                          <%# Avatar/ User details %>
-                          <div class="absolute left-6 md:left-16 top-5 md:top-0">
-                            <div class="w-14 md:w-28 mt-28">
-                              <% if @user.avatar.attached? %>
-                                <%= cl_image_tag(@user.avatar.key, crop: :thumb, gravity: :face, class: "rounded-full h-28 w-28 bg-center") %>
-                              <% else %>
-                                <%= image_tag "icons.png", class:"rounded-full w-28 h-28" %>
-                              <% end %>
-                            </div>
-                            <div class="pl-20 md:pl-32 pt-10 md:pt-0">
-                              <h1 class="text-xl text-white -mt-24"><%= @user.first_name %> <%= @user.last_name %></h1>
-                              <p class="text-base mt-2 break-words"> <%= @user.email %></p>
-                              <h3 class="text-sm"><small><%= @user.phone_number %></small></h3>
-                            </div>
-                          </div>
-                          <%# Icons %>
-                          <div class="absolute text-white bottom-0 md:bottom-8 top-2 md:top-20 left-5 md:left-48">
-                            <i class="fa-solid fa-thumbs-up hover:text-yellow text-2xl mr-2 -z-10"></i>
-                            <%# Red Flag Icon %>
-                            <button type="button" class="text-white font-medium text-xs -z-10" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">
-                              <i class="fa-solid fa-flag hover:text-red-700 text-xl mr-2"></i>
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+    <%# Banner %>
+    <div class="relative">
+      <div class="px-2 flex-wrap">
+        <div class="bg-no-repeat bg-cover bg-center h-40 rounded-t-lg my-2 md:my-10 mx-1 md:mx-10" style="background-position: 50%; background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/146.webp');">
+      </div>
+    </div>
+    <%# Avatar/ User details %>
+      <div class="absolute left-6 md:left-16 top-5 md:top-0">
+        <div class="w-14 md:w-28 mt-28">
+          <% if @user.avatar.attached? %>
+            <%= cl_image_tag(@user.avatar.key, height:400, width:400, crop: :thumb, gravity: :face, class: "rounded-full bg-center") %>
+          <% else %>
+            <%= image_tag "icons.png", height:400, width:400, class:"rounded-full w-28 h-28" %>
+          <% end %>
+        </div>
+        <div class="pl-20 md:pl-32 pt-10 md:pt-0">
+          <h1 class="text-xl text-white -mt-24"><%= @user.first_name %> <%= @user.last_name %></h1>
+          <p class="text-base mt-2 break-words"> <%= @user.email %></p>
+          <h3 class="text-sm"><small><%= @user.phone_number %></small></h3>
+        </div>
+      </div>
+      <%# Icons %>
+      <div class="absolute text-white bottom-0 md:bottom-8 top-2 md:top-20 left-5 md:left-48">
+          <i class="fa-solid fa-thumbs-up hover:text-yellow text-2xl mr-2 -z-10"></i>
+            <%# Red Flag Icon %>
+            <button type="button" class="text-white font-medium text-xs -z-10" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">
+              <i class="fa-solid fa-flag hover:text-red-700 text-xl mr-2"></i>
+            </button>
+              <!-- Modal -->
+            <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+
               id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
                               <div class="modal-dialog modal-fullscreen relative w-auto pointer-events-none">
                                 <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
