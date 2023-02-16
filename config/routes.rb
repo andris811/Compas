@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   resources :user_flags, only: :create
 
-  match 'users/:id' => 'users#show', via: :get
+  match 'users/[:id]' => 'users#show', via: :get
   # or
-  get 'users/:id' => 'users#show'
+  get 'users/[:id]' => 'users#show'
   # or
 end
