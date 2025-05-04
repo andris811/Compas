@@ -24,6 +24,9 @@ default: &default
 development:
   <<: *default
   database: Compas_development
+  username: postgres
+  password: <%= ENV["COMPAS_DATABASE_PASSWORD"] %>  # Make sure the password is set in your environment variable
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,6 +61,9 @@ development:
 test:
   <<: *default
   database: Compas_test
+  username: postgres
+  password: <%= ENV["COMPAS_DATABASE_PASSWORD"] %>  # Ensure this is set in your environment
+  host: localhost
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

@@ -8,7 +8,6 @@
     "swiper": "^8.4.7",
     "tailwindcss": "^3.2.4",
     "tw-elements": "^1.0.0-alpha13",
-    "vite": "^4.0.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
@@ -20,7 +19,8 @@
     "eslint-plugin-vue": "^9.8.0",
     "path": "^0.12.7",
     "prettier": "^2.8.1",
+    "vite": "^5.4.19",
     "vite-plugin-full-reload": "^1.0.5",
-    "vite-plugin-ruby": "^3.1.2"
+    "vite-plugin-ruby": "^5.1.1"
   }
 }
